@@ -8,8 +8,8 @@
                 <div class="alert alert-info alert-dismissable">
                 <i class="fa fa-check"></i>
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <b>Simpan gagal !</b>
-               Password dan confirm password tidak sama
+                <b>Sukses !</b>
+              Simpan berhasil
                 </div>
            
                 </section>
@@ -39,11 +39,21 @@
                                         <div class="col-md-12">
                                         
                                         <div class="form-group">
-                                            <label>Name</label>
-                                            <input required type="text" name="i_name" class="form-control" placeholder="Enter name ..." value="<?= $row->q1d_name ?>"/>
+                                            <label>No</label>
+                                            <input required type="text" name="i_number" class="form-control" placeholder="Masukkan no ..." value="<?= $row->q2d_number ?>"/>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Opsi</label>
+                                            <input required type="text" name="i_name" class="form-control" placeholder="Masukkan opsi ..." value="<?= $row->q2d_name ?>"/>
                                         </div>
                                        
-                                    
+                                       	<div class="form-group"> 
+                                                <label>Poin</label>
+                                            <input required type="text" name="i_point" class="form-control" placeholder="Masukkan poin ..." value="<?= $row->q2d_point ?>"/>             
+                                       
+                                       
+                                    </div>
                                         
                                         </div>
                                        <div style="clear:both;"></div>
@@ -61,4 +71,6 @@
                        </form>
                         </div><!--/.col (right) -->
                     </div>   <!-- /.row -->
+              
+            
                 </section><!-- /.content -->

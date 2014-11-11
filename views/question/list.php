@@ -47,6 +47,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             
+                           <div class="title_page"> A. DATA UMUM KABUPATEN/ KOTA</div>
                             
                             <div class="box">
                                <div class="box-header">
@@ -58,9 +59,9 @@
                                     </div><!-- /. tools -->
                                   
 
-                                    <h3 class="box-title">A. DATA UMUM KABUPATEN/ KOTA</h3>
+                                    <h3 class="box-title">Data Umum Kabupaten/Kota</h3>
                                 </div><!-- /.box-header -->
-                                <div class="box-body no-padding">
+                                <div class="box-body no-padding" style="display:none">
                                        <table id="" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -92,18 +93,32 @@
                                             <?php
                                             if($row['q1_get_child'] == 1){
 											?>
-                                            <tr>
-                                            <td>&nbsp;</td>
-                                             <td colspan="3">
-                                             	<?php
+                                             <?php
 												$query_child = mysql_query("select * from questions1_details where q1_id = '".$row['q1_id']."'");
+												$no_child = 1;
                                                  while($row_child = mysql_fetch_array($query_child)){
-													 echo $row_child['q1d_name']."<br>";
-												 }
-												
-												 
+													 
                                                 ?>
-                                                
+                                            <tr>
+                                           
+                                            <td>&nbsp;</td>
+                                             <td  >
+                                             	<?= $no_child.". ".$row_child['q1d_name'];?>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td style="text-align:center;">
+                                                  <a href="question.php?page=form_child&id=<?= $row_child['q1d_id']?>" class="btn btn-danger" ><i class="fa fa-pencil"></i></a>
+                                                    <a href="javascript:void(0)" onclick="confirm_delete(<?= $row_child['q1d_id']; ?>,'question.php?page=delete_child&id=')" class="btn btn-danger" ><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                               
+                                                </tr> 
+												<?php
+												$no_child++;
+												 }
+												?>
+                                                <tr>
+                                                <td>&nbsp;</td>
+                                                 <td colspan="3">
                                                 <a href="question.php?page=form_child&q1_id=<?= $row['q1_id'] ?>" class="btn btn-info " >Add</a>
                                              </td>
                                             </tr>
@@ -128,4 +143,4 @@
                         </div>
                     </div>
 
-                </section><!-- /.content -->
+               

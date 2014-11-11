@@ -8,8 +8,8 @@
                 <div class="alert alert-info alert-dismissable">
                 <i class="fa fa-check"></i>
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <b>Simpan gagal !</b>
-               Password dan confirm password tidak sama
+                <b>Sukses !</b>
+              Simpan berhasil
                 </div>
            
                 </section>
@@ -39,11 +39,16 @@
                                         <div class="col-md-12">
                                         
                                         <div class="form-group">
-                                            <label>Name</label>
-                                            <input required type="text" name="i_name" class="form-control" placeholder="Enter name ..." value="<?= $row->q1d_name ?>"/>
+                                            <label>Soal</label>
+                                            <input required type="text" name="i_name" class="form-control" placeholder="Masukkan soal ..." value="<?= $row->q2_name ?>"/>
                                         </div>
                                        
-                                    
+                                       	<div class="form-group"> 
+                                                <label>Bobot</label>
+                                            <input required type="text" name="i_weight" class="form-control" placeholder="Masukkan bobot soal ..." value="<?= $row->q2_weight ?>"/>             
+                                       
+                                       
+                                    </div>
                                         
                                         </div>
                                        <div style="clear:both;"></div>
