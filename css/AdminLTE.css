@@ -1292,6 +1292,8 @@ body > .header .logo .icon {
   -moz-border-radius: 3px;
   border-radius: 3px !important;
   width: 100%;
+  background:#fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   
 }
 .box.box-primary {
@@ -1331,6 +1333,7 @@ body > .header .logo .icon {
   border-bottom: 0px solid #f4f4f4;
   color: #444;
   padding-bottom: 10px;
+  background:#fff;
 }
 .box .box-header:before,
 .box .box-header:after {
@@ -1463,16 +1466,7 @@ background:#fff;
   border-top-right-radius: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-   background-color: #dce9f9;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
-  background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image: -moz-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image: -ms-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image: -o-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image: linear-gradient(to bottom, #ebf3fc, #dce9f9);
-  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
-  -moz-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
-  box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+  
   border-top: 1px solid #ccc;
   padding: 10px;
 }
