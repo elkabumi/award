@@ -49,7 +49,7 @@ switch ($page) {
 
 
 			
-			header("Location: master.php?page=list");
+			header("Location: question.php");
 			
 			echo $_SESSION['user_type_id'];
 			

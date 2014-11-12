@@ -90,10 +90,11 @@
                                         <tbody>
                                             <?php
                                             $q_opsi = mysql_query("select * from questions2_details where q2_id = '".$_GET['id']."'");
+											$no_opsi = 1;
                                             while($r_opsi = mysql_fetch_array($q_opsi)){
                                             ?>
                                             <tr>
-                                            <td><?= $r_opsi['q2d_number']?></td>
+                                            <td><?= get_abjad($no_opsi)?></td>
                                                 <td><?= $r_opsi['q2d_name']?></td>
                                                 <td><?= $r_opsi['q2d_point']?></td>
                                               
@@ -105,7 +106,7 @@
                                                 </td> 
                                             </tr>
                                             <?php
-											
+											$no_opsi++;
                                             }
                                             ?>
 

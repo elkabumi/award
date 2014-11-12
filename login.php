@@ -22,7 +22,7 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
+    <body style="background:#354052 !important">
 
         <div class="form-box" id="login-box">
             <div class="header"><img src="img/jatim.png" style="width:60px; margin-bottom:10px;"><div class="bg-logo"><span style="font-size: 1.3em !important;"><strong>Badan Penanaman Modal Jatim</strong></span><br>Bidang Data & Sistem Informasi</div></div>
@@ -54,7 +54,7 @@
                   
                 </div>
                 <div class="footer" >                                                               
-                    <button type="submit" class="btn btn-cokelat btn-block" style="margin-top:10px;">LOGIN</button>  
+                    <button type="submit" class="btn btn-info btn-block" style="margin-top:10px;">LOGIN</button>  
                     
                  
                 </div>

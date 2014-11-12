@@ -1,5 +1,5 @@
 
-              
+              <div class="title_page"> B. INSTITUSI</div>
 
                 <!-- Main content -->
                <?php
@@ -17,11 +17,12 @@
 						   $q_sub_cat = mysql_query("select * from sub_categories where cat_id = '".$r_cat['cat_id']."'");
 						   while($r_sub_cat = mysql_fetch_array($q_sub_cat)){
 						   ?>
-                            <div class="box" >
+                            <div class="box">
+                          
                               <div class="box-header">
                                     <!-- tools box -->
                                 <div class="pull-right box-tools">
-                                       
+                                 
                                         <button class="btn btn-danger btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                                        
                                    </div><!-- /. tools -->
@@ -32,7 +33,7 @@
 										$no_question = 1;
 										while($r_question = mysql_fetch_array($q_question)){
 										?>
-                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8; display:none;" >
+                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8;" >
                                 
                                 <div class="col-md-12">
                                         
@@ -47,11 +48,11 @@
                                           </tr> 
                                             <?php
                                         $q_q_d = mysql_query("select * from questions2_details where q2_id = '".$r_question['q2_id']."'");
-									
+									    $no_q_q_d = 1;
 										while($r_q_d = mysql_fetch_array($q_q_d)){
 										?>
                                            <tr>
-                                           <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".$r_q_d['q2d_number'].")"; ?></td>
+                                           <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_q_q_d).")"; ?></td>
                                             <td> <?= $r_q_d['q2d_name'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
                                             
@@ -71,7 +72,25 @@
                                         
                                          
 										 <?php
+										 $no_q_q_d++;
 										}
+										
+										if($r_question['q2_id'] == 11){
+											  include 'q_132.php';
+										  }else if($r_question['q2_id'] == 12){
+											  include 'q_133.php';
+										  }else if($r_question['q2_id'] == 14){
+											  include 'q_141.php';
+										  }else if($r_question['q2_id'] == 15){
+											  include 'q_142.php';
+										  }else if($r_question['q2_id'] == 16){
+											  include 'q_211.php';
+										  }else if($r_question['q2_id'] == 17){
+											  include 'q_212.php';
+										  }else if($r_question['q2_id'] == 19){
+											  include 'q_214.php';
+										  }
+										
 										 ?>
                                            <tr height="50">
                                             <td style="color:#09F; font-weight:bold;" colspan="2"><?= "&nbsp;&nbsp;&nbsp;&nbsp;" ?> Bobot Soal : <?= $r_question['q2_weight'] ?></td>

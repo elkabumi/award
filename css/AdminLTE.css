@@ -11,7 +11,13 @@
     Core: General style
 ----------------------------
 */
-html,
+html {
+  /*overflow-x: hidden!important;*/
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+   background: #354052;
+}
 body {
   /*overflow-x: hidden!important;*/
   font-family: 'Source Sans Pro', sans-serif;
@@ -2374,11 +2380,11 @@ Component: timeline
   
   font-weight: 300;
   color: #fff;
-  background:url(../img/head_login.gif) repeat-x #4f3f30;
+  background:#15A4FA;
   
 }
 .form-box .body{
-	background:url(../img/bg-noise.png) repeat #FCF9B6;
+	background:#fff;
 	padding: 10px 20px;
   
   color: #444;
@@ -2397,17 +2403,11 @@ Component: timeline
   border-top-right-radius: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-   background-color: #dce9f9;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
-  background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image: -moz-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image: -ms-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image: -o-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image: linear-gradient(to bottom, #ebf3fc, #dce9f9);
+  background:#F9FAFC;
   -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
   -moz-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
   box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #e8e8e8;
   padding: 20px;
 }
 .form-box .body > .form-group,

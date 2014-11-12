@@ -76,7 +76,6 @@ function create_config($table, $data){
 
 function update_config($table, $data, $id){
 	mysql_query("update $table set ".$data." where q1d_id = '$id'");
-	
 }
 
 function delete_config($table, $id){
@@ -92,5 +91,8 @@ function delete_opsi($table, $id){
 	mysql_query("delete from $table where q2d_id = '$id'");
 }
 
+function update_data($table, $parameter, $data, $id){
+	mysql_query("update $table set ".$data." where $parameter = '$id'");
+}
 
 ?>

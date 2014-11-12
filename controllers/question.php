@@ -193,7 +193,7 @@ switch ($page) {
 	
 		extract($_POST);
 
-		$i_number = get_isset($i_number);
+		//$i_number = get_isset($i_number);
 		$i_name = get_isset($i_name);
 		$i_point = get_isset($i_point);
 		
@@ -201,7 +201,7 @@ switch ($page) {
 		
 		$data = "'',
 				'$q2_id',
-				'$i_number',
+				'',
 				'$i_name',
 				'$i_point'
 			";
@@ -259,7 +259,7 @@ switch ($page) {
 				  q2_weight = '$i_weight'
 			";
 
-		update_config("questions2", $data, $id);
+		update_data("questions2", "q2_id", $data, $id);
 			
 		header('Location: question.php?page=list&did=2');
 
@@ -269,13 +269,13 @@ switch ($page) {
 
 		extract($_POST);
 		$id = get_isset($_GET['id']);
-		$i_number = get_isset($i_number);
+		//$i_number = get_isset($i_number);
 		$i_name = get_isset($i_name);
 		$i_point = get_isset($i_point);
 		
 		$q2_id = (isset($_GET['q2_id'])) ? $_GET['q2_id'] : null;
 		
-		$data = " q2d_number = '$i_number',
+		$data = " q2d_number = '',
 				  q2d_name = '$i_name',
 				  q2d_point = '$i_point'
 			";
