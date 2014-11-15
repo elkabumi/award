@@ -61,7 +61,7 @@
 
                                     <h3 class="box-title">Data Umum Kabupaten/Kota</h3>
                                 </div><!-- /.box-header -->
-                                <div class="box-body no-padding">
+                                <div class="box-body no-padding" style="display:none;">
                                        <table id="" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>

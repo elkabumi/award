@@ -91,7 +91,7 @@ switch ($page) {
 			$row = new stdClass();
 
 			$row->q2_name = false;
-			$row->q2_weight = false;
+			$row->q2_weight = 0;
 			$sub_cat_id = (isset($_GET['sub_cat_id'])) ? $_GET['sub_cat_id'] : null;
 			$action = "question.php?page=save_question&sub_cat_id=$sub_cat_id";
 		}
@@ -121,7 +121,7 @@ switch ($page) {
 			
 			$row->q2d_number = false;
 			$row->q2d_name = false;
-			$row->q2d_point	 = false;
+			$row->q2d_point	 = 0;
 			
 			$action = "question.php?page=save_opsi&q2_id=$q2_id";
 		}
