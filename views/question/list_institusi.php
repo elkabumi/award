@@ -146,7 +146,7 @@
 								 ?>
                                  <div class="box-footer">
                                 
-                                <?php?><a href="question.php?page=form_question&sub_cat_id=<?= $r_sub_cat['sub_cat_id']?>" class="btn btn-info" >Add</a>
+                                <a href="question.php?page=form_question&sub_cat_id=<?= $r_sub_cat['sub_cat_id']?>" class="btn btn-info" >Add</a>
                                 
 </div>
 <?php
