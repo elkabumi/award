@@ -22,9 +22,9 @@
 										 ?>
                                             <tr>
                                       		<td><?= get_abjad($no_214).". ".$r_214['q_name']?></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
+                                            <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_214['q_point1']?></td>
+                                            <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_214['q_point2']?></td>
+                                           <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_214['q_point3']?></td>
                                             </tr>
                                              <?php
 											 $no_214++;

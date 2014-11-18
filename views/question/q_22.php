@@ -25,10 +25,10 @@
                                             <tr>
                                             <td><?= $no_22 ?></td>
                                       		<td><?= $r_22['q_name']?></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
+                                             <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_22['q_point1']?></td>
+                                            <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_22['q_point2']?></td>
+                                             <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_22['q_point3']?></td>
+                                             <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_22['q_point4']?></td>
                                             
                                             </tr>
                                              <tr>

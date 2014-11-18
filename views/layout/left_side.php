@@ -32,37 +32,42 @@
                      
                           <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 1){ echo "active"; }?>">
                             <a href="#">
-                                <i class="fa fa-briefcase"></i>
-                                <span>Kuisioner Kab Kota</span>
+                                <i class="fa fa-list-alt"></i>
+                                <span>Master Kuisioner</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 
-                                <li><a href="izin_prinsip.php?page=list"><i class="fa fa-chevron-circle-right"></i>lembar pernyataan</a></li>
-                                <li><a href="master.php?page=list"><i class="fa fa-chevron-circle-right"></i>Daftar Isi</a></li>
-                                <li><a href="question.php?page=list"><i class="fa fa-chevron-circle-right"></i>Isian pertanyaan</a></li>
+                                <li><a href="question.php?page=list"><i class="fa fa-chevron-circle-right"></i> Kab Kota</a></li>
+                                <li><a href="question_pma.php?page=list"><i class="fa fa-chevron-circle-right"></i> PMA/PMDN</a></li>
+                               
                              	
                             </ul>
                   </li>
                   
                 
-                         <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "active"; }?>">
-                           <a href="#">
+                        <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
+                            <a href="answer.php">
+                                <i class="fa fa-briefcase"></i>
+                                <span>Kuisioner Kab Kota</span>
+                               
+                            </a>
+                            
+                  </li>
+                  
+                  
+                        <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
+                            <a href="answer.php">
                                 <i class="fa fa-briefcase"></i>
                                 <span>Kuisioner PMA/PMDN</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                               
                             </a>
-                            <ul class="treeview-menu">
-                                
-                                <li><a href="izin_prinsip.php?page=list"><i class="fa fa-chevron-circle-right"></i>lembar pernyataan</a></li>
-                             
-                                <li><a href="question.php?page=list"><i class="fa fa-chevron-circle-right"></i>Isian pertanyaan</a></li>
-                             	
-                            </ul>
-                      </li>
+                            
+                  </li>
+                 
                   
                         
-                     <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "active"; }?>">
+                     <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "active"; }?>">
                             <a href="#">
                                 <i class="fa fa-book"></i>
                                 <span>Laporan</span>
@@ -70,16 +75,16 @@
                             </a>
                             <ul class="treeview-menu">
                                 
-                                <li><a href="report_triwulan.php?page=list"><i class="fa fa-chevron-circle-right"></i>Triwulan</a></li>
-                                <li><a href="report_semester.php?page=list"><i class="fa fa-chevron-circle-right"></i>Semester</a></li>
-                                 <li><a href="report_tahunan.php?page=list"><i class="fa fa-chevron-circle-right"></i>Tahunan</a></li>
+                                <li><a href="report_triwulan.php?page=list"><i class="fa fa-chevron-circle-right"></i>Kuisioner Kab Kota</a></li>
+                                <li><a href="report_semester.php?page=list"><i class="fa fa-chevron-circle-right"></i>Kuisioner PMA/PMDN</a></li>
+                               
                              
                             </ul>
                   </li>
                   
                  
                   
-                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 6){ echo "class='active'"; }?>">
+                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 6){ echo "class='active'"; } ?>>
                             <a href="user.php">
                                 <i class="fa fa-user"></i>
                                 <span>User</span>

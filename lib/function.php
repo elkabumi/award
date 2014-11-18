@@ -171,4 +171,10 @@ function get_abjad($data){
 	return $abjad[$data];
 }
 
+function get_abjad_besar($data){
+	$abjad = array("","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
+	
+	return strtoupper($abjad[$data]);
+}
+
 ?>

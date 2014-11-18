@@ -32,7 +32,7 @@
                                 <?php
                                 if($r_sub_cat['sub_cat_description']){
 								?>
-                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8; display:none;" >
+                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8;" >
                                 <div class="col-md-12">
                                 <?= $r_sub_cat['sub_cat_description']; ?>
                                 </div>
@@ -52,7 +52,7 @@
 										?>
                                        
                                         
-                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8; display:none;" >
+                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8; " >
                                 
                                 <div class="col-md-12">
                                         
@@ -75,7 +75,14 @@
                                             <td> <?= $r_q_d['q2d_name'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
                                             
-                                              Poin : <?= $r_q_d['q2d_point']?>
+                                             <?php
+                                             if($r_q_d['q2d_id'] == 9 || $r_q_d['q2d_id'] == 14 || $r_q_d['q2d_id'] == 15 || $r_q_d['q2d_id'] == 16 || $r_q_d['q2d_id'] == 17){
+											 }else{
+											 ?> 
+                                             Poin : <?= $r_q_d['q2d_point']?>
+                                             <?php
+											 }
+											 ?>
                                             </td>
                                           </tr> 
                                           
@@ -130,6 +137,21 @@
                                                 <a href="question.php?page=form_question&id=<?= $r_question['q2_id']?>" class="btn btn-danger" >Edit</a>
                                             </td>
                                           </tr> 
+                                          
+                                          <?php
+                                          if($r_question['q2_description']){
+										  ?>
+                                           <tr>
+                                           <td style="color:#F4543C; font-weight:bold;" valign="top">Catatan: </td>
+                                            <td><?= $r_question['q2_description'] ?></td>
+                                            <td>
+                                          
+                                            </td>
+                                          </tr> 
+                                          <?php
+										  }
+										  ?>
+                                          
                                         </table>
                                        
                                 </div>

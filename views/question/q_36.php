@@ -25,9 +25,9 @@
                                             <tr>
                                             <td><?= $no_36 ?></td>
                                       		<td><?= $r_36['q_name']?></td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
+                                             <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_36['q_point1']?></td>
+                                            <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_36['q_point2']?></td>
+                                            <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_36['q_point3']?></td>
                                             
                                             </tr>
                                             

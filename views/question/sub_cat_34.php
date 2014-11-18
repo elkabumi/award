@@ -25,14 +25,56 @@
                                           <tr>
                                           <td width="3%" valign="top" align="center"><strong><?= $no_question2."."; ?></strong></td>
                                             <td width="84%"><b> <?= $r_question2['q2_name'] ?></b></td>
-                                            <td width="10%">
+                                            <td width="15%">
                                             
                                               
                                             </td>
                                           </tr> 
                                           
                                             <?php
-											if($r_question2['q2_id'] == 47){
+										if($r_question2['q2_id'] == 47){
+												
+										$q_3422 = mysql_query("select * from q_3_4_2_2");
+									    $no_3422 = 1;
+										while($r_3422 = mysql_fetch_array($q_3422)){
+										?>
+                                           <tr>
+                                           <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad_besar($no_3422).")"; ?></td>
+                                            <td> <?= $r_3422['q_name'] ?></td>
+                                            <td  style="color:#0099FF; font-weight:bold;" valign="top">
+                                            
+                                              Bobot Soal : <?= $r_3422['q_weight']?>
+                                            </td>
+                                          </tr> 
+                                          
+                                           <?php
+										
+												
+										$q_3422_detail = mysql_query("select * from q_3_4_2_2_detail where q_parent_id = '".$r_3422['q_id']."'");
+									    $no_3422_detail = 1;
+										while($r_3422_detail = mysql_fetch_array($q_3422_detail)){
+										?>
+                                           <tr>
+                                           <td valign="top" align="center"></td>
+                                            <td><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_3422_detail).")"; ?> <?= $r_3422_detail['q_name'] ?></td>
+                                            <td  style="color:#F4543C; font-weight:bold;" valign="top">
+                                            
+                                              Point : <?= $r_3422_detail['q_point']?>
+                                            </td>
+                                          </tr> 
+                                        
+                                        
+                                         
+										 <?php
+										 $no_3422_detail++;
+										}
+										?>
+                                        
+                                        
+                                         
+										 <?php
+										 $no_3422++;
+										}
 												
 										}else{
                                         $q_q_d2 = mysql_query("select * from questions2_details where q2_id = '".$r_question2['q2_id']."'");

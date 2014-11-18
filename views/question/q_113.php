@@ -21,9 +21,9 @@
                                             <tr>
                                             <td><?= $no_113; ?></td>
                                                 <td><?= $r_opsi['q_name']?></td>
-                                                <td><?= $r_opsi['q_point1']?></td>
-                                                <td><?= $r_opsi['q_point2']?></td>
-                                                <td><?= $r_opsi['q_point3']?></td>
+                                                <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_opsi['q_point1']?></td>
+                                                <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_opsi['q_point2']?></td>
+                                                <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_opsi['q_point3']?></td>
                                               
                                                  <td style="text-align:center;">
 
