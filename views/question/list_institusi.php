@@ -72,7 +72,7 @@
 										?>
                                            <tr>
                                            <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_q_q_d).")"; ?></td>
-                                            <td> <?= $r_q_d['q2d_name'] ?></td>
+                                            <td valign="top"> <?= $r_q_d['q2d_name'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
                                             
                                              <?php
@@ -88,42 +88,40 @@
                                           
                                           <?php
 										  // Jika pertanyaan no 3 a
-                                          if($r_q_d['q2d_id'] == 9 && $r_q_d['q2_id'] == 6){
+                                          if($r_q_d['q2d_type'] == 1){
 											  include 'q_113.php';
-										  }else  if(($r_q_d['q2d_id'] == 14 || $r_q_d['q2d_id'] == 15 || $r_q_d['q2d_id'] == 16 || $r_q_d['q2d_id'] == 17) && $r_q_d['q2_id'] == 8){
+										  }else  if($r_q_d['q2d_type'] == 2){
 											  include 'q_122.php';
 										  }
-										  ?>
-                                          
-                                        
+										  ?> 
                                          
 										 <?php
 										 $no_q_q_d++;
 										}
 										
-										if($r_question['q2_id'] == 11){
+										if($r_question['q2_type'] == 1){
 											  include 'q_132.php';
-										  }else if($r_question['q2_id'] == 12){
+										  }else if($r_question['q2_type'] == 2){
 											  include 'q_133.php';
-										  }else if($r_question['q2_id'] == 14){
+										  }else if($r_question['q2_type'] == 3){
 											  include 'q_141.php';
-										  }else if($r_question['q2_id'] == 15){
+										  }else if($r_question['q2_type'] == 4){
 											  include 'q_142.php';
-										  }else if($r_question['q2_id'] == 16){
+										  }else if($r_question['q2_type'] == 5){
 											  include 'q_211.php';
-										  }else if($r_question['q2_id'] == 17){
+										  }else if($r_question['q2_type'] == 6){
 											  include 'q_212.php';
-										  }else if($r_question['q2_id'] == 19){
+										  }else if($r_question['q2_type'] == 7){
 											  include 'q_214.php';
-										  }else if($r_question['q2_id'] == 20){
+										  }else if($r_question['q2_type'] == 8){
 											  include 'q_215.php';
-										  }else if($r_question['q2_id'] == 22){
+										  }else if($r_question['q2_type'] == 9){
 											  include 'q_22.php';
-										  }else if($r_question['q2_id'] == 28){
+										  }else if($r_question['q2_type'] == 10){
 											  include 'q_321.php';
-										  }else if($r_question['q2_id'] == 35){
+										  }else if($r_question['q2_type'] == 11){
 											  include 'q_36.php';
-										  }else if($r_question['q2_id'] == 41){
+										  }else if($r_question['q2_type'] == 12){
 											  include 'q_43.php';
 										  }
 										  

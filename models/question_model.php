@@ -9,6 +9,16 @@ function select($data_id){
 	return $query;
 }
 
+function select_identitas($data_id){
+	$query = mysql_query("select *
+		from questions3
+		where data_id = '$data_id'
+			
+			");
+	return $query;
+}
+
+
 function read_id($id){
 	$query = mysql_query("select *
 			from questions1 
@@ -16,6 +26,15 @@ function read_id($id){
 	$result = mysql_fetch_object($query);
 	return $result;
 }
+
+function read_id_identitas($id){
+	$query = mysql_query("select *
+			from questions3
+			where q3_id = '$id'");
+	$result = mysql_fetch_object($query);
+	return $result;
+}
+
 
 function read_child_id($id){
 	$query = mysql_query("select *
@@ -55,6 +74,18 @@ function delete($id){
 	mysql_query("delete from questions1  where q1_id = '$id'");
 }
 
+
+function create_identitas($data){
+	mysql_query("insert into questions3 values(".$data.")");
+}
+
+function update_identitas($data, $id){
+	mysql_query("update questions3 set ".$data." where q3_id = '$id'");
+}
+
+function delete_identitas($id){
+	mysql_query("delete from questions3  where q3_id = '$id'");
+}
 
 
 function create_child($data){

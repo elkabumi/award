@@ -49,6 +49,10 @@
                                        
                                        
                                     </div>
+                                      <div class="form-group">
+                                            <label>Keterangan</label>
+                                            <textarea class="form-control" name="i_description" rows="3" placeholder="Enter ..."><?= $row->q2_description ?></textarea>
+                                        </div>
                                         
                                         </div>
                                        <div style="clear:both;"></div>

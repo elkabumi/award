@@ -10,7 +10,7 @@
                                 </div>
 								
 								<?php
-                                        $q_question2 = mysql_query("select * from questions2 where q2_sub_cat_id = '".$r_sub_cat2['sub_cat_id']."'");
+                                        $q_question2 = mysql_query("select * from questions2 where q2_sub_cat_id = '".$r_sub_cat2['sub_cat_id']."' and data_id = '$data_id'");
 										$no_question2 = 1;
 										while($r_question2 = mysql_fetch_array($q_question2)){
 										?>
@@ -32,15 +32,15 @@
                                           </tr> 
                                           
                                             <?php
-										if($r_question2['q2_id'] == 47){
+										if($r_question2['q2_type'] == 13){
 												
-										$q_3422 = mysql_query("select * from q_3_4_2_2");
+										$q_3422 = mysql_query("select * from q_3_4_2_2 where data_id = '$data_id'");
 									    $no_3422 = 1;
 										while($r_3422 = mysql_fetch_array($q_3422)){
 										?>
                                            <tr>
                                            <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad_besar($no_3422).")"; ?></td>
-                                            <td> <?= $r_3422['q_name'] ?></td>
+                                            <td valign="top"> <?= $r_3422['q_name'] ?></td>
                                             <td  style="color:#0099FF; font-weight:bold;" valign="top">
                                             
                                               Bobot Soal : <?= $r_3422['q_weight']?>
@@ -50,13 +50,13 @@
                                            <?php
 										
 												
-										$q_3422_detail = mysql_query("select * from q_3_4_2_2_detail where q_parent_id = '".$r_3422['q_id']."'");
+										$q_3422_detail = mysql_query("select * from q_3_4_2_2_details where q_parent_id = '".$r_3422['q_id']."'");
 									    $no_3422_detail = 1;
 										while($r_3422_detail = mysql_fetch_array($q_3422_detail)){
 										?>
                                            <tr>
                                            <td valign="top" align="center"></td>
-                                            <td><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_3422_detail).")"; ?> <?= $r_3422_detail['q_name'] ?></td>
+                                            <td valign="top"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_3422_detail).")"; ?> <?= $r_3422_detail['q_name'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
                                             
                                               Point : <?= $r_3422_detail['q_point']?>
@@ -83,7 +83,7 @@
 										?>
                                            <tr>
                                            <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_q_q_d2).")"; ?></td>
-                                            <td> <?= $r_q_d2['q2d_name'] ?></td>
+                                            <td valign="top"> <?= $r_q_d2['q2d_name'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
                                             
                                               Poin : <?= $r_q_d2['q2d_point']?>

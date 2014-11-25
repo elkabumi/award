@@ -19,7 +19,7 @@
                                         $q_212 = mysql_query("select * from q_2_1_2 where data_id = '$data_id'");
 										$no_212 = 1;
 										while($r_212 = mysql_fetch_array($q_212)){
-										 if($r_212['q_id'] != 1){
+										 if($r_212['q_type'] != 1){
 										 ?>
                                             <tr>
                                       		<td><?= $r_212['q_name']?></td>
@@ -35,7 +35,7 @@
 											while($r_212_detail = mysql_fetch_array($q_212_detail)){
 											 ?>
                                              <tr>
-                                             <td><?php if($r_212_detail['q_id']==1){ echo $r_212['q_name']; }?></td>
+                                             <td><?php if($r_212_detail['q_type']==1){ echo $r_212['q_name']; }?></td>
                                             <td><?= $r_212_detail['q_name']?></td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>

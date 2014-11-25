@@ -14,10 +14,13 @@ switch ($page) {
 		get_header($title);
 		
 		$query = select($data_id);
+		$query_identitas = select_identitas($data_id);
 		$add_button = "question.php?page=form";
+		$add_button_identitas = "question.php?page=form_identitas";
 
 		include '../views/question/list.php';
 		include '../views/question/list_institusi.php';
+		include '../views/question/list_identitas.php';
 		
 		echo "</section>";
 		
@@ -47,6 +50,31 @@ switch ($page) {
 		}
 
 		include '../views/question/form.php';
+		get_footer();
+	break;
+	
+	case 'form_identitas':
+		get_header();
+
+		$close_button = "question.php?page=list";
+
+		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
+		if($id){
+
+			$row = read_id_identitas($id);
+		
+			$action = "question.php?page=edit_identitas&id=$id";
+		} else{
+			
+			//inisialisasi
+			$row = new stdClass();
+
+			$row->q3_name = false;
+			
+			$action = "question.php?page=save_identitas";
+		}
+
+		include '../views/question/form_identitas.php';
 		get_footer();
 	break;
 	
@@ -93,6 +121,7 @@ switch ($page) {
 
 			$row->q2_name = false;
 			$row->q2_weight = 0;
+			$row->q2_description = false;
 			$sub_cat_id = (isset($_GET['sub_cat_id'])) ? $_GET['sub_cat_id'] : null;
 			$action = "question.php?page=save_question&sub_cat_id=$sub_cat_id";
 		}
@@ -140,10 +169,28 @@ switch ($page) {
 		
 		$data = "'',
 					'$i_name',
-					'$i_get_child'
+					'$i_get_child',
+					'0'
 			";
 
 		create($data);
+			
+		header('Location: question.php?page=list&did=1');
+		
+	break;
+	
+	case 'save_identitas':
+	
+		extract($_POST);
+
+		$i_name = get_isset($i_name);
+		
+		$data = "'',
+				 '0',
+					'$i_name'
+			";
+
+		create_identitas($data);
 			
 		header('Location: question.php?page=list&did=1');
 		
@@ -173,14 +220,18 @@ switch ($page) {
 
 		$i_name = get_isset($i_name);
 		$i_weight = get_isset($i_weight);
+		$i_description = get_isset($i_description);
 		
 		$sub_cat_id = (isset($_GET['sub_cat_id'])) ? $_GET['sub_cat_id'] : null;
 		
 		$data = "'',
+				'0',
 				'',
 				'$i_name',
 				'$sub_cat_id',
-				'$i_weight'
+				'$i_weight',
+				'$i_description',
+				'0'
 			";
 
 		create_config("questions2", $data);
@@ -201,6 +252,7 @@ switch ($page) {
 		$q2_id = (isset($_GET['q2_id'])) ? $_GET['q2_id'] : null;
 		
 		$data = "'',
+				'0',
 				'$q2_id',
 				'',
 				'$i_name',
@@ -233,6 +285,23 @@ switch ($page) {
 
 	break;
 	
+	case 'edit_identitas':
+
+		extract($_POST);
+		$id = get_isset($_GET['id']);
+		$i_name = get_isset($i_name);
+					
+					$data = " q3_name = '$i_name'
+
+			";
+
+			
+		update_identitas($data, $id);
+			
+		header('Location: question.php?page=list&did=2');
+
+	break;
+	
 	case 'edit_child':
 
 		extract($_POST);
@@ -255,9 +324,11 @@ switch ($page) {
 		$id = get_isset($_GET['id']);
 		$i_name = get_isset($i_name);
 		$i_weight = get_isset($i_weight);	
+		$i_description = get_isset($i_description);	
 		
 		$data = " q2_name = '$i_name',
-				  q2_weight = '$i_weight'
+				  q2_weight = '$i_weight',
+				  q2_description = '$i_description'
 			";
 
 		update_data("questions2", "q2_id", $data, $id);
@@ -292,6 +363,16 @@ switch ($page) {
 		$id = get_isset($_GET['id']);	
 
 		delete($id);
+
+		header('Location: question.php?page=list&did=3');
+
+	break;
+	
+	case 'delete_identitas':
+
+		$id = get_isset($_GET['id']);	
+
+		delete_identitas($id);
 
 		header('Location: question.php?page=list&did=3');
 
