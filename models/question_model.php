@@ -1,8 +1,9 @@
 <?php
 
-function select(){
+function select($data_id){
 	$query = mysql_query("select *
-		from questions1 a 
+		from questions1
+		where data_id = '$data_id'
 			
 			");
 	return $query;

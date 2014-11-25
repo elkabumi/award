@@ -47,7 +47,7 @@
                   
                 
                         <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
-                            <a href="answer.php">
+                            <a href="kuisioner.php">
                                 <i class="fa fa-briefcase"></i>
                                 <span>Kuisioner Kab Kota</span>
                                

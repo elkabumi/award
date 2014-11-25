@@ -85,9 +85,11 @@
                                         <div style="clear:both;"></div>
                                      
                                 </div><!-- /.box-body -->
-                                 <div class="col-md-12">
+                                
+                                  <div class="box-footer">
                                 <input class="btn btn-info" type="submit" value="Save"/>
                                 <a href="<?= $close_button?>" class="btn btn-info" >Close</a>
+                             
                              </div>
                             
                             </div><!-- /.box -->

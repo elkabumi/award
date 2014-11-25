@@ -16,7 +16,7 @@
                                         </thead>
                                         <tbody>
                                         	 <?php
-                                        $q_212 = mysql_query("select * from q_2_1_2");
+                                        $q_212 = mysql_query("select * from q_2_1_2 where data_id = '$data_id'");
 										$no_212 = 1;
 										while($r_212 = mysql_fetch_array($q_212)){
 										 if($r_212['q_id'] != 1){

@@ -1,7 +1,7 @@
  <tr>
                                             <td colspan="3">
                                           <?php
-                                        $q_211 = mysql_query("select * from q_2_1_1");
+                                        $q_211 = mysql_query("select * from q_2_1_1 where data_id = '$data_id'");
 										$no_211 = 1;
 										while($r_211 = mysql_fetch_array($q_211)){
 										 ?>

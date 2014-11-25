@@ -14,7 +14,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $q_opsi = mysql_query("select * from q_1_1_3");
+                                            $q_opsi = mysql_query("select * from q_1_1_3 where data_id = '$data_id'");
 											$no_113 = 1;
                                             while($r_opsi = mysql_fetch_array($q_opsi)){
                                             ?>

@@ -5,7 +5,7 @@
                                             <tr>
                                             <th width="5%">No</th>
                                                 <?php
-                                                 $q_133 = mysql_query("select * from q_1_3_3");
+                                                 $q_133 = mysql_query("select * from q_1_3_3 where data_id = '$data_id'");
 												
 												while($r_133 = mysql_fetch_array($q_133)){
 												?>
@@ -22,7 +22,7 @@
                                             <tr>
                                             <td><?= $i_133?></td>
                                                  <?php
-                                                 $q_133 = mysql_query("select * from q_1_3_3");
+                                                 $q_133 = mysql_query("select * from q_1_3_3 where data_id = '$data_id'");
 												
 												while($r_133 = mysql_fetch_array($q_133)){
 												?>

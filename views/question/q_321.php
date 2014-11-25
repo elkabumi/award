@@ -17,7 +17,7 @@
                                         </thead>
                                         <tbody>
                                         	 <?php
-                                        $q_321 = mysql_query("select * from q_3_2_1");
+                                        $q_321 = mysql_query("select * from q_3_2_1 where data_id = '$data_id'");
 										$no_321 = 1;
 										while($r_321 = mysql_fetch_array($q_321)){
 										

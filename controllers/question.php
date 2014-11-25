@@ -7,12 +7,13 @@ $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
 $title = ucfirst("daftar isian pertanyaan");
 
 $_SESSION['menu_active'] = 6;
+$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : 0;
 
 switch ($page) {
 	case 'list':
 		get_header($title);
 		
-		$query = select();
+		$query = select($data_id);
 		$add_button = "question.php?page=form";
 
 		include '../views/question/list.php';

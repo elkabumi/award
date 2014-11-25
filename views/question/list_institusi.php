@@ -46,7 +46,7 @@
 								}else{
                                 ?> 
                                  <?php
-                                        $q_question = mysql_query("select * from questions2 where q2_sub_cat_id = '".$r_sub_cat['sub_cat_id']."'");
+                                        $q_question = mysql_query("select * from questions2 where q2_sub_cat_id = '".$r_sub_cat['sub_cat_id']."' and data_id = '$data_id'");
 										$no_question = 1;
 										while($r_question = mysql_fetch_array($q_question)){
 										?>

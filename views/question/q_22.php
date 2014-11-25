@@ -17,7 +17,7 @@
                                         </thead>
                                         <tbody>
                                         	 <?php
-                                        $q_22 = mysql_query("select * from q_2_2");
+                                        $q_22 = mysql_query("select * from q_2_2 where data_id = '$data_id'");
 										$no_22 = 1;
 										while($r_22 = mysql_fetch_array($q_22)){
 										
