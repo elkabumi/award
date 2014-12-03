@@ -1,10 +1,10 @@
 <?php
 include '../lib/config.php';
 include '../lib/function.php';
-include '../models/kuisioner_model.php';
+include '../models/kuisioner_pma_model.php';
 $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
-$title = ucfirst("kuisioner Kab Kota");
+$title = ucfirst("kuisioner Pma");
 
 $_SESSION['menu_active'] = 6;
 
@@ -13,38 +13,38 @@ switch ($page) {
 		get_header($title);
 		
 		$query = select();
-		$add_button = "kuisioner.php?page=form";
+		$add_button = "kuisioner_pma.php?page=form";
 
 
-		include '../views/kuisioner/list.php';
+		include '../views/kuisioner_pma/list.php';
 		get_footer();
 	break;
 	
 	case 'form':
 		get_header();
 
-		$close_button = "kuisioner.php?page=list";
+		$close_button = "kuisioner_pma.php?page=list";
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		if($id){
 
 			$row = read_id($id);
-			$row->kuisioner_date = format_date($row->kuisioner_date);
+			$row->kuisioner_pma_date = format_date($row->kuisioner_pma_date);
 			
-			$action = "kuisioner.php?page=edit&id=$id";
+			$action = "kuisioner_pma.php?page=edit&id=$id";
 		} else{
 			
 			//inisialisasi
 			$row = new stdClass();
 
-			$row->kuisioner_name = false;
-			$row->kuisioner_date = false;
-			$row->kuisioner_description = false;
+			$row->kuisioner_pma_name = false;
+			$row->kuisioner_pma_date = false;
+			$row->kuisioner_pma_description = false;
 
-			$action = "kuisioner.php?page=save";
+			$action = "kuisioner_pma.php?page=save";
 		}
 
-		include '../views/kuisioner/form.php';
+		include '../views/kuisioner_pma/form.php';
 		get_footer();
 	break;
 
@@ -64,13 +64,13 @@ switch ($page) {
 					'$i_name', 
 					'$i_description',
 					'$i_date',
-					'1'
+					'2'
 			";
 
 			create($data);
 		
 
-			header('Location: kuisioner.php?page=list&did=1');
+			header('Location: kuisioner_pma.php?page=list&did=1');
 		
 	break;
 
@@ -92,7 +92,7 @@ switch ($page) {
 
 			update($data, $id);
 			
-			header('Location: kuisioner.php?page=list&did=2');
+			header('Location: kuisioner_pma.php?page=list&did=2');
 
 		
 
@@ -104,7 +104,7 @@ switch ($page) {
 
 		delete($id);
 
-		header('Location: kuisioner.php?page=list&did=3');
+		header('Location: kuisioner_pma.php?page=list&did=3');
 
 	break;
 }

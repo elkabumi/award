@@ -65,7 +65,7 @@
                   
                   
                         <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
-                            <a href="answer.php">
+                            <a href="kuisioner_pma.php">
                                 <i class="fa fa-briefcase"></i>
                                 <span>Kuisioner PMA/PMDN</span>
                                

@@ -2,7 +2,7 @@
 
 function select(){
 	$query = mysql_query("select *
-		from kuisioner
+		from kuisioner where kuisioner_type ='1'
 			
 			");
 	return $query;
