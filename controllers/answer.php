@@ -14,6 +14,9 @@ switch ($page) {
 		get_header($title);
 		
 		$query = select($data_id);
+		$query_js1 = select(0);
+		$query_js2 = select(0);
+		$query_js3 = select(0);
 		$query_identitas = select_identitas($data_id);
 		$add_button = "answer.php?page=form";
 		$add_button_identitas = "answer.php?page=form_identitas";

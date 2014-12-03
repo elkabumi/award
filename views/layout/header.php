@@ -108,7 +108,7 @@ if(!$_SESSION['login']){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-              	<div class="header_new"><?= $title ?></div>
+              	<div class="header_new"></div>
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
 

@@ -3,7 +3,7 @@
 
                 <!-- Main content -->
                <?php
-               $q_cat = mysql_query("select * from categories where cat_id = 4 order by cat_id");
+               $q_cat = mysql_query("select * from categories order by cat_id");
 			   $no_cat  = 1;
 			   while($r_cat = mysql_fetch_array($q_cat)){
 			   ?>
