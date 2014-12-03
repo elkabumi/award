@@ -3,7 +3,7 @@
 
                 <!-- Main content -->
                <?php
-               $q_cat = mysql_query("select * from categories order by cat_id");
+               $q_cat = mysql_query("select * from categories where cat_id = 1 order by cat_id");
 			   $no_cat  = 1;
 			   while($r_cat = mysql_fetch_array($q_cat)){
 			   ?>
@@ -82,7 +82,14 @@
                                            </td>
                                             <td valign="top"> <?= $r_q_d['q2d_name'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
-                                            
+                                              <?php
+                                             if($r_q_d['q2d_type'] == 1 || $r_q_d['q2d_type'] == 2){
+											 }else{
+											 ?> 
+                                             Poin : <?= $r_q_d['q2d_point']?>
+                                             <?php
+											 }
+											 ?>
                                            
                                             </td>
                                           </tr> 

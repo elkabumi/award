@@ -77,7 +77,7 @@
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
                                             
                                              <?php
-                                             if($r_q_d['q2d_id'] == 9 || $r_q_d['q2d_id'] == 14 || $r_q_d['q2d_id'] == 15 || $r_q_d['q2d_id'] == 16 || $r_q_d['q2d_id'] == 17){
+                                          if($r_q_d['q2d_type'] == 1 || $r_q_d['q2d_type'] == 2){
 											 }else{
 											 ?> 
                                              Poin : <?= $r_q_d['q2d_point']?>

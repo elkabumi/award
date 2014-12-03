@@ -82,10 +82,43 @@ function load_data_participant(str)
                 <!-- Main content -->
                 <section class="content">
                  <form role="form" action="<?= $action?>" method="post" name="testform">
+                 
+                  <div class="row">
+                      
+                        <!-- right column -->
+                        <div class="col-md-12">
+                            <!-- general form elements disabled -->
+                             <div class="title_page"> TAHAP KUISIONER</div>
+
+                         
+                                        
+                                        <div class="form-group">
+                                          
+                                            <select id="basic" name="i_phase_id" class="selectpicker show-tick form-control" data-live-search="true" >
+                                     
+                                           <?php
+                                        $query_phase = mysql_query("select * from phase order by phase_id");
+                                        while($row_phase = mysql_fetch_array($query_phase)){
+                                        ?>
+                                         <option value="<?= $row_phase['phase_id']?>"><?= $row_phase['phase_name'] ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                          
+                                        </select>
+                                        </div>
+                                       
+                                    
+                                    
+                        </div><!--/.col (right) -->
+                    </div>   <!-- /.row -->
+                 
+                 <br />
+                 
                     <div class="row">
                         <div class="col-xs-12">
                             
-                           <div class="title_page"> A. DATA UMUM KABUPATEN/ KOTA</div>
+                           <div class="title_page"> A. DATA UMUM KABUPATEN / KOTA</div>
                             
                             <div class="box">
                                <div class="box-header">
@@ -97,7 +130,7 @@ function load_data_participant(str)
                                     </div><!-- /. tools -->
                                   
 
-                                    <h3 class="box-title">Data Umum Kabupaten/Kota</h3>
+                                    <h3 class="box-title">Data Umum Kabupaten / Kota</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
                                        <table width="100%" class="table table-bordered" id="">
