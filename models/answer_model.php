@@ -32,7 +32,7 @@ function select_identitas($data_id){
 	$query = mysql_query("select *
 		from questions3
 		where data_id = '$data_id'
-			
+		order by q3_id
 			");
 	return $query;
 }

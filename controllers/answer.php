@@ -179,6 +179,7 @@ switch ($page) {
 			header("Location: answer.php?data_id=$data_id&err=1");
 		}else{
 		
+		
 		// simpan data answers
 		$data_answers = "'',
 						'$data_id',
@@ -192,7 +193,7 @@ switch ($page) {
 	
 		create_config("answers", $data_answers);	
 		$answer_id = mysql_insert_id();
-			
+			/*
 		// simpan data answers1
 		$select_participant = select_participant($participant_id);
 	
@@ -217,6 +218,22 @@ switch ($page) {
 				create_config("answers1_details", $data_answers1_detail);
 				
 			}
+		}
+		*/
+		
+		// simpan data answers3
+		$select_question3 = select_identitas($data_id);
+		
+		$no_answer3 = 1;
+		while($row_question3 = mysql_fetch_array($select_question3)){
+			$i_answer3 = get_isset($_POST["i_answer3_".$no_answer3]);
+			$data_question3 = "'',
+						'$answer_id',
+						'".$row_question3['q3_name']."',
+						'$i_answer3'
+			";
+			create_config("answers3", $data_question3);
+			$no_answer3++;
 		}
 		
 		}
