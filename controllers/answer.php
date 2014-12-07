@@ -20,12 +20,14 @@ switch ($page) {
 		$query_identitas = select_identitas($data_id);
 		$add_button = "answer.php?page=form";
 		$add_button_identitas = "answer.php?page=form_identitas";
-
+		$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : null;
+		$action = "answer.php?page=save_jawaban&data_id=$data_id";
+		
 		include '../views/answer/list.php';
-		include '../views/answer/list_institusi.php';
+		//include '../views/answer/list_institusi.php';
 		include '../views/answer/list_identitas.php';
 		
-		echo "</section>";
+		
 		
 		get_footer();
 	break;
@@ -161,6 +163,65 @@ switch ($page) {
 
 		include '../views/answer/form_opsi.php';
 		get_footer();
+	break;
+	
+	case 'save_jawaban':
+	
+		$participant_id = (isset($_POST['i_participant_id'])) ? $_POST['i_participant_id'] : null;
+		$participant_name = (isset($_POST['i_answer1_1'])) ? $_POST['i_answer1_1'] : null;
+		$assessor_name = (isset($_POST['i_answer3_1'])) ? $_POST['i_answer3_1'] : null;
+		$phase_id = (isset($_POST['i_phase_id'])) ? $_POST['i_phase_id'] : null;
+		$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : null;
+		
+		
+		
+		if($participant_id == ""){
+			header("Location: answer.php?data_id=$data_id&err=1");
+		}else{
+		
+		// simpan data answers
+		$data_answers = "'',
+						'$data_id',
+						'$participant_id',
+						'$participant_name',
+						'$assessor_name',
+						'".date("Y-m-d")."',
+						'".$_SESSION['user_id']."',
+						'$phase_id'
+		";
+	
+		create_config("answers", $data_answers);	
+		$answer_id = mysql_insert_id();
+			
+		// simpan data answers1
+		$select_participant = select_participant($participant_id);
+	
+		while($row_participant = mysql_fetch_array($select_participant)){
+			$data_answers1 = "'',
+						'".$row_participant['q1_id']."',
+						'".$row_participant['participant1_question']."',
+						'".$row_participant['participant1_answer']."',
+						'$answer_id'
+			";
+			create_config("answers1", $data_answers1);
+			$answer1_id = mysql_insert_id();
+			
+			$select_participant_detail = select_participant_detail($row_participant['participant1_id']);
+	
+			while($row_participant_detail = mysql_fetch_array($select_participant_detail)){
+				$data_answers1_detail = "'',
+							'$answer1_id',
+							'".$row_participant_detail['participant1_detail_question']."',
+							'".$row_participant_detail['participant1_detail_answer']."'
+				";
+				create_config("answers1_details", $data_answers1_detail);
+				
+			}
+		}
+		
+		}
+		
+			
 	break;
 
 	case 'save':

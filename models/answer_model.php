@@ -9,6 +9,25 @@ function select($data_id){
 	return $query;
 }
 
+function select_participant($participant_id){
+	$query = mysql_query("select *
+		from participants1
+		where participant_id = '$participant_id'
+		order by participant1_id
+			");
+	return $query;
+}
+
+function select_participant_detail($participant1_id){
+	$query = mysql_query("select *
+		from participants1_details
+		where participant1_id = '$participant1_id'
+		order by participant1_detail_id
+			");
+	return $query;
+}
+
+
 function select_identitas($data_id){
 	$query = mysql_query("select *
 		from questions3

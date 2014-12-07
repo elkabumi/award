@@ -47,8 +47,19 @@
                                         
                                     </table>
                                 </div><!-- /.box-body -->
+                              
                             </div><!-- /.box -->
                         </div>
                     </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-12">
 
-               
+                             <input class="btn btn-info" type="submit" value="SIMPAN JAWABAN"/>
+                           
+                             </div>
+                             </div>
+                             
+                             </form>
+
+</section>

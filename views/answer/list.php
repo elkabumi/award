@@ -50,15 +50,15 @@ function load_data_participant(str)
            
                 </section>
                 <?php
-                }else if(isset($_GET['did']) && $_GET['did'] == 2){
+                }else if(isset($_GET['err']) && $_GET['err'] == 1){
                 ?>
                 <section class="content_new">
                    
-                <div class="alert alert-info alert-dismissable">
-                <i class="fa fa-check"></i>
+                <div class="alert alert-warning alert-dismissable">
+                <i class="fa fa-warning"></i>
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <b>Sukses !</b>
-               Edit Berhasil
+                <b>Simpan Gagal !</b>
+               Pilih Data Kabupaten / Kota terlebih dahulu
                 </div>
            
                 </section>
@@ -150,8 +150,8 @@ function load_data_participant(str)
                                        
                                           
                                        
-                                        <select id="basic" name="i_owner_id" class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data_participant(this.value)" >
-                                      <option value="0">---</option>
+                                        <select required id="basic" name="i_participant_id" class="form-control" data-live-search="true" onChange="load_data_participant(this.value)" >
+                                      <option value="">---</option>
                                            <?php
                                         $query_owner = mysql_query("select * from participants");
                                         while($row_owner = mysql_fetch_array($query_owner)){
@@ -169,66 +169,7 @@ function load_data_participant(str)
                                             </tbody></table>
                                              <table width="100%" class="table table-bordered" id="table_participant">
                                               <tbody>
-                                            <?php
-                                           $no = 1;
-                                            while($row = mysql_fetch_array($query)){
-                                            ?>
-                                        
-                                            <tr>
-                                            <td width="5%"><?= $no+1; ?></td>
-                                                <td width="30%"><?= $row['q1_name']?></td>
-                                              
-                                            
-                                                 <td width="65%">
-                                             
-                                     <?php 
-									 if($row['q1_get_child']==0){
-									 ?>
-                                     <div id="i_answer1_<?= $no ?>">
-                                     <input required type="text" name="i_answer1_<?= $no ?>" class="form-control" placeholder="" value="" readonly="readonly" />
-                                     </div>
-                                     <?php
-									 }else{
-									 ?>
-                                      <div id="i_answer1_<?= $no ?>">
-                                     <input required type="hidden" name="i_answer1_<?= $no ?>" class="form-control" placeholder="" value="" readonly="readonly" />
-                                     </div>
-                                     <?php
-									 }
-									 ?>
                                       
-                                                 </td>
-                                               
-                                             
-                                            </tr>
-                                            <?php
-                                            if($row['q1_get_child'] == 1){
-											?>
-                                             <?php
-												$query_child = mysql_query("select * from questions1_details where q1_id = '".$row['q1_id']."'
-												order by q1d_id");
-												$no_child = 1;
-                                                 while($row_child = mysql_fetch_array($query_child)){
-													 
-                                                ?>
-                                            <tr>
-                                           
-                                            <td>&nbsp;</td>
-                                             <td  >
-                                             	<?= $no_child.". ".$row_child['q1d_name'];?></td>
-                                                <td>
-                                                <input readonly="readonly" required="required" type="text" name="i_answer1_detail_<?= $no_child ?>" class="form-control" placeholder="" value=""/>
-                                                </td>
-                                                </tr> 
-												<?php
-												$no_child++;
-												 }
-												?>
-                                            <?php
-											}
-											$no++;
-                                            }
-                                            ?>
 
                                           
                                           
