@@ -50,6 +50,18 @@
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
+                          <div class="box-footer">
+
+           <input class="btn btn-danger" type="submit" value="Save"/>
+  		<a href="<?= $close_button?>" class="btn btn-danger" >Close</a>
+                </form>              
+                                </div>
+                            
+                    </div>
+                            <!-- /.box -->         
+                            </div><!--/.col (right) -->
+                    </div>   <!-- /.row -->
+                </section><!-- /.content -->
                     </div>
 
                

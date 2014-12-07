@@ -1,5 +1,4 @@
- <tr>
-                                            <td colspan="3">
+
                                              <table id="" class="table table-bordered table-striped" style="border-left:1px solid #e8e8e8">
                                         <thead>
                                             <tr>
@@ -47,8 +46,4 @@
                                             </tr>
                                         </tfoot>
                                     </table>
-                                            
-                                            
-                                            </td>
-                                           
-                                          </tr> 
+                            

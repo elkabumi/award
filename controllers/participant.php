@@ -50,7 +50,7 @@ switch ($page) {
 		extract($_POST);
 		
 		// Simpan data participants
-		$data1 = "'', '".$_POST['i_participants1_1']."', '".date("Y-m-d")."', ''";
+		$data1 = "'', '".$_POST['i_participants1_1']."', '".date("Y-m-d")."', '','1'";
 		create("participants", $data1);
 		$participant_id = mysql_insert_id();
 		

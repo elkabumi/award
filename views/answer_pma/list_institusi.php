@@ -26,7 +26,7 @@
                                    
                                 </div><!-- /.box-header -->
                         <?php
-                                     $q_question = mysql_query("select * from questions_pma2 where qp2_cat_pma_id = '$r_cat[cat_pma_id]' and data_id = '$data_id'");
+                                     $q_question = mysql_query("select * from questions_pma2 where qp2_cat_pma_id = '$r_cat[cat_pma_id]' and data_id = '$data_id' order by qp2_id");
 									 
 										$no_question = 1;
 										while($r_question = mysql_fetch_array($q_question)){
@@ -47,17 +47,18 @@
                                             </td>
                                           </tr> 
                                             <?php
-                                        $q_q_d = mysql_query("select * from questions_pma2_details where qp2_id = '".$r_question['qp2_id']."'");
+                                        $q_q_d = mysql_query("select * from questions_pma2_details where qp2_id = '".$r_question['qp2_id']."'  	order by qp2d_id	 ");
 									    $no_q_q_d = 1;
 										while($r_q_d = mysql_fetch_array($q_q_d)){
 										?>
                                              <tr>
                                            <td valign="top" align="center">
 										       <label>
-                                            <input type="radio" name="i_answer2_<?= $no_question ?>" class="minimal" value="<?= $no_q_q_d ?>"/>
+                                            <input type="radio" name="i_answer_pma2_<?= $no_question ?>_<?=$r_question['qp2_cat_pma_id']?>_<?=$r_question['qp2_type']?>_<?=$r_question['qp2_id']?>" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"/>
+                             
                                         </label>
                                       
-                                            
+                                           
 										
                                            
                                            </td>
@@ -119,7 +120,7 @@
 								 ?>
                                  <div class="box-footer">
                                 
-                                <a href="question_pma.php?page=form_question_pma&cat_id=<?=$r_cat['cat_pma_id']?>" class="btn btn-info" >Add</a>
+    
                                 
 </div>
 <?php

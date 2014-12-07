@@ -7,7 +7,20 @@ function select(){
 			");
 	return $query;
 }
-
+function select_detail(){
+	$query = mysql_query("select *
+		from  phase
+			
+			");
+	return $query;
+}
+function select_phase(){
+	$query = mysql_query("select *
+		from  phase
+			
+			");
+	return $query;
+}
 function read_id($id){
 	$query = mysql_query("select *
 			from kuisioner 

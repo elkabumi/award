@@ -285,7 +285,7 @@ switch ($page) {
 			
 		update($data, $id);
 			
-		//header('Location: question_pma.php?page=list&did=2');
+		header('Location: question_pma.php?page=list&did=2');
 
 	break;
 	

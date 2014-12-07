@@ -53,6 +53,15 @@
                             </a>
                             
                   </li>
+                      <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
+                            <a href="participant_pma.php">
+                                <i class="fa fa-briefcase"></i>
+                                <span>Peserta PMA dan PMDN</span>
+
+                               
+                            </a>
+                            
+                  </li>
                 
                         <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
                             <a href="kuisioner.php">

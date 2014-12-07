@@ -52,15 +52,9 @@
                                            <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_q_q_d).")"; ?></td>
                                             <td valign="top"> <?= $r_q_d['qp2d_name'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
-                                            
-                                             <?php
-                                             if($r_q_d['qp2d_id'] == 9 || $r_q_d['qp2d_id'] == 14 || $r_q_d['qp2d_id'] == 15 || $r_q_d['qp2d_id'] == 16 || $r_q_d['pq2d_id'] == 17){
-											 }else{
-											 ?> 
+                                             
                                              Poin : <?= $r_q_d['qp2d_point']?>
-                                             <?php
-											 }
-											 ?>
+                                            
                                             </td>
                                           </tr> 
                                           

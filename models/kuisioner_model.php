@@ -8,6 +8,8 @@ function select(){
 	return $query;
 }
 
+
+
 function read_id($id){
 	$query = mysql_query("select *
 			from kuisioner 

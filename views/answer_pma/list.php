@@ -1,3 +1,39 @@
+<script>
+function load_data_participant(str)
+{
+	
+	if (str=="" || str == 0)
+	{
+	
+	document.getElementById("table_participant").innerHTML="";
+	
+	return;
+	} 
+	if (window.XMLHttpRequest)
+	{// kode for IE7+, Firefox, Chrome, Opera, Safari
+	xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// kode for IE6, IE5
+	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		
+		document.getElementById("table_participant").innerHTML=xmlhttp.responseText;
+		
+		
+		}
+	}
+	
+	xmlhttp.open("GET","../views/answer_pma/data_participant.php?participant_id="+str,true);
+	xmlhttp.send();
+	
+	
+	}
+</script>
 
                 <?php
                 if(isset($_GET['did']) && $_GET['did'] == 1){
@@ -64,6 +100,7 @@
                                 <div class="box-body no-padding">
                                        <table width="100%" class="table table-bordered table-striped" id="">
                                         <thead>
+                                      
                                             <tr>
                                             <th width="5%">No</th>
                                                 <th width="32%">Uraian</th>
@@ -71,27 +108,71 @@
                                              
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Kabupaten / Kota</td>
+                                            <td>
+                                       
+                                          
+                                       
+                                        <select id="basic" name="i_participan_id" class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data_participant(this.value)" >
+                                      <option value="0">---</option>
+                                           <?php
+                                        $query_owner = mysql_query("select * from participants");
+                                        while($row_owner = mysql_fetch_array($query_owner)){
+                                        ?>
+                                         <option value="<?= $row_owner['participant_id']?>"><?= $row_owner['participant_name'] ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                          
+                                        </select>
+                                     
+                                       
+                                            </td>
+                                            </tr>
+                                            </tbody>
+                                            </table>
+                                             <table width="100%" class="table table-bordered table-striped" id="table_participant">
+                                              <tbody>
                                             <?php
                                            $no = 1;
                                             while($row = mysql_fetch_array($query)){
                                             ?>
+                                        
                                             <tr>
-                                            <td><?= $no?></td>
-                                                <td><?= $row['qp1_name']?></td>
+                                            <td width="5%"><?= $no+1; ?></td>
+                                            <td width="32%"><?= $row['qp1_name']?></td>
                                               
                                             
-                                                 <td>
+                                                 
                                              
                                      <?php 
 									 if($row['qp1_get_child']==0){
 									 ?>
-                                     <input required type="text" name="i_answer1" class="form-control" placeholder="" value=""/>
+                                     <td width="63%">
+                                     <div id="i_answer1_<?= $no ?>">
+                                     <input required type="text" name="i_answer1_<?= $no ?>" class="form-control" placeholder="" value="" readonly="readonly" />
+                                     </div>
+                                     </td>
+                                     <?php
+									 }else{
+									 ?>
+                                     
+                                     
+                                     
+                                     <td width="63%">
+                                     <div id="i_answer1_<?= $no ?>">
+                              
+                                     
+                                     <input required type="hidden" name="i_answer1_<?= $no ?>" class="form-control" placeholder="" value="" readonly="readonly" />
+                                     </div>
+                                     </td>
                                      <?php
 									 }
 									 ?>
                                       
-                                                 </td>
+                                                 
                                                
                                              
                                             </tr>
@@ -106,16 +187,11 @@
 													 
                                                 ?>
                                             <tr>
-                                           
                                             <td>&nbsp;</td>
-                                             <td  >&nbsp;</td>
-                                                <td>
-                         
-                                                   <input type="radio" name="i_answer2_<?= $no_question ?>" class="minimal" value="<?= $no_q_q_d ?>"/>
-                                                   
-                                            
-                                             	<?= $no_child.". ".$row_child['qp1d_name'];?>
-                                                </td>
+                                            <td>&nbsp;</td>
+                                             <td  >
+                                               <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled/>	<?= $no_child.". ".$row_child['qp1d_name'];?></td>
+                                               
                                                 </tr> 
 												<?php
 												$no_child++;
@@ -127,7 +203,7 @@
                                             }
                                             ?>
 
-                                           
+                                          
                                           
                                         </tbody>
                                          

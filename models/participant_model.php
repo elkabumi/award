@@ -2,7 +2,7 @@
 
 function select(){
 	$query = mysql_query("select *
-		from participants
+		from participants  WHERE participant_type = '1'
 		order by participant_id
 			");
 	return $query;

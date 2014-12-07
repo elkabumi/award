@@ -47,18 +47,17 @@
                     <div class="row">
                         <div class="col-xs-12">
                             
+                           <div class="title_page">DATA PESERTA PMa </div>
                             
                             <div class="box">
-                             
-                                <div class="box-body2 table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
+                              
+                                <div class="box-body no-padding">
+                                       <table width="100%" class="table table-bordered table-striped" id="example1">
                                         <thead>
                                             <tr>
                                             <th width="5%">No</th>
-                                                <th>Tanggal</th>
-                                                <th>Nama</th>
-                                                <th>Keterangan</th>
-                                                 <th>Config</th>
+                                                <th width="75%">Nama Kabupaten/Kota</th>
+                                                <th width="20%">Config</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,19 +67,20 @@
                                             ?>
                                             <tr>
                                             <td><?= $no?></td>
-                                                <td><?= format_date($row['kuisioner_date'])?></td>
-                                                <td><?= $row['kuisioner_name']?></td>
+                                                <td><?= $row['participant_name']?></td>
+                                              
+                                            
+                                                 <td>
+                                             
+                                     <a href="participant_pma.php?page=form&id=<?= $row['participant_id']?>" class="btn btn-danger" ><i class="fa fa-pencil"></i></a>
+                                      
+                                                 </td>
                                                
-                                                 <td><?= $row['kuisioner_description']?></td>
-                                               
-                                                <td style="text-align:center;">
-
-                                               <a href="kuisioner_pma.php?page=list_detail&data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >detail</i></a>
-                                                 
-													<a href="answer_pma.php?data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >Input Kuisioner</a>
-                                                </td> 
+                                             
                                             </tr>
+                                           
                                             <?php
+											
 											$no++;
                                             }
                                             ?>
@@ -88,17 +88,16 @@
                                            
                                           
                                         </tbody>
-                                          <tfoot>
+                                           <tfoot>
                                             <tr>
-                                                <td colspan="10"><a href="<?= $add_button ?>" class="btn btn-info " >Add</a></td>
+                                                <td colspan="4"><a href="<?= $add_button ?>" class="btn btn-info " >Add</a></td>
                                                
                                             </tr>
                                         </tfoot>
                                     </table>
-
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
                     </div>
 
-                </section><!-- /.content -->
+               </section>

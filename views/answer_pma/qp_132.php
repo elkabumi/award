@@ -22,9 +22,13 @@
 											  
 												 ?>
                                                  <tr>
+                                            
+                                              
                                                  <th><?= $no ?></th>
 												<th><?= $y ?></th>
-                                               <th> <input required="required" type="text" name="i_answer2_132_<?= $y?>_<?= $no?>" class="form-control" placeholder="" value=""/></th>
+                                               <th>
+                                               
+                                             <input required="required" type="number" name="i_answer2_132_<?=$y?>_<?= $no?>_2" class="form-control" placeholder="" value=""  /></th>
                                                 </tr>
 												<?php
 												$no++;

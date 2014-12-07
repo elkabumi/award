@@ -55,10 +55,9 @@
                                         <thead>
                                             <tr>
                                             <th width="5%">No</th>
-                                                <th>Tanggal</th>
-                                                <th>Nama</th>
-                                                <th>Keterangan</th>
-                                                 <th>Config</th>
+                                                <th>Nama Phase</th>
+                                    
+                                                <th>Config</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,16 +67,13 @@
                                             ?>
                                             <tr>
                                             <td><?= $no?></td>
-                                                <td><?= format_date($row['kuisioner_date'])?></td>
-                                                <td><?= $row['kuisioner_name']?></td>
                                                
-                                                 <td><?= $row['kuisioner_description']?></td>
+                                                <td><?= $row['phase_name']?></td>
                                                
                                                 <td style="text-align:center;">
 
-                                               <a href="kuisioner_pma.php?page=list_detail&data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >detail</i></a>
+                                               <a href="kuisioner_pma.php?page=list_kuisioner&data_id=<?= $row['data_id']?>" class="btn btn-danger" >detail</i></a>
                                                  
-													<a href="answer_pma.php?data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >Input Kuisioner</a>
                                                 </td> 
                                             </tr>
                                             <?php

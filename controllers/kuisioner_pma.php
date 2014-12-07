@@ -20,6 +20,26 @@ switch ($page) {
 		get_footer();
 	break;
 	
+	case 'list_detail':
+		get_header($title);
+		$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : null;
+		$query = select_phase();
+		$add_button = "kuisioner_pma.php?page=form";
+
+
+		include '../views/kuisioner_pma/list_detail.php';
+		get_footer();
+	break;
+	
+	case 'list_kuisioner':
+		get_header($title);
+		
+		$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : null;
+		$query = select_detail();
+		include '../views/kuisioner_pma/list_detail.php';
+		get_footer();
+	break;
+	
 	case 'form':
 		get_header();
 

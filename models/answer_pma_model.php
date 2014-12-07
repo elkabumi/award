@@ -17,114 +17,41 @@ function select_identitas($data_id){
 			");
 	return $query;
 }
-
-
-function read_id($id){
+function select_questions_pma2($data_id,$cat_id){
 	$query = mysql_query("select *
-			from questions_pma1 
-			where q1_id = '$id'");
-	$result = mysql_fetch_object($query);
-	return $result;
+		from questions_pma2
+		where data_id = '$data_id' AND qp2_cat_pma_id = '$cat_id'
+		order by qp2_id
+		");
+	return $query;
 }
-
-function read_id_identitas($id){
-	$query = mysql_query("select *
-			from questions_pma3
-			where q3_id = '$id'");
-	$result = mysql_fetch_object($query);
-	return $result;
+function select_sub_type(){
+	$query = mysql_query("select cat_pma_id from categories_pma order by cat_pma_id
+		");
+	return $query;
 }
-
-
-function read_child_id($id){
-	$query = mysql_query("select *
-			from questions_pma1_details
-			where q1d_id = '$id'");
-	$result = mysql_fetch_object($query);
-	return $result;
-}
-
-function read_question_id($id){
-	$query = mysql_query("select *
-			from questions_pma2 
-			where q2_id = '$id'");
-	$result = mysql_fetch_object($query);
-	return $result;
-}
-
-function read_opsi_id($id){
-	$query = mysql_query("select *
-			from questions_pma2_details
-			where q2d_id = '$id'");
-	$result = mysql_fetch_object($query);
-	return $result;
-}
-
-
-
 function create($data){
-	mysql_query("insert into questions_pma1 values(".$data.")");
+	mysql_query("insert into answers_pma values(".$data.")");
+}
+function create_answer_pma2($data){
+	mysql_query("insert into answers_pma2 values(".$data.")");
+}
+function create_answer_pma1($id, $participant_id){
+	// load questions_pma 1
+	$q1 = mysql_query("select * from  participants_pma1 where participant_id = $participant_id");
+	while($r1 = mysql_fetch_array($q1)){
+		// masukkan data question1 baru
+		mysql_query("insert into answers_pma1 values('', '".$id."','".$r1['qp1_id']."','".$r1['participant_pma1_question']."',
+		'".$r1['participant_pma1_answer']."')");
+		
+	}
+}
+function get_point($answer_id){
+		$query=mysql_query("SELECT qp2d_point FROM questions_pma2_details where qp2d_id =".$answer_id."");
+		$row=mysql_fetch_array($query);
+		$result = $row['0'];
+		return $result.'<br>';
 }
 
-function update($data, $id){
-	mysql_query("update questions_pma1 set ".$data." where q1_id = '$id'");
-}
-
-function delete($id){
-	mysql_query("delete from questions_pma1  where q1_id = '$id'");
-}
-
-
-function create_identitas($data){
-	mysql_query("insert into questions_pma3 values(".$data.")");
-}
-
-function update_identitas($data, $id){
-	mysql_query("update questions_pma3 set ".$data." where q3_id = '$id'");
-}
-
-function delete_identitas($id){
-	mysql_query("delete from questions_pma3  where q3_id = '$id'");
-}
-
-
-function create_child($data){
-	mysql_query("insert into questions_pma1_details values(".$data.")");
-}
-
-function update_child($data, $id){
-	mysql_query("update questions_pma1_details set ".$data." where q1d_id = '$id'");
-	
-}
-
-function delete_child($id){
-	mysql_query("delete from questions_pma1_details  where q1d_id = '$id'");
-}
-
-
-function create_config($table, $data){
-	mysql_query("insert into $table values(".$data.")");
-}
-
-function update_config($table, $data, $id){
-	mysql_query("update $table set ".$data." where q1d_id = '$id'");
-}
-
-function delete_config($table, $id){
-	mysql_query("delete from $table where q1d_id = '$id'");
-}
-
-function update_opsi($table, $data, $id){
-	mysql_query("update $table set ".$data." where q2d_id = '$id'");
-	
-}
-
-function delete_opsi($table, $id){
-	mysql_query("delete from $table where q2d_id = '$id'");
-}
-
-function update_data($table, $parameter, $data, $id){
-	mysql_query("update $table set ".$data." where $parameter = '$id'");
-}
 
 ?>
