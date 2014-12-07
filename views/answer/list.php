@@ -133,7 +133,7 @@ function load_data_participant(str)
                                     <h3 class="box-title">Data Umum Kabupaten / Kota</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
-                                       <table width="100%" class="table table-bordered" id="">
+                                       <table width="100%" class="table" id="">
                                         <thead>
                                             <tr>
                                             <th width="5%">No</th>
@@ -167,7 +167,7 @@ function load_data_participant(str)
                                             </td>
                                             </tr>
                                             </tbody></table>
-                                             <table width="100%" class="table table-bordered table-striped" id="table_participant">
+                                             <table width="100%" class="table table-bordered" id="table_participant">
                                               <tbody>
                                             <?php
                                            $no = 1;

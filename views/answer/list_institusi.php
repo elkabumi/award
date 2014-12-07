@@ -32,7 +32,7 @@
                                 <?php
                                 if($r_sub_cat['sub_cat_description']){
 								?>
-                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8;" >
+                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8; " >
                                 <div class="col-md-12">
                                 <?= $r_sub_cat['sub_cat_description']; ?>
                                 </div>
@@ -52,14 +52,14 @@
 										?>
                                        
                                         
-                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8; " >
+                                <div class="box-body table-responsive" style="border-bottom:1px solid #e8e8e8; padding-bottom: 0px !important;" >
                                 
-                                <div class="col-md-12">
+                                
                                         
                                         <table id="" width="100%"  cellpadding="5">
                                           <tr>
-                                          <td width="3%" valign="top" align="center"><strong><?= $no_question."."; ?></strong></td>
-                                            <td width="84%"><b> <?= $r_question['q2_name'] ?></b></td>
+                                          <td width="5%" valign="top" align="center"><strong><?= $no_question."."; ?></strong></td>
+                                            <td width="85%" colspan="2"><b> <?= $r_question['q2_name'] ?></b></td>
                                             <td width="10%">
                                             
                                               
@@ -71,7 +71,8 @@
 										while($r_q_d = mysql_fetch_array($q_q_d)){
 										?>
                                            <tr>
-                                           <td valign="top" align="center">
+                                           <td>&nbsp;</td>
+                                           <td valign="top" align="center" width="3%">
 										       <label>
                                             <input type="radio" name="i_answer2_<?= $no_question ?>" class="minimal" value="<?= $no_q_q_d ?>"/>
                                         </label>
@@ -143,7 +144,7 @@
 										  ?>
                                            <tr>
                                            <td style="color:#F4543C; font-weight:bold;" valign="top">Catatan: </td>
-                                            <td><?= $r_question['q2_description'] ?></td>
+                                            <td colspan="2"><?= $r_question['q2_description'] ?></td>
                                             <td>
                                           
                                             </td>
@@ -151,10 +152,25 @@
                                           <?php
 										  }
 										  ?>
+                                          <tr style="background-color:#F9FAFC; color:#999" height="50">
+                                           <td></td>
+                                           
+                                            <td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
+                                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
+                                            <input type="radio" name="i_attachment" class="minimal" value=""/>
+                                        </label> Ya
+                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                        <label>
+                                            <input type="radio" name="i_attachment" class="minimal" value=""/>
+                                        </label> Tidak
+                                            </td>
+                                            <td>
                                           
+                                            </td>
+                                          </tr> 
                                         </table>
                                        
-                                </div>
+                               
                                 	  
                                 </div><!-- /.box-body -->
                                 
