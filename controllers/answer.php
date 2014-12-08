@@ -24,7 +24,7 @@ switch ($page) {
 		$action = "answer.php?page=save_jawaban&data_id=$data_id";
 		
 		include '../views/answer/list.php';
-		//include '../views/answer/list_institusi.php';
+		include '../views/answer/list_institusi.php';
 		include '../views/answer/list_identitas.php';
 		
 		
@@ -169,7 +169,7 @@ switch ($page) {
 	
 		$participant_id = (isset($_POST['i_participant_id'])) ? $_POST['i_participant_id'] : null;
 		$participant_name = (isset($_POST['i_answer1_1'])) ? $_POST['i_answer1_1'] : null;
-		$assessor_name = (isset($_POST['i_answer3_1'])) ? $_POST['i_answer3_1'] : null;
+		$assessor_name = (isset($_POST['i_answer3_2'])) ? $_POST['i_answer3_2'] : null;
 		$phase_id = (isset($_POST['i_phase_id'])) ? $_POST['i_phase_id'] : null;
 		$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : null;
 		
@@ -220,21 +220,78 @@ switch ($page) {
 			}
 		}
 		*/
+		// simpan data answers2
+		$select_sub_category = select_sub_category(4);
+		while($row_sub_category = mysql_fetch_array($select_sub_category)){
+		
+		$select_question2 = select_question2($data_id, $row_sub_category['sub_cat_id']);
+		
+		$no_answer2 = 1;
+		while($row_question2 = mysql_fetch_array($select_question2)){
+			
+			if($row_question2['q2_type'] == 0){
+			$i_answer2 = get_isset($_POST["i_answer2_".$no_answer2."_".$row_sub_category['sub_cat_id']]);
+			$i_attachment = get_isset($_POST["i_attachment_".$no_answer2."_".$row_sub_category['sub_cat_id']]);
+			
+			$i_answer2_value = explode("_", $i_answer2);
+			
+			$point_value = ($row_question2['q2_weight'] / 100) * $i_answer2_value[1];
+			
+			$data_answer2 = "'',
+						'$answer_id',
+						'".$row_question2['q2_type']."',
+						'".$row_question2['q2_number']."',
+						'".$row_question2['q2_name']."',
+						'".$i_answer2_value[0]."',
+						'".$row_question2['q2_sub_cat_id']."',
+						'".$row_question2['q2_weight']."',
+						'".$row_question2['q2_description']."',
+						'".$i_answer2_value[1]."',
+						'$point_value',
+						'$i_attachment'
+							
+			";
+			
+			echo $data_answer2;
+			create_config("answers2", $data_answer2);
+			$answer2_id = mysql_insert_id();
+			
+			$select_question2_detail = select_question2_detail($row_question2['q2_id']);
+			while($row_question2_detail = mysql_fetch_array($select_question2_detail)){
+				$data_answer2_detail = "'',
+							'$answer2_id',
+							'".$row_question2_detail['q2d_type']."',
+							'".$row_question2_detail['q2d_number']."',
+							'".$row_question2_detail['q2d_name']."',
+							'".$row_question2_detail['q2d_point']."'
+				";
+				echo $data_answer2_detail;
+				create_config("answers2_details", $data_answer2_detail);
+				
+			}
+			
+			}
+			$no_answer2++;
+			
+		}
+		}
 		
 		// simpan data answers3
+		/*
 		$select_question3 = select_identitas($data_id);
 		
 		$no_answer3 = 1;
 		while($row_question3 = mysql_fetch_array($select_question3)){
 			$i_answer3 = get_isset($_POST["i_answer3_".$no_answer3]);
-			$data_question3 = "'',
+			$data_answer3 = "'',
 						'$answer_id',
 						'".$row_question3['q3_name']."',
 						'$i_answer3'
 			";
-			create_config("answers3", $data_question3);
+			create_config("answers3", $data_answer3);
 			$no_answer3++;
 		}
+		*/
 		
 		}
 		

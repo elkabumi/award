@@ -27,6 +27,35 @@ function select_participant_detail($participant1_id){
 	return $query;
 }
 
+function select_sub_category($cat_id){
+	$query = mysql_query("select *
+		from sub_categories
+		where cat_id = '$cat_id'
+		and sub_cat_parent_id = '0'
+		order by sub_cat_id
+			");
+	return $query;
+}
+
+
+function select_question2($data_id, $sub_cat_id){
+	$query = mysql_query("select *
+		from questions2
+		where data_id = '$data_id'
+		and q2_sub_cat_id = '$sub_cat_id'
+		order by q2_id
+			");
+	return $query;
+}
+
+function select_question2_detail($q2_id){
+	$query = mysql_query("select *
+		from questions2_details
+		where q2_id = '$q2_id'
+		order by q2d_id
+			");
+	return $query;
+}
 
 function select_identitas($data_id){
 	$query = mysql_query("select *
