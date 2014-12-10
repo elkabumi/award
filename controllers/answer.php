@@ -252,7 +252,7 @@ switch ($page) {
 							
 			";
 			
-			echo $data_answer2;
+			//echo $data_answer2;
 			create_config("answers2", $data_answer2);
 			$answer2_id = mysql_insert_id();
 			
@@ -265,7 +265,7 @@ switch ($page) {
 							'".$row_question2_detail['q2d_name']."',
 							'".$row_question2_detail['q2d_point']."'
 				";
-				echo $data_answer2_detail;
+				//echo $data_answer2_detail;
 				create_config("answers2_details", $data_answer2_detail);
 				
 			}
