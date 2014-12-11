@@ -3,7 +3,7 @@
 
                 <!-- Main content -->
                <?php
-               $q_cat = mysql_query("select * from categories where cat_id = 1 order by cat_id");
+               $q_cat = mysql_query("select * from categories where cat_id = 4 order by cat_id");
 			   $no_cat  = 1;
 			   while($r_cat = mysql_fetch_array($q_cat)){
 			   ?>
@@ -74,7 +74,7 @@
                                            <td>&nbsp;</td>
                                            <td valign="top" align="center" width="3%">
 										       <label>
-                                            <input type="radio" name="i_answer2_<?= $no_question ?>" class="minimal" value="<?= $no_q_q_d ?>"/>
+                                            <input required type="radio" name="i_answer2_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="<?= $no_q_q_d ?>_<?= $r_q_d['q2d_point'] ?>"/>
                                         </label>
                                       
                                             
@@ -157,11 +157,11 @@
                                            
                                             <td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
                                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
-                                            <input type="radio" name="i_attachment" class="minimal" value=""/>
+                                            <input type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="1" required/>
                                         </label> Ya
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <label>
-                                            <input type="radio" name="i_attachment" class="minimal" value=""/>
+                                            <input type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="0" required/>
                                         </label> Tidak
                                             </td>
                                             <td>

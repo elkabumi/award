@@ -32,7 +32,7 @@
                                               
                                                <td width="67%" style="text-align:center;">
 
-                                               <input required="required" type="text" name="i_answer3_<?= $no_identitas ?>" class="form-control" placeholder="" value=""/>
+                                               <input required="required" type="text" name="i_answer3_<?= $no_identitas ?>" class="form-control" placeholder="" value="1"/>
 
                                                 </td> 
                                             </tr>
