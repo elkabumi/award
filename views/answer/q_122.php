@@ -1,5 +1,6 @@
  <tr>
-                                            <td colspan="3">
+ <td>&nbsp;</td>
+                                            <td colspan="2">
                                              <table width="100%" class="table table-bordered table-striped" id="" style="border-left:1px solid #e8e8e8">
                                         <thead>
                                             <tr>

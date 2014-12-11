@@ -18,15 +18,27 @@
                                         <tbody>
                                               <?php
 										$no=1;
-                                          for($y=date("Y")-3; $y<=date("Y"); $y++){
+                                          for($y=date("Y")-2; $y<=date("Y"); $y++){
 											  
 												 ?>
                                                  <tr>
                                                  <th><?= $no ?></th>
-												<th><?= $y ?></th>
+											   <?php
+                                               $q_133 = mysql_query("select * from qp_1_3_3 where data_id = '$data_id'");
+												while($r_133 = mysql_fetch_array($q_133)){
+												?>
                                              
-                                                <th> <input required="required" type="number" name="i_answer1_133_<?= $y?>_<?= $no?>_1" class="form-control" placeholder="" value=""/></th>
-                                              <th> <input required="required" type="number" name="i_answer2_133_<?= $y?>_<?= $no?>_2" class="form-control" placeholder="" value=""/></th>
+											 
+											
+                                              <th>
+                                              <input required="required" type="text" name="i_answer2_133_<?=$r_133['qp_id'] ?>_<?=$r_133['qp_type']?>_<?= $no?>" class="form-control" placeholder="" <?php  if(strtolower($r_133['qp_name']) == 'tahun'){ ?> value="<?=$y;?>" readonly="readonly"
+											 <?php  }?> />
+                                       
+                                            
+                                             </th>
+                                                <?php
+												}
+												?>
                                                 </tr>
 												<?php
 												$no++;

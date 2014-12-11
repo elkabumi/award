@@ -9,7 +9,7 @@ function select(){
 }
 function select_detail(){
 	$query = mysql_query("select *
-		from  phase
+		from  answer_pma where phase_id = ''
 			
 			");
 	return $query;
@@ -75,13 +75,13 @@ function create($data){
 	// load qp132
 	$q_132 = mysql_query("select * from qp_1_3_2 where data_id = 0");
 	while($r_132 = mysql_fetch_array($q_132)){
-		mysql_query("insert into qp_1_3_2 values('', '".$r_132['qp_name']."', '$new_id')");
+		mysql_query("insert into qp_1_3_2 values('', '".$r_132['qp_name']."', '".$r_132['qp_type']."','$new_id')");
 	}
 	
 	// load qp133
 	$q_133 = mysql_query("select * from qp_1_3_3 where data_id = 0");
 	while($r_133 = mysql_fetch_array($q_133)){
-		mysql_query("insert into qp_1_3_3 values('', '".$r_133['qp_name']."', '$new_id')");
+		mysql_query("insert into qp_1_3_3 values('', '".$r_133['qp_name']."', '".$r_133['qp_type']."','$new_id')");
 	}
 	
 	

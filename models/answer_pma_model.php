@@ -25,6 +25,38 @@ function select_questions_pma2($data_id,$cat_id){
 		");
 	return $query;
 }
+function select_qp_1_3_2($data_id){
+	$query = mysql_query("select *
+		from qp_1_3_2
+		where data_id = '$data_id'
+		order by qp_id
+		");
+	return $query;
+}
+function select_qp_1_3_3($data_id){
+	$query = mysql_query("select *
+		from qp_1_3_3
+		where data_id = '$data_id'
+		order by qp_id
+		");
+	return $query;
+}
+function select_qp_2_1_1($data_id){
+	$query = mysql_query("select *
+		from qp_1_3_3
+		where data_id = '$data_id'
+		order by qp_id
+		");
+	return $query;
+}
+function select_qp_3_1_1($data_id){
+	$query = mysql_query("select *
+		from qp_3_1_1
+		where data_id = '$data_id'
+		order by qp_id
+		");
+	return $query;
+}
 function select_sub_type(){
 	$query = mysql_query("select cat_pma_id from categories_pma order by cat_pma_id
 		");
@@ -52,6 +84,13 @@ function get_point($answer_id){
 		$result = $row['0'];
 		return $result.'<br>';
 }
+function get_point_qp_133($answer_id){
+		$query=mysql_query("SELECT  answer_qp_132_detail_answer FROM answers_qp_132_details where qp_id =".$answer_id."");
+		$row=mysql_fetch_array($query);
+		$result = $row['0'];
+		return $result.'<br>';
+}
+
 
 
 ?>

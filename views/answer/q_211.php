@@ -1,5 +1,6 @@
  <tr>
-                                            <td colspan="3">
+ <td>&nbsp;</td>
+                                            <td colspan="2">
                                           <?php
                                         $q_211 = mysql_query("select * from q_2_1_1 where data_id = '$data_id' order by q_id");
 										$no_211 = 1;
