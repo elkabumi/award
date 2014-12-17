@@ -18,17 +18,17 @@ switch ($page) {
 		$query_js2 = select(0);
 		$query_js3 = select(0);
 		$query_identitas = select_identitas($data_id);
-<<<<<<< HEAD
+
 		$action = "answer.php?page=save_answer";
 	
 
-=======
+
 		$add_button = "answer.php?page=form";
 		$add_button_identitas = "answer.php?page=form_identitas";
 		$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : null;
 		$action = "answer.php?page=save_jawaban&data_id=$data_id";
 		
->>>>>>> 648331666c2fa7a46531f871549d06fcb69940dd
+
 		include '../views/answer/list.php';
 		include '../views/answer/list_institusi.php';
 		include '../views/answer/list_identitas.php';
@@ -38,8 +38,7 @@ switch ($page) {
 		get_footer();
 	break;
 	
-<<<<<<< HEAD
-=======
+
 	case 'form':
 		get_header();
 
@@ -360,7 +359,6 @@ switch ($page) {
 		
 	break;
 	
->>>>>>> 648331666c2fa7a46531f871549d06fcb69940dd
 	case 'save_answer':
 	
 		extract($_POST);
