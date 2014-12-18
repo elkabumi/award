@@ -228,43 +228,130 @@ switch ($page) {
 		}
 		*/
 		// simpan data answers2
-		$select_sub_category = select_sub_category(4);
+		$select_sub_category = select_sub_category(3);
 		while($row_sub_category = mysql_fetch_array($select_sub_category)){
+			
+		// tipe soal 3422
+		if($row_sub_category['sub_cat_id'] == 11){
+			  $q_sub_cat_2 = mysql_query("select * from sub_categories where sub_cat_parent_id = '11' order by sub_cat_id");
+			  while($r_sub_cat2 = mysql_fetch_array($q_sub_cat2)){
+				   $q_question2_3422 = mysql_query("select * from questions2 where q2_sub_cat_id = '".$r_sub_cat2['sub_cat_id']."' and data_id = '$data_id' order by q2_id");
+					$no_question2_3422 = 1;
+					while($r_question2_3422 = mysql_fetch_array($q_question2_3422)){
+						
+						// simpan question2 3422 soal normal
+						
+						if($r_question2_3422['q2_type'] == 0){
+							$i_answer2_3422 = get_isset($_POST["i_answer2_34_".$no_question2_3422."_".$row_sub_category['sub_cat_id']]);
+							$i_answer2_3422_value = explode("_", $i_answer2_3422);
+							$point_value_3422 = ($r_question2_3422['q2_weight'] / 100) * $i_answer2_3422_value[1];
+							$i_jawaban_3422 = $i_answer2_3422_value[0];
+							$i_poin_3422 = $i_answer2_3422_value[1];
+						}else{
+							$point_value_3422 = '';
+							$i_jawaban_3422 = '';
+							$i_poin_3422 = '';
+						}
+			
+						$data_answer2_3422 = "'',
+						'$answer_id',
+						'".$r_question2_3422['q2_type']."',
+						'".$r_question2_3422['q2_number']."',
+						'".$r_question2_3422['q2_name']."',
+						'".$i_jawaban_3422."',
+						'".$r_question2_3422['q2_sub_cat_id']."',
+						'".$r_question2_3422['q2_weight']."',
+						'".$r_question2_3422['q2_description']."',
+						'".$i_poin_3422."',
+						'$point_value_3422',
+						''
+						";
+			
+						//echo $data_answer2;
+						create_config("answers2", $data_answer2);
+						$answer2_3422_id = mysql_insert_id();
+						
+						
+						 $q_q_d2 = mysql_query("select * from questions2_details where q2_id = '".$r_question2_3422['q2_id']."' order by q2d_id");
+						 $no_q_q_d2 = 1;
+						 while($r_q_d2 = mysql_fetch_array($q_q_d2)){
+							 
+							// simpan detail 3422
+							$select_question2_3422_detail = select_question2_detail($r_question2_3422['q2_id']);
+			
+							while($row_question2_3422_detail = mysql_fetch_array($select_question2_3422_detail)){
+								
+								$data_answer2_3422_detail = "'',
+											'$answer2_3422_id',
+											'".$row_question2_3422_detail['q2d_type']."',
+											'".$row_question2_3422_detail['q2d_number']."',
+											'".$row_question2_3422_detail['q2d_name']."',
+											'".$row_question2_3422_detail['q2d_point']."'
+								";
+								//echo $data_answer2_detail;
+								create_config("answers2_details", $data_answer2_3422_detail);
+								
+							}
+							 
+						}
+						
+						// simpan tipe 3422
+						if($r_question2['q2_type'] == 13){
+												
+										$q_3422 = mysql_query("select * from q_3_4_2_2 where data_id = '$data_id' order by q_id");
+									    $no_3422 = 1;
+										while($r_3422 = mysql_fetch_array($q_3422)){
+										}
+						}
+						
+					}
+			  }
+		}else{
 		
 		$select_question2 = select_question2($data_id, $row_sub_category['sub_cat_id']);
 		
 		$no_answer2 = 1;
 		while($row_question2 = mysql_fetch_array($select_question2)){
 			
-			if($row_question2['q2_type'] == 0){
-			$i_answer2 = get_isset($_POST["i_answer2_".$no_answer2."_".$row_sub_category['sub_cat_id']]);
 			$i_attachment = get_isset($_POST["i_attachment_".$no_answer2."_".$row_sub_category['sub_cat_id']]);
 			
-			$i_answer2_value = explode("_", $i_answer2);
-			
-			$point_value = ($row_question2['q2_weight'] / 100) * $i_answer2_value[1];
+			if($row_question2['q2_type'] == 0){
+				$i_answer2 = get_isset($_POST["i_answer2_".$no_answer2."_".$row_sub_category['sub_cat_id']]);
+				$i_answer2_value = explode("_", $i_answer2);
+				$point_value = ($row_question2['q2_weight'] / 100) * $i_answer2_value[1];
+				$i_jawaban = $i_answer2_value[0];
+				$i_poin = $i_answer2_value[1];
+			}else{
+				$point_value = '';
+				$i_jawaban = '';
+				$i_poin = '';
+			}
 			
 			$data_answer2 = "'',
 						'$answer_id',
 						'".$row_question2['q2_type']."',
 						'".$row_question2['q2_number']."',
 						'".$row_question2['q2_name']."',
-						'".$i_answer2_value[0]."',
+						'".$i_jawaban."',
 						'".$row_question2['q2_sub_cat_id']."',
 						'".$row_question2['q2_weight']."',
 						'".$row_question2['q2_description']."',
-						'".$i_answer2_value[1]."',
+						'".$i_poin."',
 						'$point_value',
 						'$i_attachment'
-							
-			";
+						";
 			
 			//echo $data_answer2;
 			create_config("answers2", $data_answer2);
 			$answer2_id = mysql_insert_id();
 			
+			if($row_question2['q2_type'] == 0){
+			
+			
 			$select_question2_detail = select_question2_detail($row_question2['q2_id']);
+			
 			while($row_question2_detail = mysql_fetch_array($select_question2_detail)){
+				
 				$data_answer2_detail = "'',
 							'$answer2_id',
 							'".$row_question2_detail['q2d_type']."',
@@ -277,7 +364,50 @@ switch ($page) {
 				
 			}
 			
+			// tipe soal 36
+			}else if($row_question2['q2_type'] == 11){
+				$select_36 = select_config("q_3_6", "data_id = ".$data_id, "q_id");
+				$no_36 = 1;
+				while($row_36 = mysql_fetch_array($select_36)){
+					$i_a_36 = get_isset($_POST["i_answer2_36_".$no_36]);
+					
+					if($i_a_36 == 1){ $point_36 = $row_36['q_point1'];  }
+					else if($i_a_36 == 2){ $point_36 = $row_36['q_point2'];  }
+					else if($i_a_36 == 3){ $point_36 = $row_36['q_point3'];  }
+					
+					$data_36 = "'',
+											'$answer_id',
+											'".$row_36['q_name']."',
+											'".$i_a_36."',
+											'".$point_36."'
+				";
+				//echo $data_answer2_detail;
+				create_config("a_3_6", $data_36);
+				$no_36++;
+				}
 			}
+			else if($row_question2['q2_type'] == 11){
+				$select_36 = select_config("q_3_6", "data_id = ".$data_id, "q_id");
+				$no_36 = 1;
+				while($row_36 = mysql_fetch_array($select_36)){
+					$i_a_36 = get_isset($_POST["i_answer2_36_".$no_36]);
+					
+					if($i_a_36 == 1){ $point_36 = $row_36['q_point1'];  }
+					else if($i_a_36 == 2){ $point_36 = $row_36['q_point2'];  }
+					else if($i_a_36 == 3){ $point_36 = $row_36['q_point3'];  }
+					
+					$data_36 = "'',
+											'$answer_id',
+											'".$row_36['q_name']."',
+											'".$i_a_36."',
+											'".$point_36."'
+				";
+				//echo $data_answer2_detail;
+				create_config("a_3_6", $data_36);
+				$no_36++;
+				}
+			}
+			
 			$no_answer2++;
 			
 		}
@@ -299,6 +429,8 @@ switch ($page) {
 			$no_answer3++;
 		}
 		*/
+		
+		}
 		
 		}
 		
@@ -384,6 +516,10 @@ switch ($page) {
 			
 		header("Location: answer.php?page=form_answer&did=1&id=$new_id");
 		
+	break;
+	
+	case "test":
+	echo select_config("q_3_6", "", "");
 	break;
 	
 	

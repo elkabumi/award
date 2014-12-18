@@ -88,7 +88,7 @@
                                            <tr>
                                            <td valign="top" align="center">
                                             <label>
-                                           		<input type="radio" name="i_answer2_34" class="minimal" value="<?= $no_q_q_d2?>"/>
+                                           		<input required type="radio" name="i_answer2_34_<?= $no_question2 ?>_<?= $r_sub_cat2['sub_cat_id'] ?>" class="minimal" value="<?= $no_question2 ?>_<?= $r_q_d2['q2d_point'] ?>"/>
                                         	</label>
                                            </td>
                                             <td valign="top"> <?= $r_q_d2['q2d_name'] ?></td>

@@ -28,16 +28,16 @@
                                             <td><?= $no_43 ?></td>
                                       		<td><?= $r_43['q_name']?></td>
                                             <td>
-                                             <input required="required" type="text" name="i_answer2_43_1_<?= $no_43?>" class="form-control" placeholder="" value="a"/>
+                                             <input required="required" type="number" name="i_answer2_43_1_<?= $no_43?>" class="form-control" placeholder="" value="a"/>
                                             </td>
                                             <td>    
-                                            <input required="required" type="text" name="i_answer2_43_2_<?= $no_43?>" class="form-control" placeholder="" value="a"/>
+                                            <input required="required" type="number" name="i_answer2_43_2_<?= $no_43?>" class="form-control" placeholder="" value="a"/>
                                             </td>
                                             <td>
-                                            <input required="required" type="text" name="i_answer2_43_3_<?= $no_43?>" class="form-control" placeholder="" value="a"/>
+                                            <input required="required" type="number" name="i_answer2_43_3_<?= $no_43?>" class="form-control" placeholder="" value="a"/>
                                             </td>
                                             <td>
-                                            <input required="required" type="text" name="i_answer2_43_4_<?= $no_43?>" class="form-control" placeholder="" value="a"/>
+                                            <input required="required" type="number" name="i_answer2_43_4_<?= $no_43?>" class="form-control" placeholder="" value="a"/>
                                             </td>
                                             
                                             </tr>

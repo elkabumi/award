@@ -38,7 +38,7 @@
                                             </td>
                                             <td style="text-align:center">
                                             <label>
-                                           		<input type="radio" name="i_answer2_36_<?= $no_36 ?>" class="minimal" value="2"/>
+                                           		<input type="radio" name="i_answer2_36_<?= $no_36 ?>" class="minimal" value="3"/>
                                         	</label>
                                             </td>
                                             
