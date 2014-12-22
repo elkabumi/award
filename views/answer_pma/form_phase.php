@@ -1,6 +1,6 @@
 
                
-     <form action="<?= $action?>" method="post" enctype="multipart/form-data" role="form">
+    
 
                 <!-- Main content -->
                 <section class="content">

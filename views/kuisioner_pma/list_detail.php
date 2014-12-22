@@ -56,7 +56,8 @@
                                             <tr>
                                             <th width="5%">No</th>
                                                 <th>Nama Phase</th>
-                                    
+                                   				 <th>Nama Pejabat Pengisi</th> 
+                                                  <th>Total Nilai</th> 
                                                 <th>Config</th>
                                             </tr>
                                         </thead>
@@ -68,11 +69,13 @@
                                             <tr>
                                             <td><?= $no?></td>
                                                
-                                                <td><?= $row['phase_name']?></td>
-                                               
+                                               <td><?= $row['phase_name']?></td>
+                                               <td><?= $row['answer_pma3_answer']?></td>
+                                               <?php $total_nilai=get_total_nilai($row['answer_pma_id']);?>
+                                                 <td><?= $total_nilai?></td>
                                                 <td style="text-align:center;">
 
-                                               <a href="kuisioner_pma.php?page=list_kuisioner&data_id=<?= $row['data_id']?>" class="btn btn-danger" >detail</i></a>
+                                               <a href="kuisioner_pma.php?page=list_answer&answer_pma_id=<?= $row['answer_pma_id']?>&data_id=<?= $row['data_id']?>" class="btn btn-danger" >detail</i></a>
                                                  
                                                 </td> 
                                             </tr>

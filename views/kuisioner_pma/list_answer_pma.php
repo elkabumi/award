@@ -1,49 +1,4 @@
-
-                <?php
-                if(isset($_GET['did']) && $_GET['did'] == 1){
-                ?>
-                <section class="content_new">
-                   
-                <div class="alert alert-info alert-dismissable">
-                <i class="fa fa-check"></i>
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <b>Sukses !</b>
-               Simpan Berhasil
-                </div>
-           
-                </section>
-                <?php
-                }else if(isset($_GET['did']) && $_GET['did'] == 2){
-                ?>
-                <section class="content_new">
-                   
-                <div class="alert alert-info alert-dismissable">
-                <i class="fa fa-check"></i>
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <b>Sukses !</b>
-               Edit Berhasil
-                </div>
-           
-                </section>
-                <?php
-                }else if(isset($_GET['did']) && $_GET['did'] == 3){
-                ?>
-                <section class="content_new">
-                   
-                <div class="alert alert-info alert-dismissable">
-                <i class="fa fa-check"></i>
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                <b>Sukses !</b>
-               Delete Berhasil
-                </div>
-           
-                </section>
-                <?php
-                }
-                ?>
-
-                <!-- Main content -->
-                <section class="content">
+ <section class="content">
                     <div class="row">
                         <div class="col-xs-12">
                             
@@ -68,7 +23,7 @@
                                             <th width="5%">No</th>
                                                 <th>Uraian</th>
                                                 <th>Penjelasan</th>
-                                                <th>Config</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -78,15 +33,12 @@
                                             ?>
                                             <tr>
                                             <td><?= $no?></td>
-                                             <td><?= $row['qp1_name']?></td>
-                                             <td></td>
+                                             <td><?= $row['answer_pma1_question']?></td>
+                                          	<td>
+                                             <input readonly="readonly" type="text" name="i_name" class="form-control" placeholder="Enter name ..." value="<?=$row['answer_pma1_answer'] ?>"/>
+                                          </td>
                                                
-                                               <td style="text-align:center;">
-
-                                                    <a href="question_pma.php?page=form&id=<?= $row['qp1_id']?>" class="btn btn-danger" ><i class="fa fa-pencil"></i></a>
-                                                    <a href="javascript:void(0)" onclick="confirm_delete(<?= $row['qp1_id']; ?>,'question_pma.php?page=delete&id=')" class="btn btn-danger" ><i class="fa fa-trash-o"></i></a>
-
-                                                </td> 
+                                               
                                             </tr>
                                             <?php
                                             if($row['qp1_get_child'] == 1){
@@ -132,11 +84,7 @@
                                           
                                         </tbody>
                                           <tfoot>
-                                            <tr>
-                                                <td colspan="10"><a href="<?= $add_button ?>" class="btn btn-info " >Add</a></td>
-                                               
-                                            </tr>
-                                        </tfoot>
+                                         
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->

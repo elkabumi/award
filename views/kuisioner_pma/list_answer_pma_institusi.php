@@ -40,22 +40,26 @@
                                         <table id="" width="100%"  cellpadding="5">
                                           <tr>
                                           <td width="3%" valign="top" align="center"><strong><?= $no_question."."; ?></strong></td>
-                                            <td width="84%"><b> <?= $r_question['qp2_name'] ?></b></td>
+                                            <td width="84%"><b> <?= $r_question['qp2_name'] ?> </b> </td>
                                             <td width="10%">
                                             
                                               
                                             </td>
                                           </tr> 
                                             <?php
+										$get_answer_pma2 = get_answer_pma2($answer_pma_id,$r_question['qp2_id']);	
+										
                                         $q_q_d = mysql_query("select * from questions_pma2_details where qp2_id = '".$r_question['qp2_id']."'  	order by qp2d_id	 ");
 									    $no_q_q_d = 1;
 										while($r_q_d = mysql_fetch_array($q_q_d)){
+										
 										?>
                                              <tr>
                                            <td valign="top" align="center">
-										       <label>
-                                            <input type="radio" name="i_answer_pma2_<?= $no_question ?>_<?=$r_question['qp2_cat_pma_id']?>_<?=$r_question['qp2_type']?>_<?=$r_question['qp2_id']?>" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"/>
-                             
+										 <label>  
+  <input type="radio" name="i_answer_pma" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"
+   <?php if($r_q_d['qp2d_id'] == $get_answer_pma2 ){ ?> checked <?php }else{ ?> <?php } ?>/> 
+                                       
                                         </label>
                                            </td>
                                             <td valign="top"> <?= $r_q_d['qp2d_name'] ?></td>
@@ -109,16 +113,22 @@
 										  ?>
                                                 <tr style="background-color:#F9FAFC; color:#999" height="50">
                                            <td></td>
-                                           
-                                            <td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
+                                           <?php
+                                           		$get_attachment_pma2 = get_attachment_pma2($answer_pma_id,$r_question['qp2_id']);	
+                                           ?>
+											<td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
                                           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
-                                         <input type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" value="1" />
+                                         <input type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" value="1" 
+										 <?php if($get_attachment_pma2 == '1'){?>  checked <? }?> disabled/>
                                          
                                        
                                         </label> Ya
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <label>
-                                            <input type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" value="0" />
+                                            <input type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" 
+                                            <?php if($get_attachment_pma2 == '0'){?>  checked <? }?>
+                                            
+                                            value="0"  disabled/>
                                         </label> Tidak
                                             </td>
                                             <td>

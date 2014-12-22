@@ -94,11 +94,12 @@ function load_data_participant(str)
                                         
                                         <div class="form-group">
                                           
-                                            <select id="basic" name="i_phase_id" class="selectpicker show-tick form-control" data-live-search="true" >
-                                     
+                                           
+                                        <select id="basic" name="i_phase_id" class="selectpicker show-tick form-control" data-live-search="true" >
+                                      <option value="0">---</option>
                                            <?php
-                                        $query_phase = mysql_query("select * from phase order by phase_id");
-                                        while($row_phase = mysql_fetch_array($query_phase)){
+                                        $query_phase = mysql_query("select * from phase");
+                                        while($row_phase= mysql_fetch_array($query_phase)){
                                         ?>
                                          <option value="<?= $row_phase['phase_id']?>"><?= $row_phase['phase_name'] ?></option>
                                         <?php

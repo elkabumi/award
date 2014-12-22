@@ -25,16 +25,16 @@
                                         <tbody>
                                             <?php
                                            $no_identitas = 1;
-                                            while($row_identitas = mysql_fetch_array($query_identitas)){
+                                           
+										    while($row_identitas = mysql_fetch_array($query_identitas)){
                                             ?>
                                             <tr>
                                             <td width="6%"><?= $no_identitas?></td>
-                                                <td width="27%"><?= $row_identitas['qp3_name']?></td>
+                                                <td width="27%"><?= $row_identitas['answer_pma3_question']?></td>
                                               
-                                               <td width="67%" style="text-align:center;">
-
-                                               <input required="required" type="text" name="i_answer3_<?= $no_identitas ?>_<?=$row_identitas['qp3_id']?>" class="form-control" placeholder="" value=""/>
-
+                                               <td width="67%" >
+														<?= $row_identitas['answer_pma3_answer']?>
+                                               
                                                 </td> 
                                             </tr>
                                            <?php
@@ -52,7 +52,7 @@
                         </div>
                           <div class="box-footer">
 
-           <input class="btn btn-danger" type="submit" value="Save"/>
+          
   		<a href="<?= $close_button?>" class="btn btn-danger" >Close</a>
                 </form>              
                                 </div>

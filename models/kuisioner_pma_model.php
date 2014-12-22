@@ -14,12 +14,62 @@ function select_detail(){
 			");
 	return $query;
 }
-function select_phase(){
-	$query = mysql_query("select *
-		from  phase
+function select_answer(){
+	$query = mysql_query("select a.*,b.phase_name,c.answer_pma3_answer
+	FROM answers_pma a
+	JOIN phase b ON b.phase_id = a.phase_id
+	JOIN answers_pma3 c ON c.answer_pma_id = a.answer_pma_id
+	WHERE answer_pma3_question = 'Nama Pejabat Pengisi'
 			
 			");
 	return $query;
+}
+function select_answer_detail($answer_pma_id){
+	$query = mysql_query("select *
+		from  answers_pma1
+		where  answer_pma_id = '$answer_pma_id'
+		order by qp1_id
+			");
+	return $query;
+}
+function get_answer_pma2($answer_id,$qp2_id){
+	$query =mysql_query("SELECT qp2d_id FROM answers_pma2 WHERE  answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$row = mysql_fetch_object($query);
+	return $row->qp2d_id;
+}
+function get_attachment_pma2($answer_id,$qp2_id){
+	$query =mysql_query("SELECT answer_pma2_attachment  FROM answers_pma2 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$row = mysql_fetch_object($query);
+	return $row->answer_pma2_attachment;
+}
+function select_identitas($data_id){
+	$query = mysql_query("select *
+		from questions_pma3
+		where data_id = '$data_id'
+			
+			");
+	return $query;
+}
+
+function select_answer_identitas($answer_pma_id){
+	$query = mysql_query("SELECT * FROM answers_pma3 WHERE answer_pma_id = '".$answer_pma_id."'
+			
+			");
+	return $query;
+}
+function get_total_nilai($answer_pma_id){
+	$query = mysql_query("select SUM(b.answer_pma2_point + c.answer_qp_132_point + d.answer_qp_133_point + e.answer_qp_211_point + f.answer_qp_311_point) AS total_point
+							FROM answers_pma a
+							JOIN answers_pma2  b ON  a.answer_pma_id = b.answer_pma_id
+							JOIN answers_qp_132 c ON  a.answer_pma_id = c.answer_pma_id
+							JOIN answers_qp_133 d ON  a.answer_pma_id = d.answer_pma_id
+							JOIN answers_qp_211 e ON  a.answer_pma_id = e.answer_pma_id
+							JOIN answers_qp_311 f ON  a.answer_pma_id = f.answer_pma_id
+							WHERE a.answer_pma_id = '".$answer_pma_id."'
+						");
+	$row=mysql_fetch_object($query);
+	return $row->total_point;
+		
 }
 function read_id($id){
 	$query = mysql_query("select *
