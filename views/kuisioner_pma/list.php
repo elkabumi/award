@@ -21,7 +21,7 @@
                 <i class="fa fa-check"></i>
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                 <b>Sukses !</b>
-               Edit Berhasil
+               Data kuisioner Berhasil Disimpan
                 </div>
            
                 </section>

@@ -12,6 +12,8 @@ $data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : 0;
 switch ($page) {
 	case 'list':
 		get_header($title);
+		
+		$close_button = "kuisioner_pma.php?page=list ";
 		$action = "answer_pma.php?page=save_answer&data_id=$data_id ";
 		$action_t_form = "answer_pma.php?page=save_qp_211&data_id=$data_id ";
 		$query = select($data_id);
@@ -82,7 +84,7 @@ switch ($page) {
 			
 					}else if($row['qp2_type'] == '1'){
 						$attachment=get_isset($_POST['i_attachment_pma2_'.$no.'_'.$row['qp2_cat_pma_id'].'_'.$row['qp2_type'].'_'.$row['qp2_id'].'']);
-						mysql_query("INSERT INTO  answers_qp_132 vALUES('','$answer_pma_id','','','$attachment')");
+						mysql_query("INSERT INTO  answers_qp_132 vALUES('','$answer_pma_id','$row[qp2_id]','','','$attachment')");
 						$answer_qp_132_id = mysql_insert_id();
 						for($no_132=1; $no_132<=3; $no_132++){
 							$query_132 = select_qp_1_3_2($data_id);	
@@ -110,7 +112,7 @@ switch ($page) {
 						
 					}else if($row['qp2_type'] == '2'){
 						$attachment=get_isset($_POST['i_attachment_pma2_'.$no.'_'.$row['qp2_cat_pma_id'].'_'.$row['qp2_type'].'_'.$row['qp2_id'].'']);
-						mysql_query("INSERT INTO  answers_qp_133 VALUES('','$answer_pma_id','','','$attachment')");
+						mysql_query("INSERT INTO  answers_qp_133 VALUES('','$answer_pma_id','$row[qp2_id]','','','$attachment')");
 						$answer_qp_133_id = mysql_insert_id();
 						for($no_133=1; $no_133<=3; $no_133++){
 							$query_133 = select_qp_1_3_3($data_id);	
@@ -139,7 +141,7 @@ switch ($page) {
 					}
 					else if($row['qp2_type'] == '3'){
 						$attachment=get_isset($_POST['i_attachment_pma2_'.$no.'_'.$row['qp2_cat_pma_id'].'_'.$row['qp2_type'].'_'.$row['qp2_id'].'']);
-						mysql_query("INSERT INTO  answers_qp_211 VALUES('','$answer_pma_id','','','$attachment')");
+						mysql_query("INSERT INTO  answers_qp_211 VALUES('','$answer_pma_id','$row[qp2_id]','','','$attachment')");
 						$answer_qp_211_id = mysql_insert_id();
 						
 							$query_211 = select_qp_2_1_1($data_id);	
@@ -177,7 +179,7 @@ switch ($page) {
 						
 					}else if($row['qp2_type'] == '4'){
 						$attachment=get_isset($_POST['i_attachment_pma2_'.$no.'_'.$row['qp2_cat_pma_id'].'_'.$row['qp2_type'].'_'.$row['qp2_id'].'']);
-						mysql_query("INSERT INTO  answers_qp_311 VALUES('','$answer_pma_id','','','$attachment')");
+						mysql_query("INSERT INTO  answers_qp_311 VALUES('','$answer_pma_id','$row[qp2_id]','','','$attachment')");
 						$answer_qp_311_id = mysql_insert_id();
 						for($no_311=1; $no_311<=10; $no_311++){
 							$query_311 = select_qp_3_1_1($data_id);	
@@ -220,7 +222,9 @@ switch ($page) {
 											'".$answer_question3."'";
 					create_answer_pma3($data_question3);
 				$no++;
-				}	
+				}
+				
+			header("Location: kuisioner_pma.php?page=list&did=1");		
 	break;
 	
 		}

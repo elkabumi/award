@@ -42,6 +42,27 @@ function get_attachment_pma2($answer_id,$qp2_id){
 	$row = mysql_fetch_object($query);
 	return $row->answer_pma2_attachment;
 }
+
+function get_attachment_132($answer_id,$qp2_id){
+	$query =mysql_query("SELECT answer_pma2_attachment  FROM answers_qp_132 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$row = mysql_fetch_object($query);
+	return $row->answer_pma2_attachment;
+}
+function get_attachment_133($answer_id,$qp2_id){
+	$query =mysql_query("SELECT answer_pma2_attachment  FROM answers_qp_133 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$row = mysql_fetch_object($query);
+	return $row->answer_pma2_attachment;
+}
+function get_attachment_211($answer_id,$qp2_id){
+	$query =mysql_query("SELECT answer_pma2_attachment  FROM answers_qp_211 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$row = mysql_fetch_object($query);
+	return $row->answer_pma2_attachment;
+}
+function get_attachment_311($answer_id,$qp2_id){
+	$query =mysql_query("SELECT answer_pma2_attachment  FROM answers_qp_311 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$row = mysql_fetch_object($query);
+	return $row->answer_pma2_attachment;
+}
 function select_identitas($data_id){
 	$query = mysql_query("select *
 		from questions_pma3

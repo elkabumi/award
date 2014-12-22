@@ -52,8 +52,8 @@
                         </div>
                           <div class="box-footer">
 
-           <input class="btn btn-danger" type="submit" value="Save"/>
-  		<a href="<?= $close_button?>" class="btn btn-danger" >Close</a>
+            <input class="btn btn-info" type="submit" value="SIMPAN JAWABAN"/>
+  		<a href="<?= $close_button?>" class="btn btn-info" >Close</a>
                 </form>              
                                 </div>
                             

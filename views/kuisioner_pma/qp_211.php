@@ -31,11 +31,11 @@
                                             <td><?= $r_211['answer_qp_211_detail_question']?></td>
                                            
                                             <td>
-                                          		<input type="radio" name="i_answer2" class="minimal" value=" "
-                                                <?php if($r_211['answer_qp_211_detail_answer'] == '1'){ ?> checked="checked" <? } ?>/>
+                                          		<input type="radio" name="i_answer2_<?=$r_211['answer_qp_211_detail_id']?>" class="minimal" value=" "
+                                                <?php if($r_211['answer_qp_211_detail_answer'] == '1'){ ?> checked="checked" <? } ?> disabled="disabled"/>
                                                 </td><td>
-                                                <input type="radio" name="i_answer2" class="minimal" value=" " 
-												<?php if($r_211['answer_qp_211_detail_answer'] == '0'){ ?> checked="checked" <? } ?>/>											
+                                                <input type="radio" name="i_answer2_<?=$r_211['answer_qp_211_detail_id']?>" class="minimal" value=" " 
+												<?php if($r_211['answer_qp_211_detail_answer'] == '0'){ ?> checked="checked" <? } ?> disabled="disabled"/>											
                                             </td>
                                          
 											

@@ -56,9 +56,10 @@
 										?>
                                              <tr>
                                            <td valign="top" align="center">
-										 <label>  
-  <input type="radio" name="i_answer_pma" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"
-   <?php if($r_q_d['qp2d_id'] == $get_answer_pma2 ){ ?> checked <?php }else{ ?> <?php } ?>/> 
+										
+  <input type="radio" name="i_answer_pma_<?=$r_question['qp2_id']?>" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"
+   <?php if($r_q_d['qp2d_id'] == $get_answer_pma2 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"/> 
+   
                                        
                                         </label>
                                            </td>
@@ -114,19 +115,29 @@
                                                 <tr style="background-color:#F9FAFC; color:#999" height="50">
                                            <td></td>
                                            <?php
-                                           		$get_attachment_pma2 = get_attachment_pma2($answer_pma_id,$r_question['qp2_id']);	
-                                           ?>
+										   	if($r_question['qp2_type'] == 0){
+                                           		$get_attachment_pma = get_attachment_pma2($answer_pma_id,$r_question['qp2_id']);	
+										  	}else if($r_question['qp2_type'] == 1){
+											  	$get_attachment_pma = get_attachment_132($answer_pma_id,$r_question['qp2_id']);
+										  	}else if($r_question['qp2_type'] == 2){
+											 	$get_attachment_pma = get_attachment_133($answer_pma_id,$r_question['qp2_id']);
+											}else if($r_question['qp2_type'] == 3){
+											 	 $get_attachment_pma = get_attachment_211($answer_pma_id,$r_question['qp2_id']);
+											}else if($r_question['qp2_type'] == 4){
+											 	$get_attachment_pma = get_attachment_311($answer_pma_id,$r_question['qp2_id']);;
+											 }
+										   ?>
 											<td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
                                           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
                                          <input type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" value="1" 
-										 <?php if($get_attachment_pma2 == '1'){?>  checked <? }?> disabled/>
+										 <?php if($get_attachment_pma == '1'){?>  checked <? }?> disabled/>
                                          
                                        
                                         </label> Ya
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <label>
                                             <input type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" 
-                                            <?php if($get_attachment_pma2 == '0'){?>  checked <? }?>
+                                            <?php if($get_attachment_pma == '0'){?>  checked <? }?>
                                             
                                             value="0"  disabled/>
                                         </label> Tidak
