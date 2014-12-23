@@ -234,7 +234,7 @@ switch ($page) {
 		// tipe soal 3422
 		if($row_sub_category['sub_cat_id'] == 11){
 			  $q_sub_cat_2 = mysql_query("select * from sub_categories where sub_cat_parent_id = '11' order by sub_cat_id");
-			  while($r_sub_cat2 = mysql_fetch_array($q_sub_cat2)){
+			  while($r_sub_cat2 = mysql_fetch_array($q_sub_cat_2)){
 				   $q_question2_3422 = mysql_query("select * from questions2 where q2_sub_cat_id = '".$r_sub_cat2['sub_cat_id']."' and data_id = '$data_id' order by q2_id");
 					$no_question2_3422 = 1;
 					while($r_question2_3422 = mysql_fetch_array($q_question2_3422)){
@@ -242,7 +242,7 @@ switch ($page) {
 						// simpan question2 3422 soal normal
 						
 						if($r_question2_3422['q2_type'] == 0){
-							$i_answer2_3422 = get_isset($_POST["i_answer2_34_".$no_question2_3422."_".$row_sub_category['sub_cat_id']]);
+							$i_answer2_3422 = get_isset($_POST["i_answer2_3422_".$no_question2_3422."_".$r_sub_cat2['sub_cat_id']]);
 							$i_answer2_3422_value = explode("_", $i_answer2_3422);
 							$point_value_3422 = ($r_question2_3422['q2_weight'] / 100) * $i_answer2_3422_value[1];
 							$i_jawaban_3422 = $i_answer2_3422_value[0];
@@ -271,8 +271,7 @@ switch ($page) {
 						create_config("answers2", $data_answer2);
 						$answer2_3422_id = mysql_insert_id();
 						
-						
-						 $q_q_d2 = mysql_query("select * from questions2_details where q2_id = '".$r_question2_3422['q2_id']."' order by q2d_id");
+						$q_q_d2 = mysql_query("select * from questions2_details where q2_id = '".$r_question2_3422['q2_id']."' order by q2d_id");
 						 $no_q_q_d2 = 1;
 						 while($r_q_d2 = mysql_fetch_array($q_q_d2)){
 							 
@@ -296,16 +295,35 @@ switch ($page) {
 						}
 						
 						// simpan tipe 3422
-						if($r_question2['q2_type'] == 13){
+						if($r_question2_3422['q2_type'] == 13){
 												
 										$q_3422 = mysql_query("select * from q_3_4_2_2 where data_id = '$data_id' order by q_id");
 									    $no_3422 = 1;
 										while($r_3422 = mysql_fetch_array($q_3422)){
+											
+											$i_3422 = get_isset($_POST["i_answer2_3422_detail_".$no_3422]);
+											$i_3422_value = explode("_", $i_3422);
+											
+											$point_value = $r_3422['q_weight'] / 100 * $i_3422_value[1];
+											
+											$data_3422  = "'',
+														'$answer_id',
+														'".$r_3422['q_id']."',
+														'".$i_3422_value[0]."',
+														'".$i_3422_value[1]."',
+														'".$point_value."'
+														";
+										
+											create_config("a_3_4_2_2", $data_3422);
+										
+										$no_3422++;
 										}
 						}
 						
+					$no_question2_3422++;
 					}
 			  }
+			  
 		}else{
 		
 		$select_question2 = select_question2($data_id, $row_sub_category['sub_cat_id']);
@@ -364,26 +382,26 @@ switch ($page) {
 				
 			}
 			
-			// tipe soal 36
-			}else if($row_question2['q2_type'] == 11){
-				$select_36 = select_config("q_3_6", "data_id = ".$data_id, "q_id");
-				$no_36 = 1;
-				while($row_36 = mysql_fetch_array($select_36)){
-					$i_a_36 = get_isset($_POST["i_answer2_36_".$no_36]);
+			// tipe soal 321
+			}else if($row_question2['q2_type'] == 10){
+				$select_321 = select_config("q_3_2_1", "data_id = ".$data_id, "q_id");
+				$no_321 = 1;
+				while($row_321 = mysql_fetch_array($select_321)){
+					$i_a_321 = get_isset($_POST["i_answer2_321_".$no_321]);
 					
-					if($i_a_36 == 1){ $point_36 = $row_36['q_point1'];  }
-					else if($i_a_36 == 2){ $point_36 = $row_36['q_point2'];  }
-					else if($i_a_36 == 3){ $point_36 = $row_36['q_point3'];  }
+					if($i_a_321 == 1){ $point_321 = $row_321['q_point1'];  }
+					else if($i_a_321 == 2){ $point_321 = $row_321['q_point2'];  }
+					else if($i_a_321 == 3){ $point_321 = $row_321['q_point3'];  }
 					
-					$data_36 = "'',
+					$data_321 = "'',
 											'$answer_id',
-											'".$row_36['q_name']."',
-											'".$i_a_36."',
-											'".$point_36."'
+											'".$row_321['q_id']."',
+											'".$i_a_321."',
+											'".$point_321."'
 				";
 				//echo $data_answer2_detail;
-				create_config("a_3_6", $data_36);
-				$no_36++;
+				create_config("a_3_2_1", $data_321);
+				$no_321++;
 				}
 			}
 			else if($row_question2['q2_type'] == 11){
@@ -398,7 +416,7 @@ switch ($page) {
 					
 					$data_36 = "'',
 											'$answer_id',
-											'".$row_36['q_name']."',
+											'".$row_36['q_id']."',
 											'".$i_a_36."',
 											'".$point_36."'
 				";

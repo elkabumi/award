@@ -58,7 +58,7 @@
                                            <td valign="top" align="center"></td>
                                             <td valign="top">
 											<label>
-                                           		<input type="radio" name="i_answer2_3422_detail" class="minimal" value="<?= $no_3422_detail?>"/>
+                                           		<input type="radio" name="i_answer2_3422_detail_<?= $no_3422 ?>" class="minimal" value="<?= $no_3422_detail?>_<?= $r_3422_detail['q_point'] ?>"/>
                                         	</label>
 											<?= $r_3422_detail['q_name'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
@@ -88,7 +88,7 @@
                                            <tr>
                                            <td valign="top" align="center">
                                             <label>
-                                           		<input required type="radio" name="i_answer2_34_<?= $no_question2 ?>_<?= $r_sub_cat2['sub_cat_id'] ?>" class="minimal" value="<?= $no_question2 ?>_<?= $r_q_d2['q2d_point'] ?>"/>
+                                           		<input required type="radio" name="i_answer2_3422_<?= $no_question2 ?>_<?= $r_sub_cat2['sub_cat_id'] ?>" class="minimal" value="<?= $no_question2 ?>_<?= $r_q_d2['q2d_point'] ?>"/>
                                         	</label>
                                            </td>
                                             <td valign="top"> <?= $r_q_d2['q2d_name'] ?></td>
