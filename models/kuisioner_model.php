@@ -130,13 +130,13 @@ function create($data){
 	// load q214
 	$q_214 = mysql_query("select * from q_2_1_4 where data_id = 0");
 	while($r_214 = mysql_fetch_array($q_214)){
-		mysql_query("insert into q_2_1_4 values('', '".$r_214['q_name']."', '".$r_214['q_point1']."', '".$r_214['q_point2']."', '".$r_214['q_point3']."', '$new_id')");
+		mysql_query("insert into q_2_1_4 values('', '".$r_214['q_name']."', '".$r_214['q_type']."', '".$r_214['q_point1']."', '".$r_214['q_point2']."', '".$r_214['q_point3']."', '$new_id')");
 	}
 	
 	// load q215
 	$q_215 = mysql_query("select * from q_2_1_5 where data_id = 0");
 	while($r_215 = mysql_fetch_array($q_215)){
-		mysql_query("insert into q_2_1_5 values('', '".$r_215['q_name']."', '$new_id')");
+		mysql_query("insert into q_2_1_5 values('', '".$r_215['q_name']."', '".$r_215['q_point1']."', '".$r_215['q_point2']."', '".$r_215['q_point3']."', '$new_id')");
 	}
 	
 	// load q22

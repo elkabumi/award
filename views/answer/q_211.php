@@ -20,7 +20,7 @@
 											 ?>
                                             <tr>
                                       		<td><?= $i_211?></td>
-                                            <td> <input required="required" type="text" name="i_answer2_211_<?= $no_211 ?>_<?= $i_211 ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td> <input type="text" name="i_answer2_211_<?= $no_211 ?>_<?= $i_211 ?>" class="form-control" placeholder="" value=""/></td>
                                           </tr>
                                           <?php
 											 }

@@ -33,7 +33,7 @@
                                                 <input type="radio" name="i_answer2_141_<?= $no_141 ?>" class="minimal" value="2"/>
                                             </label>
                                             </td>
-                                            <td> <input required="required" type="text" name="i_answer2_141_jumlah_<?= $no_141 ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td> <input type="text" name="i_answer2_141_jumlah_<?= $no_141 ?>" class="form-control" placeholder="" value=""/></td>
                                             </tr>
                                            <?php
 										   $no_141++;

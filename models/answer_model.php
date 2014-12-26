@@ -22,6 +22,19 @@ function select_config($table, $parameter, $order_by){
 	return $query;
 }
 
+function select_config_test($table, $parameter, $order_by){
+	
+	$order_by = ($order_by) ? " order by ".$order_by : "";
+	$parameter = ($parameter) ? " where ".$parameter : "";
+	
+	$query = "select *
+		from $table
+		$parameter
+		$order_by
+			";
+	return $query;
+}
+
 
 function select_participant($participant_id){
 	$query = mysql_query("select *

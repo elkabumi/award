@@ -25,17 +25,17 @@
                                       		<td><?= $r_215['q_name']?></td>
                                             <td style="text-align:center">	
                                             <label>
-                                           		<input type="radio" name="i_answer2_215_<?= $no_215 ?>" class="minimal" value="1"/>
+                                           		<input required type="radio" name="i_answer2_215_<?= $no_215 ?>" class="minimal" value="1"/>
                                         	</label>
                                             </td>
                                             <td style="text-align:center">
                                              <label>
-                                           		<input type="radio" name="i_answer2_215_<?= $no_215 ?>" class="minimal" value="2"/>
+                                           		<input required  type="radio" name="i_answer2_215_<?= $no_215 ?>" class="minimal" value="2"/>
                                         	</label>
                                             </td>
                                             <td style="text-align:center">
                                              <label>
-                                           		<input type="radio" name="i_answer2_215_<?= $no_215 ?>" class="minimal" value="3"/>
+                                           		<input  required type="radio" name="i_answer2_215_<?= $no_215 ?>" class="minimal" value="3"/>
                                         	</label>
                                             </td>
                                             </tr>

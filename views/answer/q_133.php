@@ -27,7 +27,7 @@
 												$no_133 = 1;
 												while($r_133 = mysql_fetch_array($q_133)){
 												?>
-                                                <td> <input required="required" type="text" name="i_answer2_133_<?= $i_133?>_<?= $no_133?>" class="form-control" placeholder="" value=""/>
+                                                <td> <input type="text" name="i_answer2_133_<?= $i_133?>_<?= $no_133?>" class="form-control" placeholder="" value=""/>
                                                 </td>
                                                 <?php
 												$no_133++;

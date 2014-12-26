@@ -49,9 +49,9 @@
                                             
                                              <tr>
                                             <td><?= "&nbsp;&nbsp;&nbsp; - ".$r_142_detail['q_name'] ?></td>
-                                            <td><input required="required" type="text" name="i_answer2_142_detail_1_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
-                                            <td><input required="required" type="text" name="i_answer2_142_detail_2_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
-                                            <td><input required="required" type="text" name="i_answer2_142_detail_3_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td><input required="required" type="text" name="i_answer2_142_1_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td><input required="required" type="text" name="i_answer2_142_2_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td><input required="required" type="text" name="i_answer2_142_3_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
                                              <td><?= $r_142_detail['q_kriteria_penilaian']?></td>
                                             </tr>
                                             
@@ -62,10 +62,21 @@
 										 }
 										   ?>
                                            
+                                          <tr>
+                                          <td><strong>POIN</strong></td>
+                                          <td colspan="3">
+                                          <input required="required" type="text" name="i_answer2_142_point" class="form-control" placeholder="" value=""/>
+                                          </td>
+                                      
+                                          <td></td>
                                           
+                                          </tr>
                                         </tbody>
                                         
                                     </table>
+                                    
+                                    
+                                    
                                            <div class="table_note"> note : Sebutkan nama-nama yang dimaksud, lampirkan bukti pendukung</div>
                                             
                                             </td>

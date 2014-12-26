@@ -27,7 +27,7 @@
                                              <?php
 												 for($y=date("Y")-3; $y<=date("Y"); $y++){
 												 ?>
-                                                	<th> <input required="required" type="text" name="i_answer2_132_<?= $y?>_<?= $no_132?>" class="form-control" placeholder="" value=""/></th>
+                                                	<th> <input type="text" name="i_answer2_132_<?= $y?>_<?= $no_132?>" class="form-control" placeholder="" value=""/></th>
                                                 <?php
 												 }
 												?>

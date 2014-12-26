@@ -28,22 +28,22 @@
                                       		<td><?= $r_22['q_name']?></td>
                                               <td style="text-align:center">	
                                             <label>
-                                           		<input type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="1"/>
+                                           		<input required type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="1"/>
                                         	</label>
                                             </td>
                                             <td style="text-align:center">
                                              <label>
-                                           		<input type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="2"/>
+                                           		<input required type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="2"/>
                                         	</label>
                                             </td>
                                             <td style="text-align:center">
                                              <label>
-                                           		<input type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="3"/>
+                                           		<input required type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="3"/>
                                         	</label>
                                             </td>
                                              <td style="text-align:center">
                                              <label>
-                                           		<input type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="4"/>
+                                           		<input required type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="4"/>
                                         	</label>
                                             </td>
                                             
@@ -52,7 +52,7 @@
                                             <td></td>
                                       		<td><strong>Sebutkan</strong></td>
                                             <td colspan="4">	
-                                           <input required="required" type="text" name="i_answer2_22_detail_<?= $no_22 ?>" class="form-control" placeholder="" value=""/>
+                                           <input  type="text" name="i_answer2_22_description_<?= $no_22 ?>" class="form-control" placeholder="" value=""/>
                                             </td>
                                             
                                             </tr>

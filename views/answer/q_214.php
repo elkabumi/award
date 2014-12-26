@@ -19,27 +19,43 @@
                                         $q_214 = mysql_query("select * from q_2_1_4 where data_id = '$data_id' order by q_id");
 										$no_214 = 1;
 										while($r_214 = mysql_fetch_array($q_214)){
-										
+											if($r_214['q_type'] == 0){
 										 ?>
                                             <tr>
                                       		<td><?= get_abjad($no_214).". ".$r_214['q_name']?></td>
                                             <td style="text-align:center">	
                                             <label>
-                                           		<input type="radio" name="i_answer2_214_<?= $no_214 ?>" class="minimal" value="1"/>
+                                           		<input required type="radio" name="i_answer2_214_<?= $no_214 ?>" class="minimal" value="1"/>
                                         	</label>
                                             </td>
                                             <td style="text-align:center">
                                              <label>
-                                           		<input type="radio" name="i_answer2_214_<?= $no_214 ?>" class="minimal" value="2"/>
+                                           		<input required type="radio" name="i_answer2_214_<?= $no_214 ?>" class="minimal" value="2"/>
                                         	</label>
                                             </td>
                                             <td style="text-align:center">
                                              <label>
-                                           		<input type="radio" name="i_answer2_214_<?= $no_214 ?>" class="minimal" value="3"/>
+                                           		<input required type="radio" name="i_answer2_214_<?= $no_214 ?>" class="minimal" value="3"/>
                                         	</label>
                                             </td>
                                             </tr>
                                              <?php
+											}else{
+											?>
+                                             <tr>
+                                      		<td><?= get_abjad($no_214).". ".$r_214['q_name']?></td>
+                                          	<td colspan="3">
+                                             <div class="col-md-6">
+                                            Jumlah<input required  type="text" name="i_answer2_214_jumlah_<?= $no_214 ?>" class="form-control" placeholder="" value=""/>
+                                            </div>
+                                             <div class="col-md-6">
+                                            Poin<input required  type="text" name="i_answer2_214_point_<?= $no_214 ?>" class="form-control" placeholder="" value=""/>
+                                            </div>
+                                            
+                                            </td>
+                                            </tr>
+                                            <?php
+											}
 											 $no_214++;
 										 }
 											?>

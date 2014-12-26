@@ -200,7 +200,8 @@ switch ($page) {
 	
 		create_config("answers", $data_answers);	
 		$answer_id = mysql_insert_id();
-			/*
+		
+		/*
 		// simpan data answers1
 		$select_participant = select_participant($participant_id);
 	
@@ -227,8 +228,9 @@ switch ($page) {
 			}
 		}
 		*/
+		
 		// simpan data answers2
-		$select_sub_category = select_sub_category(3);
+		$select_sub_category = select_sub_category(1);
 		while($row_sub_category = mysql_fetch_array($select_sub_category)){
 			
 		// tipe soal 3422
@@ -382,6 +384,200 @@ switch ($page) {
 				
 			}
 			
+			// tipe soal 142
+			}else if($row_question2['q2_type'] == 4){
+
+				$select_142 = select_config("q_1_4_2", "data_id = ".$data_id, "q_id");
+				$no_142 = 1;
+				while($row_142 = mysql_fetch_array($select_142)){
+					
+					if($row_142['q_type'] == 0){
+						$i_a_142_1 = get_isset($_POST["i_answer2_142_1_".$no_142]);
+						$i_a_142_2 = get_isset($_POST["i_answer2_142_2_".$no_142]);
+						$i_a_142_3 = get_isset($_POST["i_answer2_142_3_".$no_142]);
+					}else{
+						$i_a_142_1 = '';
+						$i_a_142_2 = '';
+						$i_a_142_3 = '';
+					}
+						
+				
+					$data_142 = "'',
+												'$answer_id',
+												'".$row_142['q_id']."',
+												'".$row_142['q_type']."',
+												'".$i_a_142_1."',
+												'".$i_a_142_2."',
+												'".$i_a_142_3."'
+								";
+					
+					create_config("a_1_4_2", $data_142);
+					$a_id_142 = mysql_insert_id();
+				
+					if($row_142['q_type'] == 1){
+						$select_142_detail = select_config("q_1_4_2_details", "q_parent_id = ".$row_142['q_id'], "q_id");
+						
+						$no_142_detail = 1;
+						
+						while($row_142_detail = mysql_fetch_array($select_142_detail)){
+						
+						$i_a_142_1_detail = get_isset($_POST["i_answer2_142_1_detail_".$no_142_detail]);
+						$i_a_142_2_detail = get_isset($_POST["i_answer2_142_2_detail_".$no_142_detail]);
+						$i_a_142_3_detail = get_isset($_POST["i_answer2_142_3_detail_".$no_142_detail]);
+						
+						$data_142_detail = "'',
+												'$a_id_142',
+												'".$row_142_detail['q_id']."',
+												'".$i_a_142_1_detail."',
+												'".$i_a_142_2_detail."',
+												'".$i_a_142_3_detail."'
+								";
+						create_config("a_1_4_2_details", $data_142_detail);
+						
+						$no_142_detail++;
+					}
+					
+				}
+				
+				
+				$no_142++;
+				}
+			
+			// tipe soal 211
+			}else if($row_question2['q2_type'] == 5){
+				$select_211 = select_config("q_2_1_1", "data_id = ".$data_id, "q_id");
+				$no_211 = 1;
+				while($row_211 = mysql_fetch_array($select_211)){
+					
+					$data_211 = "'',
+											'$answer_id',
+											'".$row_211['q_id']."',
+											'0',
+											'0'
+					";
+					
+					// simpan data 211
+					create_config("a_2_1_1", $data_211);
+					$a_id_211 = mysql_insert_id();
+					
+					$isi[$no_211] = 0;
+					for($i_211=1; $i_211<=20; $i_211++){
+					
+					$i_a_211 = get_isset($_POST["i_answer2_211_".$no_211."_".$i_211]);
+					
+					
+					if($i_a_211){ 
+						// simpan data detail 211
+						$data_211_detail = "'','$a_id_211', '$i_a_211'";
+						
+						create_config("a_2_1_1_details", $data_211_detail);
+						$isi[$no_211]++; 
+						
+					}
+			
+					}
+					
+					if($no_211 == 1){
+						if($isi[$no_211] >= 20){ $point_211 = 25; }
+						if($isi[$no_211] >= 15 && $isi[$no_211] <= 19){ $point_211 = 50; }
+						if($isi[$no_211] >= 10 && $isi[$no_211] <= 14){ $point_211 = 75; }
+						if($isi[$no_211] < 10){ $point_211 = 100; }
+					}else{
+						if($isi[$no_211] >= 20){ $point_211 = 100; }
+						if($isi[$no_211] >= 15 && $isi[$no_211] <= 19){ $point_211 = 75; }
+						if($isi[$no_211] >= 10 && $isi[$no_211] <= 14){ $point_211 = 50; }
+						if($isi[$no_211] < 10){ $point_211 = 25; }
+					}
+					
+					// update data 211 total dan point
+					 update_data("a_2_1_1", "a_id", " a_total_answer = '".$isi[$no_211]."', a_point = '".$point_211."' ", $a_id_211);
+					
+					
+				$no_211++;
+				}
+			
+			// tipe soal 212
+			// skip karena kurang paham
+			
+			// tipe soal 214
+			}else if($row_question2['q2_type'] == 7){
+				$select_214 = select_config("q_2_1_4", "data_id = ".$data_id, "q_id");
+				$no_214 = 1;
+				while($row_214 = mysql_fetch_array($select_214)){
+					if($row_214['q_type'] == 0){
+						$i_a_214 = get_isset($_POST["i_answer2_214_".$no_214]);
+						
+						if($i_a_214 == 1){ $point_214 = $row_214['q_point1'];  }
+						else if($i_a_214 == 2){ $point_214 = $row_214['q_point2'];  }
+						else if($i_a_214 == 3){ $point_214 = $row_214['q_point3'];  }
+						
+						
+					}else{
+						$i_a_214 = get_isset($_POST["i_answer2_214_jumlah_".$no_214]);
+						$point_214 = get_isset($_POST["i_answer2_214_point_".$no_214]);
+						
+						
+					}
+					
+					$data_214 = "'',
+												'$answer_id',
+												'".$row_214['q_id']."',
+												'".$row_214['q_type']."',
+												'".$i_a_214."',
+												'".$point_214."'
+								";
+					
+				create_config("a_2_1_4", $data_214);
+				$no_214++;
+				}
+			
+			// tipe soal 215
+			}else if($row_question2['q2_type'] == 8){
+				$select_215 = select_config("q_2_1_5", "data_id = ".$data_id, "q_id");
+				$no_215 = 1;
+				while($row_215 = mysql_fetch_array($select_215)){
+					$i_a_215 = get_isset($_POST["i_answer2_215_".$no_215]);
+					
+					if($i_a_215 == 1){ $point_215 = $row_215['q_point1'];  }
+					else if($i_a_215 == 2){ $point_215 = $row_215['q_point2'];  }
+					else if($i_a_215 == 3){ $point_215 = $row_215['q_point3'];  }
+					
+					$data_215 = "'',
+											'$answer_id',
+											'".$row_215['q_id']."',
+											'".$i_a_215."',
+											'".$point_215."'
+				";
+				//echo $data_answer2_detail;
+				create_config("a_2_1_5", $data_215);
+				$no_215++;
+				}
+			
+			// tipe soal 22
+			}else if($row_question2['q2_type'] == 9){
+				$select_22 = select_config("q_2_2", "data_id = ".$data_id, "q_id");
+				$no_22 = 1;
+				while($row_22 = mysql_fetch_array($select_22)){
+					$i_a_22 = get_isset($_POST["i_answer2_22_".$no_22]);
+					$i_a_description_22 = get_isset($_POST["i_answer2_22_description_".$no_22]);
+					
+					if($i_a_22 == 1){ $point_22 = $row_22['q_point1'];  }
+					else if($i_a_22 == 2){ $point_22 = $row_22['q_point2'];  }
+					else if($i_a_22 == 3){ $point_22 = $row_22['q_point3'];  }
+					else if($i_a_22 == 4){ $point_22 = $row_22['q_point4'];  }
+					
+					$data_22 = "'',
+											'$answer_id',
+											'".$row_22['q_id']."',
+											'".$i_a_22."',
+											'".$point_22."',
+											'$i_a_description_22'
+				";
+				//echo $data_answer2_detail;
+				create_config("a_2_2", $data_22);
+				$no_22++;
+				}
+				
 			// tipe soal 321
 			}else if($row_question2['q2_type'] == 10){
 				$select_321 = select_config("q_3_2_1", "data_id = ".$data_id, "q_id");
@@ -404,6 +600,8 @@ switch ($page) {
 				$no_321++;
 				}
 			}
+			
+			// tipe soal 36
 			else if($row_question2['q2_type'] == 11){
 				$select_36 = select_config("q_3_6", "data_id = ".$data_id, "q_id");
 				$no_36 = 1;
@@ -424,6 +622,16 @@ switch ($page) {
 				create_config("a_3_6", $data_36);
 				$no_36++;
 				}
+			}
+			
+			
+			// update data poin 142 
+			if($row_question2['q2_type'] == 4){
+					
+				$point_142 = get_isset($_POST["i_answer2_142_point"]);
+				$point_value_142 = $row_question2['q2_weight'] / 100 * $point_142;
+				
+				update_data("answers2", "answer2_id", " answer2_point = '".$point_142."', answer2_point_value = '".$point_value_142."' ", $answer2_id);
 			}
 			
 			$no_answer2++;

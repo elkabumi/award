@@ -36,7 +36,7 @@
                                         	</label>
                                             </td>
                                             <td>
-                                            <input required="required" type="text" name="i_answer2_212_<?= $no_212 ?>" class="form-control" placeholder="" value=""/>
+                                            <input  type="text" name="i_answer2_212_<?= $no_212 ?>" class="form-control" placeholder="" value=""/>
                                             </td>
                                             </tr>
                                              <?php
@@ -58,7 +58,7 @@
                                            		<input type="radio" name="i_answer2_212_detail<?= $no_212_detail ?>" class="minimal" value="2"/>
                                         	</label>
                                             </td>
-                                            <td> <input required="required" type="text" name="i_answer2_212_detail_<?= $no_212_detail ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td> <input type="text" name="i_answer2_212_detail_<?= $no_212_detail ?>" class="form-control" placeholder="" value=""/></td>
                                             </tr>
                                             <?php
 											$no_212_detail++;

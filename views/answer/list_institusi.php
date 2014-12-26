@@ -3,7 +3,7 @@
 
                 <!-- Main content -->
                <?php
-               $q_cat = mysql_query("select * from categories where cat_id = 3 order by cat_id");
+               $q_cat = mysql_query("select * from categories where cat_id = 1 order by cat_id");
 			   $no_cat  = 1;
 			   while($r_cat = mysql_fetch_array($q_cat)){
 			   ?>
@@ -157,7 +157,7 @@
                                            
                                             <td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
                                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
-                                            <input type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="1" required/>
+                                            <input checked="checked" type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="1" required/>
                                         </label> Ya
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <label>
