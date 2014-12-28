@@ -4,6 +4,7 @@
 	
 		
 ?>
+
   
                                                 <input  type="hidden" name="i_particpant_id" class="form-control" placeholder="" value="<?=$participant_id ?>" readonly="readonly" />  
 	     <?php
@@ -11,8 +12,8 @@
 										   $query_participant =mysql_query("SELECT a.*, b.qp1_get_child 
 										   						FROM participants_pma1 a
 																join questions_pma1 b on b.qp1_id = a.qp1_id
-																
-																 where participant_id = '$participant_id'");
+																where participant_id = '$participant_id'
+																order by participant_id ");
                                             
 											while($row = mysql_fetch_array($query_participant)){
                                             

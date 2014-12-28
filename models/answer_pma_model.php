@@ -146,6 +146,11 @@ function get_point_qp_133($answer_id){
 		$result = $row['0'];
 		return $result.'<br>';
 }
-
+function get_participant_name($particpant_id){
+		$query=mysql_query("SELECT participant_name  FROM participants where  	participant_id ='".$particpant_id."'");
+		$row=mysql_fetch_object($query);
+			
+		return $row->participant_name;
+}
 
 ?>

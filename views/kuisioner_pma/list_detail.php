@@ -48,51 +48,105 @@
                         <div class="col-xs-12">
                             
                             
-                            <div class="box">
+            <div class="box">
                              
-                                <div class="box-body2 table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                            <th width="5%">No</th>
-                                                <th>Nama Phase</th>
-                                   				 <th>Nama Pejabat Pengisi</th> 
-                                                  <th>Total Nilai</th> 
-                                                <th>Config</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                           $no = 1;
-                                            while($row = mysql_fetch_array($query)){
-                                            ?>
-                                            <tr>
-                                            <td><?= $no?></td>
-                                               
-                                               <td><?= $row['phase_name']?></td>
-                                               <td><?= $row['answer_pma3_answer']?></td>
-                                               <?php $total_nilai=get_total_nilai($row['answer_pma_id']);?>
-                                                 <td><?= $total_nilai?></td>
-                                                <td style="text-align:center;">
+               <div class="box-body2 table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                        <th width="5%">No</th>
+                        <th>Peserta</th>
+                    <?php
+					$query_phase = get_phase();
+                              while($row_phase=mysql_fetch_object($query_phase)){
+								$max_colom = get_total_answer($data_id,$row_phase->phase_id);
+								if($max_colom == ''){
+									$max_colom='1';
+								}
+						?>
+                        <th colspan="<?=$max_colom?>"><?=$row_phase->phase_name?> </th> 
+                        <th>rata-rata</th>
+                        <?php
+								}
+						?>
+                                              
+                      </tr>
+                     </thead>
+                    <tbody>
+                    <?php
+						$no = 1;
+						while($row = mysql_fetch_object($query)){
+                 	?>
+                     <tr>
+                         <th width="5%"><?=$no?></th>
+                         <th><?=$row->participant_name?></th>
+                        <?php
+							$query_phase = get_phase();
+                              while($row_phase=mysql_fetch_object($query_phase)){
+								$max_colom = get_total_answer($data_id,$row_phase->phase_id);
+								if($max_colom == ''){
+									$max_colom='1';
+								}
+								$query_answer_pma_id = get_answer_id($data_id,$row_phase->phase_id,$row->participant_id);	 
+							 	
+								$total_answer_participant=get_total_answer_participant($data_id,$row_phase->phase_id,$row->participant_id);
+								if($total_answer_participant == '0'){
+									for($i=1;$i<=$max_colom; $i++){
+						?>
+                        			<th>&nbsp;</th>
+                        <?php
+									}
+									?>
+                                   <th>0</th>
+                                    <?
+								}else{
+								$no_2=1;
+								while($row_answer_pma_id=mysql_fetch_object($query_answer_pma_id)){
+								$total_nilai=get_total_nilai($row_answer_pma_id->answer_pma_id);
+						?>
+                        <th> <?=$total_nilai?> <a href="kuisioner_pma.php?page=list_answer&answer_pma_id=<?=$row_answer_pma_id->answer_pma_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
+                        
+                        <?php
+								if($total_answer_participant != $max_colom){
+									$kolom_tambahan = $max_colom - $total_answer_participant;
+									for($kolom_baru=1;$kolom_baru<=$kolom_tambahan; $kolom_baru++){
+						?>
+                        			<th>&nbsp;</th>
+                        <?php
+									$no_2++;
+									}
+								}
+								
+									?>
+                        <?
+								if($no_2 == $max_colom){
+						?>
+                        		<th><?=$rata_nilai=get_rata_nilai($data_id,$row_phase->phase_id,$row->participant_id,$max_colom );?></th>
+                        <?php
+								
+								}
+								$no_2++;
+								}
+								}
+								
+								
+						
+							 	
+								
+							}
+						?>
+                                              
+                      </tr>
+			     
+                    </tr>
+                                            
 
-                                               <a href="kuisioner_pma.php?page=list_answer&answer_pma_id=<?= $row['answer_pma_id']?>&data_id=<?= $row['data_id']?>" class="btn btn-danger" >detail</i></a>
-                                                 
-                                                </td> 
-                                            </tr>
-                                            <?php
+                                           <?php
 											$no++;
-                                            }
-                                            ?>
-
-                                           
+											}
+											?>
                                           
                                         </tbody>
-                                          <tfoot>
-                                            <tr>
-                                                <td colspan="10"><a href="<?= $add_button ?>" class="btn btn-info " >Add</a></td>
-                                               
-                                            </tr>
-                                        </tfoot>
                                     </table>
 
                                 </div><!-- /.box-body -->

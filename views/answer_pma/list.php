@@ -83,7 +83,8 @@ function load_data_participant(str)
                     <div class="row">
                          <div class="col-md-12">
                             <!-- general form elements disabled -->
-                             <div class="title_page"> TAHAP KUISIONER</div>
+                             <div class="title_page"> TAHAP KUISIONER
+							 </div>
 
                          
                                         
@@ -148,13 +149,13 @@ function load_data_participant(str)
                                        
                                           
                                        
-                                        <select id="basic" name="i_participan_id" class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data_participant(this.value)" >
+                                     <select id="basic" name="i_particpant_id" class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data_participant(this.value)" >
                                       <option value="0">---</option>
                                            <?php
                                         $query_owner = mysql_query("select * from participants");
                                         while($row_owner = mysql_fetch_array($query_owner)){
                                         ?>
-                                         <option value="<?= $row_owner['participant_id']?>"><?= $row_owner['participant_name'] ?></option>
+                                         <option value="<?= $row_owner['participant_id']?>"><?= $row_owner['participant_name'] ?><?= $row_owner['participant_id']?></option>
                                         <?php
                                         }
                                         ?>

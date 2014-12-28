@@ -25,6 +25,7 @@
                                                  <th><?= $no ?></th>
 												<th><?= $y ?></th>
                                                  <th>&nbsp;</th>
+                                                 <th>&nbsp;</th>
                                                 </tr>
 												<?php
 												$no++;
