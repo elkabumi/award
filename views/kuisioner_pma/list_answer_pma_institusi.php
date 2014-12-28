@@ -158,17 +158,7 @@
 										$no_question++;
 										}
 										?>
-                                 <?php
-                                 if($r_sub_cat['sub_cat_id'] != 11){
-								 ?>
-                                 <div class="box-footer">
-                                
-    
-                                
-</div>
-<?php
-								 }
-?>
+                               
                             </div><!-- /.box -->
                         
                             

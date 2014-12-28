@@ -54,7 +54,7 @@
                                              <tr>
                                            <td valign="top" align="center">
 										       <label>
-                                            <input type="radio" name="i_answer_pma2_<?= $no_question ?>_<?=$r_question['qp2_cat_pma_id']?>_<?=$r_question['qp2_type']?>_<?=$r_question['qp2_id']?>" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"/>
+                                            <input required type="radio" name="i_answer_pma2_<?= $no_question ?>_<?=$r_question['qp2_cat_pma_id']?>_<?=$r_question['qp2_type']?>_<?=$r_question['qp2_id']?>" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"/>
                              
                                         </label>
                                            </td>
@@ -112,13 +112,13 @@
                                            
                                             <td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
                                           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
-                                         <input type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" value="1" />
+                                         <input required type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" value="1" />
                                          
                                        
                                         </label> Ya
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <label>
-                                            <input type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" value="0" />
+                                            <input required type="radio" name="i_attachment_pma2_<?= $no_question ?>_<?= $r_question['qp2_cat_pma_id'] ?>_<?= $r_question['qp2_type'] ?>_<?= $r_question['qp2_id'] ?>" class="minimal" value="0" />
                                         </label> Tidak
                                             </td>
                                             <td>
@@ -137,17 +137,7 @@
 										$no_question++;
 										}
 										?>
-                                 <?php
-                                 if($r_sub_cat['sub_cat_id'] != 11){
-								 ?>
-                                 <div class="box-footer">
-                                
-    
-                                
-</div>
-<?php
-								 }
-?>
+                               
                             </div><!-- /.box -->
                         
                             
