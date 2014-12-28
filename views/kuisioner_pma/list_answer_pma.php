@@ -1,5 +1,39 @@
  <section class="content">
                     <div class="row">
+                         <div class="col-md-12">
+                         
+						 
+						 
+                            <!-- general form elements disabled -->
+                             <div class="title_page"> TAHAP KUISIONER
+							 </div>
+
+                         
+                                        
+                                        <div class="form-group">
+                                          
+                                      <select id="basic" name="i_phase_id" class="selectpicker show-tick form-control" data-live-search="true"  disabled="disabled">
+                                     
+                                        <?php
+										$phase_id = get_phase_id($answer_pma_id);
+                                        $query_phase = mysql_query("select * from phase order by phase_id");
+                                        while($row_phase = mysql_fetch_array($query_phase)){
+                                        ?>
+                                         <option value="<?= $row_phase['phase_id']?>" <?php if($phase_id == $row_phase['phase_id']){?> selected="selected"<? } ?>><?= $row_phase['phase_name'] ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                          
+                                        </select>
+                                        </div>
+                                       
+                                    
+                                    
+                        </div><!--/.col (right) -->
+                    </div>   <!-- /.row -->
+                 
+                 <br />
+                    <div class="row">
                         <div class="col-xs-12">
                             
                            <div class="title_page"> A. DATA UMUM KABUPATEN/ KOTA</div>

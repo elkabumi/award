@@ -37,18 +37,23 @@ switch ($page) {
 		extract($_POST);
 		$i_particpant_id = (get_isset($i_particpant_id)) ? $i_particpant_id : 0;
 		$i_phase_id = get_isset($i_phase_id);
+		$query=select_questions_pma3($data_id);
+		$asesor_id=mysql_result($query,1,0);
 		
+		$asesor_name=get_isset($_POST['i_answer3_2_'.$asesor_id.'']);
+		$participant_name=get_participant_name($i_particpant_id);
 		$date =date('Y-m-d');
 		$user_id = $_SESSION['user_id'];
 		$data = "'',
 				'$data_id',
 				'$i_particpant_id',
+				'$participant_name',
+				'$asesor_name',
 				'$date',
 				'$user_id',
 				'$i_phase_id'
 				
 			";
-			
 		create($data);
 		$answer_pma_id = mysql_insert_id();
 		
@@ -76,15 +81,17 @@ switch ($page) {
 									'',
 									'$answer_pma_id',
 									'$row[qp2_id]',
+									'$row[qp2_weight]',
 									'$answer_question_id',
+									'$point',
 									'$total_point',
 									'$attachment'";		
-				 		create_answer_pma2($data2);
+				 		 create_answer_pma2($data2);
 					
 			
 					}else if($row['qp2_type'] == '1'){
 						$attachment=get_isset($_POST['i_attachment_pma2_'.$no.'_'.$row['qp2_cat_pma_id'].'_'.$row['qp2_type'].'_'.$row['qp2_id'].'']);
-						mysql_query("INSERT INTO  answers_qp_132 vALUES('','$answer_pma_id','$row[qp2_id]','','','$attachment')");
+						mysql_query("INSERT INTO  answers_qp_132 vALUES('','$answer_pma_id','$row[qp2_id]','$row[qp2_weight]','','','','$attachment')");
 						$answer_qp_132_id = mysql_insert_id();
 						for($no_132=1; $no_132<=3; $no_132++){
 							$query_132 = select_qp_1_3_2($data_id);	
@@ -107,12 +114,12 @@ switch ($page) {
 							$point = 5;
 						}
 						$total_point = ($point * 100) / $row['qp2_weight'];
-						mysql_query("UPDATE answers_qp_132 SET answer_qp_132_answer = '".$get_answer_132."',answer_qp_132_point = '".$total_point."' WHERE answer_qp_132_id = '".$answer_qp_132_id."'");
+						mysql_query("UPDATE answers_qp_132 SET answer_qp_132_answer = '".$get_answer_132."',answer_qp_132_point = '".$point."',answer_qp_132_point_value = '".$total_point."' WHERE answer_qp_132_id = '".$answer_qp_132_id."'");
 						
 						
 					}else if($row['qp2_type'] == '2'){
 						$attachment=get_isset($_POST['i_attachment_pma2_'.$no.'_'.$row['qp2_cat_pma_id'].'_'.$row['qp2_type'].'_'.$row['qp2_id'].'']);
-						mysql_query("INSERT INTO  answers_qp_133 VALUES('','$answer_pma_id','$row[qp2_id]','','','$attachment')");
+						mysql_query("INSERT INTO  answers_qp_133 VALUES('','$answer_pma_id','$row[qp2_id]','$row[qp2_weight]','','','','$attachment')");
 						$answer_qp_133_id = mysql_insert_id();
 						for($no_133=1; $no_133<=3; $no_133++){
 							$query_133 = select_qp_1_3_3($data_id);	
@@ -136,12 +143,12 @@ switch ($page) {
 							$point = 5;
 						}
 						$total_point = ($point * 100) / $row['qp2_weight'];
-						mysql_query("UPDATE answers_qp_133 SET answer_qp_133_answer = '".$get_answer_133."',answer_qp_133_point = '".$total_point."' WHERE answer_qp_133_id = '".$answer_qp_133_id."'");
+						mysql_query("UPDATE answers_qp_133 SET answer_qp_133_answer = '".$get_answer_133."',answer_qp_133_point = '".$point."',answer_qp_133_point_value = '".$total_point."' WHERE answer_qp_133_id = '".$answer_qp_133_id."'");
 					
 					}
 					else if($row['qp2_type'] == '3'){
 						$attachment=get_isset($_POST['i_attachment_pma2_'.$no.'_'.$row['qp2_cat_pma_id'].'_'.$row['qp2_type'].'_'.$row['qp2_id'].'']);
-						mysql_query("INSERT INTO  answers_qp_211 VALUES('','$answer_pma_id','$row[qp2_id]','','','$attachment')");
+						mysql_query("INSERT INTO  answers_qp_211 VALUES('','$answer_pma_id','$row[qp2_id]','$row[qp2_weight]','','','','$attachment')");
 						$answer_qp_211_id = mysql_insert_id();
 						
 							$query_211 = select_qp_2_1_1($data_id);	
@@ -174,12 +181,12 @@ switch ($page) {
 						}
 						$total_point = ($point * 100) / $row['qp2_weight'];
 						
-						mysql_query("UPDATE answers_qp_211 SET answer_qp_211_answer = '".$get_answer_211."',answer_qp_211_point = '".$total_point."' WHERE answer_qp_211_id = '".$answer_qp_211_id."'");
+						mysql_query("UPDATE answers_qp_211 SET answer_qp_211_answer = '".$get_answer_211."',answer_qp_211_point = '".$point."',answer_qp_211_point_value = '".$total_point."' WHERE answer_qp_211_id = '".$answer_qp_211_id."'");
 					
 						
 					}else if($row['qp2_type'] == '4'){
 						$attachment=get_isset($_POST['i_attachment_pma2_'.$no.'_'.$row['qp2_cat_pma_id'].'_'.$row['qp2_type'].'_'.$row['qp2_id'].'']);
-						mysql_query("INSERT INTO  answers_qp_311 VALUES('','$answer_pma_id','$row[qp2_id]','','','$attachment')");
+						mysql_query("INSERT INTO  answers_qp_311 VALUES('','$answer_pma_id','$row[qp2_id]','$row[qp2_weight]','','','','$attachment')");
 						$answer_qp_311_id = mysql_insert_id();
 						for($no_311=1; $no_311<=10; $no_311++){
 							$query_311 = select_qp_3_1_1($data_id);	
@@ -202,7 +209,7 @@ switch ($page) {
 					}
 					$total_point = ($point * 100) / $row['qp2_weight'];
 						
-					mysql_query("UPDATE answers_qp_311 SET answer_qp_311_answer = '".$get_answer_311."',answer_qp_311_point = '".$total_point."' WHERE answer_qp_311_id = '".$answer_qp_311_id."'");
+					mysql_query("UPDATE answers_qp_311 SET answer_qp_311_answer = '".$get_answer_311."',answer_qp_311_point = '".$point."',answer_qp_311_point_value = '".$total_point."' WHERE answer_qp_311_id = '".$answer_qp_311_id."'");
 				
 				$no++;
 				}
@@ -224,7 +231,7 @@ switch ($page) {
 				$no++;
 				}
 				
-			header("Location: kuisioner_pma.php?page=list&did=1");		
+		header("Location: kuisioner_pma.php?page=list&did=1");		
 	break;
 	
 		}

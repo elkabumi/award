@@ -23,7 +23,10 @@ switch ($page) {
 	case 'list_detail':
 		get_header($title);
 		$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : null;
-		$query = select_answer();
+		
+		$query = select_participant($data_id);
+		
+		
 		$add_button = "kuisioner_pma.php?page=form";
 
 
@@ -36,6 +39,7 @@ switch ($page) {
 		$answer_pma_id = (isset($_GET['answer_pma_id'])) ? $_GET['answer_pma_id'] : null;
 		$data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : null;
 		$close_button="kuisioner_pma.php?page=list_detail&data_id=$data_id";
+		
 		$query = select_answer_detail($answer_pma_id);
 		$query_identitas = select_answer_identitas($answer_pma_id);
 		$add_button = "answer_pma.php?page=form";

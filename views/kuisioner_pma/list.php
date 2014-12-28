@@ -71,13 +71,12 @@
                                                 <td><?= format_date($row['kuisioner_date'])?></td>
                                                 <td><?= $row['kuisioner_name']?></td>
                                                
-                                                 <td><?= $row['kuisioner_description']?></td>
+                                                <td><?= $row['kuisioner_description']?></td>
                                                
                                                 <td style="text-align:center;">
 
                                                <a href="kuisioner_pma.php?page=list_detail&data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >detail</i></a>
-                                                 
-													<a href="answer_pma.php?data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >Input Kuisioner</a>
+                                               <a href="answer_pma.php?data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >Input Kuisioner</a>
                                                 </td> 
                                             </tr>
                                             <?php
