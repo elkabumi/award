@@ -47,7 +47,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             
-                           <div class="title_page">DATA PESERTA PMa </div>
+                           <div class="title_page">DATA PESERTA PMA / PMDN </div>
                             
                             <div class="box">
                               
@@ -56,7 +56,7 @@
                                         <thead>
                                             <tr>
                                             <th width="5%">No</th>
-                                                <th width="75%">Nama Kabupaten/Kota</th>
+                                                <th width="75%">Nama </th>
                                                 <th width="20%">Config</th>
                                             </tr>
                                         </thead>

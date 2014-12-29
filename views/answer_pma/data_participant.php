@@ -4,7 +4,10 @@
 	
 		
 ?>
-<?php
+
+  
+                                                <input  type="hidden" name="i_particpant_id" class="form-control" placeholder="" value="<?=$participant_id ?>" readonly="readonly" />  
+	     <?php
                                            $no = 1;
 										   $query_participant =mysql_query("SELECT a.*, b.qp1_get_child 
 										   						FROM participants_pma1 a
