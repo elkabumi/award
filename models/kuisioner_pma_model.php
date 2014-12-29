@@ -81,7 +81,7 @@ function get_phase(){
 }
 function get_total_answer($data_id,$phase_id){
 	$query = mysql_query("SELECT MAX(b.sama) AS pma_id, b.participant_id
-						FROM answers_pma a
+							FROM answers_pma a
 						JOIN (
 						
 						SELECT COUNT( participant_id ) AS sama, participant_id

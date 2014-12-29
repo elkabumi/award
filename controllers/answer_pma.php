@@ -227,6 +227,7 @@ switch ($page) {
 											'".$row['qp3_id']."',
 											'".$row['qp3_name']."',
 											'".$answer_question3."'";
+						echo $data_question3 ."<br>";
 					create_answer_pma3($data_question3);
 				$no++;
 				}

@@ -112,24 +112,24 @@
 												$point_value = $answer_item_pma->answer_pma2_point_value;
 										  	}else if($r_question['qp2_type'] == 1){
 											  	$answer_item_pma = get_item_pma_132($answer_pma_id,$r_question['qp2_id']);
-										  		$point = $answer_item_pma->qp2_weight;
-												$bobot_soal = $answer_item_pma->answer_qp_132_point;
+										  		$bobot_soal = $answer_item_pma->qp2_weight;
+												$point = $answer_item_pma->answer_qp_132_point;
 												$point_value = $answer_item_pma->answer_qp_132_point_value;
 											}else if($r_question['qp2_type'] == 2){
 											 	$answer_item_pma = get_item_pma_133($answer_pma_id,$r_question['qp2_id']);
-												$point = $answer_item_pma->qp2_weight;
-												$bobot_soal = $answer_item_pma->answer_qp_133_point;;
-												$point_value = $answer_item_pma->answer_qp_133_point;;
+												$bobot_soal = $answer_item_pma->qp2_weight;
+												$point = $answer_item_pma->answer_qp_133_point;;
+												$point_value = $answer_item_pma->answer_qp_133_point_value;;
 											}else if($r_question['qp2_type'] == 3){
 											 	 $answer_item_pma = get_item_pma_211($answer_pma_id,$r_question['qp2_id']);
-												$point = $answer_item_pma->qp2_weight;
-												$bobot_soal = $answer_item_pma->answer_qp_211_point;;
-												$point_value = $answer_item_pma->answer_qp_211_point;;
+												$bobot_soal = $answer_item_pma->qp2_weight;
+												$point = $answer_item_pma->answer_qp_211_point;;
+												$point_value = $answer_item_pma->answer_qp_211_point_value;;
 											}else if($r_question['qp2_type'] == 4){
 											 	$answer_item_pma = get_item_pma_311($answer_pma_id,$r_question['qp2_id']);;
-												$point = $answer_item_pma->qp2_weight;
-												$bobot_soal = $answer_item_pma->answer_qp_311_point;;
-												$point_value = $answer_item_pma->answer_qp_311_point;;
+												$bobot_soal= $answer_item_pma->qp2_weight;
+												$point = $answer_item_pma->answer_qp_311_point;;
+												$point_value = $answer_item_pma->answer_qp_311_point_value;;
 											}
 										   ?>
 											<td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
