@@ -57,17 +57,7 @@
                                             
                                             </td>
                                           </tr> 
-                                          
-                                          <?php
-										  // Jika pertanyaan no 3 a
-                                          if($r_q_d['q2d_type'] == 1){
-											  include 'q_113.php';
-										  }else  if($r_q_d['q2d_type'] == 2){
-											  include 'q_122.php';
-										  }
-										  ?> 
-                                         
-										 <?php
+                                      <?php
 										 $no_q_q_d++;
 										}
 										
