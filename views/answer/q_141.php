@@ -30,7 +30,7 @@
                                         	</td>
                                             <td>
                                              <label>
-                                                <input type="radio" name="i_answer2_141_<?= $no_141 ?>" class="minimal" value="2"/>
+                                                <input type="radio" name="i_answer2_141_<?= $no_141 ?>" class="minimal" value="0"/>
                                             </label>
                                             </td>
                                             <td> <input type="text" name="i_answer2_141_jumlah_<?= $no_141 ?>" class="form-control" placeholder="" value=""/></td>

@@ -201,5 +201,61 @@ function delete_opsi($table, $id){
 function update_data($table, $parameter, $data, $id){
 	mysql_query("update $table set ".$data." where $parameter = '$id'");
 }
+function get_point_132($answer_id){
+		$query_132_1=mysql_query("SELECT  SUM(a_answer / 4) as total1 FROM  a_1_3_2 WHERE  	a_answer_number  = '1' and answer_id = '".$answer_id."'");
+		$year_1 = mysql_fetch_object($query_132_1);
+		$year_1->total1;
+		$query_132_2=mysql_query("SELECT  SUM(a_answer / 4) as total2 FROM  a_1_3_2 WHERE  	a_answer_number 	 = '2' and answer_id = '".$answer_id."'");
+		$year_2 = mysql_fetch_object($query_132_2);
+		$year_2->total2;
+		if($year_1->total1 == '0'){
+			$total_1_2 = $year_1->total2 * 100;
+		}else{
+			$total_1_2 = ($year_2->total2 / $year_1->total1) * 100;
+			$total_1_2 = $total_1_2 - 100;
+		}
+		
+		$query_132_3=mysql_query("SELECT  SUM(a_answer / 4) as total3 FROM  a_1_3_2 WHERE  	a_answer_number 	 = '3' and answer_id = '".$answer_id."'");
+		$year_3 = mysql_fetch_object($query_132_3);
+		$year_3->total3;
+		if($year_2->total2 == '0'){
+			$total_2_3 = $year_1->total3 * 100;
+		}else{
+			$total_2_3 = ($year_3->total3 / $year_2->total2) * 100;
+			$total_2_3 = $total_2_3 - 100;
+		}
+		
+		$query_132_4=mysql_query("SELECT  SUM(a_answer / 4) as total4 FROM  a_1_3_2 WHERE  	a_answer_number 	 = '4' and answer_id = '".$answer_id."'");
+		$year_4 = mysql_fetch_object($query_132_4);
+		$year_4->total4;
+		if($year_3->total3 == '0'){
+			$total_3_4 = $year_1->total4  * 100;
+		}else{
+			$total_3_4 = ($year_4->total4 / $year_3->total3) * 100;
+			$total_3_4 = $total_3_4 - 100;
+		}
+		
+		
+		$rata_rata = ($total_1_2 + $total_2_3 + $total_3_4) / 3;
+		return $rata_rata;
+}
+function get_point_133($answer_id){
+		$query =mysql_query("SELECT  COUNT(a_id) AS total FROM  a_1_3_3 WHERE a_answer <> '' and a_answer_type = '2' and answer_id = '".$answer_id."'");
+		$row = mysql_fetch_object($query);
+		$row->total;
+	return $row->total;
+}
+function get_point_141($answer_id){
+		$query =mysql_query("SELECT  COUNT(a_id) AS total FROM  a_1_4_1 WHERE a_answer = '1' AND answer_id = '".$answer_id."'");
+		$row = mysql_fetch_object($query);
+		$row->total;
+	return $row->total;
+}
+function get_point_113($answer_id){
+		$query =mysql_query("SELECT  SUM(a_answer_point) AS total FROM  a_1_1_3 WHERE answer_id = '".$answer_id."'");
+		$row = mysql_fetch_object($query);
+		$row->total;
+	return $row->total;
+}
 
 ?>

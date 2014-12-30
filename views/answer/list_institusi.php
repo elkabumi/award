@@ -74,7 +74,7 @@
                                            <td>&nbsp;</td>
                                            <td valign="top" align="center" width="3%">
 										       <label>
-                                            <input required type="radio" name="i_answer2_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="<?= $no_q_q_d ?>_<?= $r_q_d['q2d_point'] ?>"/>
+                                            <input   type="radio" name="i_answer2_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="<?= $no_q_q_d ?>_<?= $r_q_d['q2d_point'] ?>"/>
                                         </label>
                                       
                                             
@@ -157,11 +157,11 @@
                                            
                                             <td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
                                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
-                                            <input checked="checked" type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="1" required/>
+                                            <input checked="checked" type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="1"  />
                                         </label> Ya
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <label>
-                                            <input type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="0" required/>
+                                            <input type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="0"  />
                                         </label> Tidak
                                             </td>
                                             <td>
