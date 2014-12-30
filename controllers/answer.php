@@ -372,7 +372,7 @@ switch ($page) {
 			$i_jawaban;
 			
 			$select_question2_detail = select_question2_detail($row_question2['q2_id']);
-			
+			$no_answer2_detail = 1;
 			while($row_question2_detail = mysql_fetch_array($select_question2_detail)){
 			
 				
@@ -413,13 +413,13 @@ switch ($page) {
 						$point = get_point_113($answer_id);
 						mysql_query("UPDATE answers2_details SET answer_detail_point ='".$point."' WHERE   	answer2_detail_id ='".$id."' ");
 						$point_value = ($point / 100) * $row_question2['q2_weight'];
-						mysql_query("UPDATE answers2 SET answer2_point ='".$point."',answer2_point_value ='".$point_value."' WHERE answer2_id = '".$answer2_id."'");
+						mysql_query("UPDATE answers2 SET answer2_point ='".$point."',answer2_point_value ='".$point_value."' WHERE answer2_id = '".$answer2_id."' AND answer2_type ='1'");;
 						
 					}
 				}
 				
 				if($row_question2_detail['q2d_type'] == '2'){
-					if($i_jawaban != ''){}
+					if($i_jawaban  == $no_answer2_detail){
 					$select_122 = select_config("q_1_2_2", "data_id = ".$data_id, "q_id");
 					$no_122 = 1;
 						while($row_122 = mysql_fetch_array($select_122)){
@@ -427,12 +427,12 @@ switch ($page) {
 							for($i=1; $i<=4; $i++){
 						
 								
-							$i_a_122 = get_isset($_POST["i_answer2_122_".$no_122."_".$no_122_2."_".$i_jawaban.""]);
+							$i_a_122 = get_isset($_POST["i_answer2_122_".$no_122_2."_".$no_122."_".$i_jawaban.""]);
 							if($i_a_122 != ''){
 								
 								$data_122 = "'',
 														'$answer_id',
-														'".$row_133['q_id']."',
+														'".$row_122['q_id']."',
 														'".$no_122_2."',
 														'".$no_122."',
 														'".$i_a_122."'
@@ -443,16 +443,24 @@ switch ($page) {
 								create_config("a_1_2_2", $data_122);
 								//$a_id_132 = mysql_insert_id();
 							}
+							
 							$no_122_2++;
 							}
 						
 						$no_122++;
 						}
-					
+						$point = get_point_122($answer_id);
+						echo $point;
+						mysql_query("UPDATE answers2_details SET answer_detail_point ='".$point."' WHERE   	answer2_detail_id ='".$id."' ");
+						$point_value = ($point / 100) * $row_question2['q2_weight'];
+						mysql_query("UPDATE answers2 SET answer2_point ='".$point."',answer2_point_value ='".$point_value."' WHERE answer2_id = '".$answer2_id."' AND answer2_type ='2'");
+						
+					}
 				
 				
 				}
-			
+					
+				$no_answer2_detail++;
 			}
 			
 				

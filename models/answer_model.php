@@ -257,5 +257,13 @@ function get_point_113($answer_id){
 		$row->total;
 	return $row->total;
 }
+function get_point_122($answer_id){
+	for($=1; $i<=4; $i++){
+		$query =mysql_query("SELECT  COUNT(a_answer) AS total FROM  a_1_2_2 WHERE answer_id = '".$answer_id."'");
+		$row = mysql_fetch_object($query);
+		$row->total;
+	}
+	return $row->total;
+}
 
 ?>

@@ -27,8 +27,8 @@
 										while($r_122 = mysql_fetch_array($q_122)){
 										 ?>
                                                 <td>
-                                               
-                                                <input type="text" name="i_answer2_122_<?= $i_122?>_<?= $no_122?>_<?=$no_q_q_d?>" class="form-control" placeholder="" value=""/></td>
+                                               i_answer2_122_<?= $i_122?>_<?= $no_122?>_<?=$no_q_q_d?>
+                                                <input type="text" name="i_answer2_122_<?= $i_122?>_<?= $no_122?>_<?=$no_q_q_d?>" class="form-control" placeholder="" value="<?=$r_122['q_name']."_".$i_122.""?>"/></td>
                                                <?php
 											   $no_122++;
 										}
