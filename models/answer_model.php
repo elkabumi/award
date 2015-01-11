@@ -268,5 +268,34 @@ function get_answer_122($answer_id){
 	}
 	return $jumlah;
 }
+function get_answer_43($answer_id){
+			for($i=1; $i<=3; $i++){
+					$query1_1 = mysql_query("SELECT a_answer FROM a_4_3 WHERE answer_id = '".$answer_id."' AND a_number = '".$i."' AND a_type = '1' and a_sub_type ='1' ");
+					$row1_1   = mysql_fetch_object($query1_1);
+					
+					
+					
+					$query2_1 = mysql_query("SELECT   a_answer FROM a_4_3 WHERE answer_id = '".$answer_id."' AND a_number = '".$i."' AND a_type = '1' and a_sub_type ='2' ");
+					$row2_1   = mysql_fetch_object($query2_1);
+					
+					$rata_1 = ($row2_1->a_answer  /$row1_1->a_answer)*100;
+					
+					
+					$query1_2 = mysql_query("SELECT   a_answer FROM a_4_3 WHERE answer_id = '".$answer_id."' AND a_number = '".$i."' AND a_type = '2' and a_sub_type ='1'");
+					$row1_2   = mysql_fetch_object($query1_2); 
+					
+					$query2_2 = mysql_query("SELECT  a_answer FROM a_4_3 WHERE answer_id = '".$answer_id."' AND a_number = '".$i."' AND a_type = '2' and a_sub_type ='2'");
+					$row2_2   = mysql_fetch_object($query2_2);
+					
+					$rata_2 = ($row2_2->a_answer  /$row1_2->a_answer)*100;
+					
+					$rata_rata[$i] = ($rata_1 + $rata_2)/2;
+					
+			}
+		
+			 
+			 $value = ($rata_rata[1]+ $rata_rata[2]+ $rata_rata[3])/3;
+		return $value;
+}
 
 ?>

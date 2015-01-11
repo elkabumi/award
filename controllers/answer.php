@@ -201,8 +201,7 @@ switch ($page) {
 		create_config("answers", $data_answers);	
 		$answer_id = mysql_insert_id();
 		
-		/*
-		// simpan data answers1
+		
 		$select_participant = select_participant($participant_id);
 	
 		while($row_participant = mysql_fetch_array($select_participant)){
@@ -227,10 +226,10 @@ switch ($page) {
 				
 			}
 		}
-		*/
+	
 		
 		// simpan data answers2
-		$select_sub_category = select_sub_category(1);
+		$select_sub_category = select_sub_category(4);
 		while($row_sub_category = mysql_fetch_array($select_sub_category)){
 			
 		// tipe soal 3422
@@ -347,7 +346,7 @@ switch ($page) {
 				$i_jawaban = '';
 				$i_poin = '';
 			}
-			
+			echo $row_question2['q2_type'];
 			$data_answer2 = "'',
 						'$answer_id',
 						'".$row_question2['q2_type']."',
@@ -855,6 +854,7 @@ switch ($page) {
 			
 			// tipe soal 36
 			else if($row_question2['q2_type'] == 11){
+				
 				$select_36 = select_config("q_3_6", "data_id = ".$data_id, "q_id");
 				$no_36 = 1;
 				while($row_36 = mysql_fetch_array($select_36)){
@@ -876,6 +876,74 @@ switch ($page) {
 				}
 			}
 			
+			else if($row_question2['q2_type'] == 12){
+			for($no_43=1; $no_43<=3; $no_43++){
+			
+				$select_43= select_config("q_4_3", "data_id = ".$data_id, "q_id");
+				
+				while($row_43 = mysql_fetch_array($select_43)){
+						
+					
+					if($row_43['q_type'] == '0'){
+					
+						$i_a_43_1 = get_isset($_POST["i_answer2_43_1_".$row_43['q_id']."_".$no_43.""]);
+						$data_43 = "'',
+													'$answer_id',
+													'".$row_43['q_id']."',
+													'".$row_43['q_type']."',
+													'".$no_43."',
+													'".$i_a_43_1."'
+													
+									";
+									
+					create_config("a_4_3", $data_43);
+						$a_id_43 = mysql_insert_id();
+							
+					}else{
+						for($no_43_2=1; $no_43_2<=2; $no_43_2++){
+						$i_a_43_2 = get_isset($_POST["i_answer2_43_2_".$no_43."_".$row_43['q_id']."_".$no_43_2.""]);
+						
+						$data_43 = "'',
+							'$answer_id',
+													'".$row_43['q_id']."',
+													'".$row_43['q_type']."',
+													'".$no_43_2."',
+													'".$no_43."',
+													
+													'".$i_a_43_2."'
+													
+									";
+						
+						
+					create_config("a_4_3", $data_43);
+						$a_id_43 = mysql_insert_id();
+						}
+						
+					}
+				
+		
+				}
+			
+				}
+			
+				
+				$get_answer_43=get_answer_43($answer_id);
+			
+						
+						if($get_answer_43 > 70){
+							$point = 100;
+						}else if($get_answer_43 < 70 and $get_answer_43 >= 35  ){
+							$point = 55;
+						}else{
+							$point = 5;
+						}
+							$total_point = ($point / 100) * $row['qp2_weight'];
+						
+						mysql_query("UPDATE answers2 SET answer2_point ='".$point."', answer2_answer ='".$answer."', answer2_point_value ='".$point_value."' where answer_id = '".$answer_id."' AND answer2_type = '12'");
+					
+					
+			}
+			
 			
 			// update data poin 142 
 			if($row_question2['q2_type'] == 4){
@@ -891,8 +959,7 @@ switch ($page) {
 		}
 		}
 		
-		// simpan data answers3
-		/*
+
 		$select_question3 = select_identitas($data_id);
 		
 		$no_answer3 = 1;
@@ -906,7 +973,7 @@ switch ($page) {
 			create_config("answers3", $data_answer3);
 			$no_answer3++;
 		}
-		*/
+	
 		
 		}
 		

@@ -3,7 +3,7 @@
 
                 <!-- Main content -->
                <?php
-               $q_cat = mysql_query("select * from categories where cat_id = 1 order by cat_id");
+               $q_cat = mysql_query("select * from categories WHERE cat_id ='4' order by cat_id ");
 			   $no_cat  = 1;
 			   while($r_cat = mysql_fetch_array($q_cat)){
 			   ?>
@@ -96,18 +96,20 @@
                                           </tr> 
                                           
                                           <?php
+										  /*
 										  // Jika pertanyaan no 3 a
                                           if($r_q_d['q2d_type'] == 1){
 											  include 'q_113.php';
 										  }else  if($r_q_d['q2d_type'] == 2){
 											  include 'q_122.php';
 										  }
+										  */
 										  ?> 
                                          
 										 <?php
 										 $no_q_q_d++;
 										}
-										
+										/*
 										if($r_question['q2_type'] == 1){
 											  include 'q_132.php';
 										  }else if($r_question['q2_type'] == 2){
@@ -130,16 +132,18 @@
 											  include 'q_321.php';
 										  }else if($r_question['q2_type'] == 11){
 											  include 'q_36.php';
-										  }else if($r_question['q2_type'] == 12){
+											  
+										  }else   */ if($r_question['q2_type'] == 12){
 											  include 'q_43.php';
 										  }
-										  
+										
 										  
 										
 										 ?>
                                           
                                           
                                           <?php
+										
                                           if($r_question['q2_description']){
 										  ?>
                                            <tr>

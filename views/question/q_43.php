@@ -17,15 +17,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        	 <?php
-                                        $q_43 = mysql_query("select * from q_4_3 where data_id = '$data_id'");
-										$no_43 = 1;
-										while($r_43 = mysql_fetch_array($q_43)){
-										
-										 ?>
+                                        		 <?php
+                                     $no_43_2=1;
+                                          for($y=date("Y")-2; $y<=date("Y"); $y++){
+										if($y == date("Y")){ 
+											$year = $y.'SM I & SM 2';
+                                            
+                                             }else{ 
+												$year = $y;
+											} ?>
+										 
                                             <tr>
-                                            <td><?= $no_43 ?></td>
-                                      		<td><?= $r_43['q_name']?></td>
+                                            <td><?= $no_43_2 ?></td>
+                                      		<td><?= $year ?></td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
