@@ -310,5 +310,67 @@ function get_rata_nilai($data_id,$phase_id,$participant_id,$total_answer){
 	return $total_point;
 		
 }
+function get_point_113($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_1_1_3 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_answer_point;
+}
+function get_a_id_142($answer_id){
+	$query = mysql_query("select *
+		from a_1_4_2 
+		WHERE answer_id =".$answer_id." AND q_type 	='1'
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_id;
+}
 
+function get_a_id_211($id,$answer_id){
+	$query = mysql_query("SELECT 	a_id 
+						FROM a_2_1_1 
+						WHERE q_id='".$id."' AND answer_id='".$answer_id."'
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_id;
+}
+function get_point_214($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_2_1_4 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->q_answer;
+}
+function get_point_215($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_2_1_5 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->	a_answer 	;
+}
+function get_point_22($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_2_2 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_answer 	;
+}
+function get_point_321($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_3_2_1 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_answer 	;
+}
 ?>

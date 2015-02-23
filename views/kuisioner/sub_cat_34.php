@@ -53,7 +53,7 @@
 										$q_3422_detail = mysql_query("select * from q_3_4_2_2_details where q_parent_id = '".$r_3422['q_id']."'");
 									    $no_3422_detail = 1;
 										while($r_3422_detail = mysql_fetch_array($q_3422_detail)){
-										?>
+											?>
                                            <tr>
                                            <td valign="top" align="center"></td>
                                             <td valign="top"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_3422_detail).")"; ?> <?= $r_3422_detail['q_name'] ?></td>

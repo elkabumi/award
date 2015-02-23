@@ -5,12 +5,22 @@
                                             <tr>
                                             <th>Keterangan</th>
                                                 <?php
-												 for($y=date("Y")-3; $y<=date("Y"); $y++){
+									 	$q_a_132 = mysql_query("select MAX(a_answer_year)AS tahun_max from a_1_3_2 where  answer_id  = '$answer_id '");
+										while($r_a_132 = mysql_fetch_array($q_a_132)){
+										 ?>
+                                           
+  s
+                                             <?php
+												 for($y=$r_a_132['tahun_max']-3; $y<=$r_a_132['tahun_max']; $y++){
 												 ?>
-														<th><?= $y ?></th>
+                                                	<th><?=$y?></th>
                                                 <?php
 												 }
 												?>
+                                          
+                                        	   <?php
+											 }
+										   ?>
                                                
                                             </tr>
                                         </thead>
@@ -23,9 +33,11 @@
                                             <td><?= $r_132['q_name'] ?></td>
                                             
                                              <?php
-												 for($y=date("Y")-3; $y<=date("Y"); $y++){
+												 $q_answer_132 = mysql_query("select * from a_1_3_2 where answer_id = '$answer_id' AND q_id = '".$r_132['q_id']."' 
+												 								ORDER BY a_answer_year DESC " );
+													while($r_answer_132 = mysql_fetch_array($q_answer_132)){
 												 ?>
-                                                	<th>&nbsp;</th>
+                                                	<th><?=$r_answer_132['a_answer'] ?></th>
                                                 <?php
 												 }
 												?>

@@ -57,12 +57,11 @@ function select_participant_detail($participant1_id){
 function select_sub_category($cat_id){
 	$query = mysql_query("select *
 		from sub_categories
-		where cat_id = '$cat_id'
-		and sub_cat_parent_id = '0'
 		order by sub_cat_id
 			");
 	return $query;
 }
+
 
 
 function select_question2($data_id, $sub_cat_id){

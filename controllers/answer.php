@@ -229,7 +229,7 @@ switch ($page) {
 	
 		
 		// simpan data answers2
-		$select_sub_category = select_sub_category(4);
+		$select_sub_category = select_sub_category();
 		while($row_sub_category = mysql_fetch_array($select_sub_category)){
 			
 		// tipe soal 3422
@@ -346,7 +346,7 @@ switch ($page) {
 				$i_jawaban = '';
 				$i_poin = '';
 			}
-			echo $row_question2['q2_type'];
+			//echo $row_question2['q2_type'];
 			$data_answer2 = "'',
 						'$answer_id',
 						'".$row_question2['q2_type']."',

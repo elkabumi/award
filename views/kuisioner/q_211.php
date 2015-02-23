@@ -13,17 +13,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        	 <?php
-											 
-											 for($i_211=1; $i_211<=20; $i_211++){
-											 ?>
+                                        	<?
+												$no_answer_211 = 1;
+                                           		$a_id=get_a_id_211($r_211['q_id'],$answer_id);
+												$q_answer_211=mysql_query("SELECT  	a_answer FROM a_2_1_1_details WHERE a_id = '".$a_id."' ORDER BY  	a_detail_id ");
+										    	while($r_answer_211=mysql_fetch_object($q_answer_211)){
+											?>
                                             <tr>
-                                      		<td><?= $i_211?></td>
-                                            <td>&nbsp;</td>
+                                      		<td><?= $no_answer_211?></td>
+                                            
+                                            <td><?= $r_answer_211->a_answer?></td>
                                           </tr>
-                                          <?php
-											 }
-										  ?>
+											  <?php
+                                                 $no_answer_211++;
+												 }
+                                              ?>
                                         </tbody>
                                         
                                     </table>

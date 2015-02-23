@@ -20,14 +20,30 @@
                                         $q_321 = mysql_query("select * from q_3_2_1 where data_id = '$data_id'");
 										$no_321 = 1;
 										while($r_321 = mysql_fetch_array($q_321)){
-										
+											$point_321=get_point_321($r_321['q_id'],$answer_id);
 										 ?>
                                             <tr>
                                             <td><?= $no_321 ?></td>
                                       		<td><?= $r_321['q_name']?></td>
-                                             <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_321['q_point1']?></td>
-                                           <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_321['q_point2']?></td>
-                                            <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_321['q_point3']?></td>
+                                            <td style="text-align:center">	
+                                            <label>
+                                           		<input required type="radio" name="i_answer2_321_<?= $no_321 ?>" class="minimal" value="1"
+                                                <?php if($point_321 == 1 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"
+                                                />
+                                        	</label>
+                                            </td>
+                                            <td style="text-align:center">
+                                             <label>
+                                           		<input required  type="radio" name="i_answer2_321_<?= $no_321 ?>" class="minimal" value="2"
+                                                 <?php if($point_321 == 2 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"/>
+                                        	
+                                            </label>
+                                            </td>
+                                            <td style="text-align:center">
+                                             <label>
+                                           		<input  required type="radio" name="i_answer2_321_<?= $no_321 ?>" class="minimal" value="3"
+                                                 <?php if($point_321 == 3 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled" />
+                                            </td>
                                             
                                             </tr>
                                             

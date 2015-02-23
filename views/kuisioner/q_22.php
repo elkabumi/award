@@ -20,16 +20,36 @@
                                         $q_22 = mysql_query("select * from q_2_2 where data_id = '$data_id'");
 										$no_22 = 1;
 										while($r_22 = mysql_fetch_array($q_22)){
+											$point_22=get_point_22($r_22['q_id'],$answer_id);
 										
 										 ?>
                                             <tr>
                                             <td><?= $no_22 ?></td>
                                       		<td><?= $r_22['q_name']?></td>
-                                             <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_22['q_point1']?></td>
-                                            <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_22['q_point2']?></td>
-                                             <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_22['q_point3']?></td>
-                                             <td style="color:#F4543C; font-weight:bold;"><?= "Poin : ".$r_22['q_point4']?></td>
-                                            
+                                            <td style="text-align:center">	
+                                            <label>
+                                           		<input required type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="1"
+                                                <?php if($point_22 == 1 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"
+                                                />
+                                        	</label>
+                                            </td>
+                                            <td style="text-align:center">
+                                             <label>
+                                           		<input required  type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="2"
+                                                 <?php if($point_22 == 2 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"/>
+                                        	
+                                            </label>
+                                            </td>
+                                            <td style="text-align:center">
+                                             <label>
+                                           		<input  required type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="3"
+                                                 <?php if($point_22 == 3 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled" />
+                                            </td>
+                                             <td style="text-align:center">
+                                             <label>
+                                           		<input  required type="radio" name="i_answer2_22_<?= $no_22 ?>" class="minimal" value="4"
+                                                <?php if($point_22 == 4 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"/>
+                                            </td>
                                             </tr>
                                              <tr>
                                             <td></td>

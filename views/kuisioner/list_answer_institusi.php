@@ -47,7 +47,7 @@
 								}else{
                                 ?> 
                                  <?php
-                                        $q_question = mysql_query("select * from questions2 where q2_sub_cat_id = '".$r_sub_cat['sub_cat_id']."' and data_id = '$data_id'");
+                                        $q_question = mysql_query("select * from answers2 where  answer2_sub_cat_id = '".$r_sub_cat['sub_cat_id']."' and answer_id = '$answer_id'");
 										$no_question = 1;
 										while($r_question = mysql_fetch_array($q_question)){
 										?>
@@ -60,38 +60,35 @@
                                         <table id="" width="100%"  cellpadding="5">
                                           <tr>
                                           <td width="3%" valign="top" align="center"><strong><?= $no_question."."; ?></strong></td>
-                                            <td width="84%"><b> <?= $r_question['q2_name'] ?></b></td>
+                                            <td width="84%"><b> <?= $r_question['answer2_question'] ?></b></td>
                                             <td width="10%">
                                             
                                               
                                             </td>
                                           </tr> 
                                             <?php
-                                        $q_q_d = mysql_query("select * from questions2_details where q2_id = '".$r_question['q2_id']."'");
+                                        $q_q_d = mysql_query("select * from answers2_details where answer2_id = '".$r_question['answer2_id']."' ORDER BY answer2_detail_id");
 									    $no_q_q_d = 1;
 										while($r_q_d = mysql_fetch_array($q_q_d)){
 										?>
                                            <tr>
-                                           <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_q_q_d).")"; ?></td>
-                                            <td valign="top"> <?= $r_q_d['q2d_name'] ?></td>
+                                           <td valign="top" align="center">
+									
+   				<input type="radio" name="i_answer_pma_<?=$r_question['answer2_id']?>" class="minimal" value="<?= $r_q_d['answer2_detail_id'] ?>"
+  									<?php if($no_q_q_d  == $r_question['answer2_answer'] ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"/> 
+                                       
+										</td>
+                                            <td valign="top"> <?= $r_q_d['answer_detail_question'] ?></td>
                                             <td  style="color:#F4543C; font-weight:bold;" valign="top">
                                             
-                                             <?php
-                                          if($r_q_d['q2d_type'] == 1 || $r_q_d['q2d_type'] == 2){
-											 }else{
-											 ?> 
-                                             Poin : <?= $r_q_d['q2d_point']?>
-                                             <?php
-											 }
-											 ?>
                                             </td>
                                           </tr> 
                                           
                                           <?php
 										  // Jika pertanyaan no 3 a
-                                          if($r_q_d['q2d_type'] == 1){
+                                          if($r_q_d['answer2_detail_type'] == 1){
 											  include 'q_113.php';
-										  }else  if($r_q_d['q2d_type'] == 2){
+										  }else  if($r_q_d['answer2_detail_type'] == 2){
 											  include 'q_122.php';
 										  }
 										  ?> 
@@ -100,29 +97,29 @@
 										 $no_q_q_d++;
 										}
 										
-										if($r_question['q2_type'] == 1){
+										if($r_question['answer2_type'] == 1){
 											  include 'q_132.php';
-										  }else if($r_question['q2_type'] == 2){
+										  }else if($r_question['answer2_type'] == 2){
 											  include 'q_133.php';
-										  }else if($r_question['q2_type'] == 3){
+										  }else if($r_question['answer2_type'] == 3){
 											  include 'q_141.php';
-										  }else if($r_question['q2_type'] == 4){
+										  }else if($r_question['answer2_type'] == 4){
 											  include 'q_142.php';
-										  }else if($r_question['q2_type'] == 5){
+										  }else if($r_question['answer2_type'] == 5){
 											  include 'q_211.php';
-										  }else if($r_question['q2_type'] == 6){
+										  }else if($r_question['answer2_type'] == 6){
 											  include 'q_212.php';
-										  }else if($r_question['q2_type'] == 7){
+										  }else if($r_question['answer2_type'] == 7){
 											  include 'q_214.php';
-										  }else if($r_question['q2_type'] == 8){
+										  }else if($r_question['answer2_type'] == 8){
 											  include 'q_215.php';
-										  }else if($r_question['q2_type'] == 9){
+										  }else if($r_question['answer2_type'] == 9){
 											  include 'q_22.php';
-										  }else if($r_question['q2_type'] == 10){
+										  }else if($r_question['answer2_type'] == 10){
 											  include 'q_321.php';
-										  }else if($r_question['q2_type'] == 11){
+										  }else if($r_question['answer2_type'] == 11){
 											  include 'q_36.php';
-										  }else if($r_question['q2_type'] == 12){
+										  }else if($r_question['answer2_type'] == 12){
 											  include 'q_43.php';
 										  }
 										  
@@ -130,19 +127,44 @@
 										
 										 ?>
                                            <tr height="50">
-                                            <td style="color:#09F; font-weight:bold;" colspan="2"><?= "&nbsp;&nbsp;&nbsp;&nbsp;" ?> Bobot Soal : <?= $r_question['q2_weight'] ?></td>
+                                           <td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran: 
+                                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
+                                         <input type="radio" name="i_attachment_<?=$r_question['answer2_id']?>" class="minimal"  value="1"
+										 <?php if($r_question['answer2_attachment'] == '1'){?>  checked <? }?> disabled/>
+                                         
+                                       
+                                        </label> Ya
+                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                        <label>
+                                            <input type="radio" name="i_attachment_<?=$r_question['answer2_id']?>" class="minimal"   value="0" 
+                                            <?php if($r_question['answer2_attachment'] == '0'){?>  checked <? }?>
+                                            
+                                            disabled/>
+                                        </label> Tidak
+                                        
+                                        
+                                        <div style="color:#F4543C; font-weight:bold;">
+                                      
+                                            <?php
+											$total_point= ($r_question['answer2_point'] /100) *  $r_question['answer2_weight'] ;
+											?>
+											<?= "&nbsp;&nbsp;&nbsp;&nbsp;" ?> Bobot Soal : <?= $r_question['answer2_weight'] ?>
+                                            
+                                            % &nbsp; &nbsp;	Point Jawaban : <?=$r_question['answer2_point']?>  &nbsp; &nbsp;	Total point : <?=$total_point?>
+                                            </div>
+                                            </td>
                                             <td>
                                             
-                                                <a href="question.php?page=form_question&id=<?= $r_question['q2_id']?>" class="btn btn-danger" >Edit</a>
+                                                
                                             </td>
                                           </tr> 
                                           
                                           <?php
-                                          if($r_question['q2_description']){
+                                          if($r_question['answer2_description']){
 										  ?>
                                            <tr>
                                            <td style="color:#F4543C; font-weight:bold;" valign="top">Catatan: </td>
-                                            <td><?= $r_question['q2_description'] ?></td>
+                                            <td><?= $r_question['answer2_description'] ?></td>
                                             <td>
                                           
                                             </td>

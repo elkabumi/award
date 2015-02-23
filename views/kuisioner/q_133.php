@@ -23,10 +23,12 @@
                                             <td><?= $i_133?></td>
                                                  <?php
                                                  $q_133 = mysql_query("select * from q_1_3_3 where data_id = '$data_id'");
+												 while($r_133 = mysql_fetch_array($q_133)){
 												
-												while($r_133 = mysql_fetch_array($q_133)){
+													$q_answer_133 = mysql_query("select * from a_1_3_3 where q_id = '".$r_133['q_id']."' AND  a_answer_number='".$i_133."'");
+													$r_answer_133 = mysql_fetch_array($q_answer_133);
 												?>
-                                                <td>&nbsp;</td>
+                                                <td><?= $r_answer_133['oa_answer'] ?></td>
                                                 <?php
 												}
 												?>

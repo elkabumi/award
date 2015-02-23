@@ -25,7 +25,9 @@
                                       		<td><?= $r_215['q_name']?></td>
                                             <td style="text-align:center">	
                                             <label>
-                                           		<input required type="radio" name="i_answer2_215_<?= $no_215 ?>" class="minimal" value="1"/>
+                                           		<input required type="radio" name="i_answer2_215_<?= $no_215 ?>" class="minimal" value="1"
+                                                
+                                                />
                                         	</label>
                                             </td>
                                             <td style="text-align:center">
