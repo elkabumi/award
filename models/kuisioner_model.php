@@ -17,6 +17,22 @@ function read_id($id){
 	$result = mysql_fetch_object($query);
 	return $result;
 }
+
+function select_answer_detail($answer_id){
+	$query = mysql_query("select *
+		from  answers1
+		where answer_id = '$answer_id'
+		order by q1_id 	
+			");
+	return $query;
+}
+
+function select_answer_identitas($answer_id){
+	$query = mysql_query("SELECT * FROM answers3 WHERE answer_id = '".$answer_id."'
+			
+			");
+	return $query;
+}
 function select_participant($data_id){
 	$query = mysql_query("SELECT a.participant_id,a.participant_name,b.data_id
 							FROM participants a
@@ -40,6 +56,15 @@ function get_phase_id($answer_id){
 			");
 	$row = mysql_fetch_object($query);
 	return $row->phase_id;
+}
+function get_child($q1_id){
+	$query = mysql_query("select  q1_get_child
+	FROM questions1  
+	where q1_id = '$q1_id'
+			
+			");
+	$row = mysql_fetch_object($query);
+	return $row->q1_get_child;
 }
 function get_total_answer($data_id,$phase_id){
 	$query = mysql_query("SELECT MAX(b.sama) AS ans_id, b.participant_id

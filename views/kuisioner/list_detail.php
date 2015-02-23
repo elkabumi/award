@@ -104,7 +104,7 @@
 								while($row_answer_id=mysql_fetch_object($query_answer_id)){
 								$total_nilai=get_total_nilai($row_answer_id->answer_id);
 						?>
-                        <th> <?=$total_nilai?> <a href="kuisioner_pma.php?page=list_answer&answer_pma_id=<?=$row_answer_pma_id->answer_pma_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
+                        <th> <?=$total_nilai?> <a href="kuisioner.php?page=list_answer&answer_id=<?=$row_answer_id->answer_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
                         
                         <?php
 								if($total_answer_participant != $max_colom){
