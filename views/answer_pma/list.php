@@ -152,6 +152,7 @@ function load_data_participant(str)
                                      <select id="basic" name="i_particpant_id" class="selectpicker show-tick form-control" data-live-search="true" onChange="load_data_participant(this.value)" >
                                       <option value="0">---</option>
                                            <?php
+
                                         $query_owner = mysql_query("select * from participants where participant_type = '2'");
                                         while($row_owner = mysql_fetch_array($query_owner)){
                                         ?>

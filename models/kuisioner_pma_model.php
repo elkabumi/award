@@ -49,28 +49,37 @@ function get_answer_pma2($answer_id,$qp2_id){
 	return $row->qp2d_id;
 }
 function get_item_pma_pma2($answer_id,$qp2_id){
-	$query =mysql_query("SELECT *  FROM answers_pma2 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$query =mysql_query("SELECT a.*, b.qp2_weight AS bobot
+							FROM answers_pma2 a
+						JOIN questions_pma2 b ON a.qp2_id = b.qp2_id WHERE  a.answer_pma_id = '".$answer_id."' AND a.qp2_id='".$qp2_id."'");
 	$row = mysql_fetch_object($query);
 	return $row;
 }
 
 function get_item_pma_132($answer_id,$qp2_id){
-	$query =mysql_query("SELECT *  FROM answers_qp_132 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$query =mysql_query("SELECT a.*, b.qp2_weight AS bobot  
+		FROM answers_qp_132 a 
+		JOIN questions_pma2 b ON a.qp2_id = b.qp2_id WHERE  	a.answer_pma_id = '".$answer_id."' AND a.qp2_id='".$qp2_id."'");
 	$row = mysql_fetch_object($query);
 	return $row;
 }
 function get_item_pma_133($answer_id,$qp2_id){
-	$query =mysql_query("SELECT *  FROM answers_qp_133 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$query =mysql_query("SELECT a.*, b.qp2_weight AS bobot  
+						FROM answers_qp_133 a
+						 JOIN questions_pma2 b ON a.qp2_id = b.qp2_id WHERE  	a.answer_pma_id = '".$answer_id."' AND a.qp2_id='".$qp2_id."'");
 	$row = mysql_fetch_object($query);
 	return $row;
 }
 function get_item_pma_211($answer_id,$qp2_id){
-	$query =mysql_query("SELECT *   FROM answers_qp_211 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$query =mysql_query("SELECT a.*, b.qp2_weight AS bobot   
+							FROM answers_qp_211 a
+					JOIN questions_pma2 b ON a.qp2_id = b.qp2_id WHERE  	a.answer_pma_id = '".$answer_id."' AND a.qp2_id='".$qp2_id."'");
 	$row = mysql_fetch_object($query);
 	return $row;
 }
 function get_item_pma_311($answer_id,$qp2_id){
-	$query =mysql_query("SELECT *   FROM answers_qp_311 WHERE  	answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
+	$query =mysql_query("SELECT a.*, b.qp2_weight AS bobot   
+								FROM answers_qp_311 a  JOIN questions_pma2 b ON a.qp2_id = b.qp2_id WHERE  	a.answer_pma_id = '".$answer_id."' AND a.qp2_id='".$qp2_id."'");
 	$row = mysql_fetch_object($query);
 	return $row;
 }

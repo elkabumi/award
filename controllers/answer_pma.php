@@ -113,7 +113,11 @@ switch ($page) {
 						}else{
 							$point = 5;
 						}
-						$total_point = ($point * 100) / $row['qp2_weight'];
+						if($row['qp2_weight'] == '0'){
+							$total_point = '0';
+						}else{
+							$total_point = ($point * 100) / $row['qp2_weight'];
+						}
 						mysql_query("UPDATE answers_qp_132 SET answer_qp_132_answer = '".$get_answer_132."',answer_qp_132_point = '".$point."',answer_qp_132_point_value = '".$total_point."' WHERE answer_qp_132_id = '".$answer_qp_132_id."'");
 						
 						
@@ -142,7 +146,11 @@ switch ($page) {
 						}else{
 							$point = 5;
 						}
-						$total_point = ($point * 100) / $row['qp2_weight'];
+						if($row['qp2_weight'] == '0'){
+							$total_point = '0';
+						}else{
+							$total_point = ($point * 100) / $row['qp2_weight'];
+						}
 						mysql_query("UPDATE answers_qp_133 SET answer_qp_133_answer = '".$get_answer_133."',answer_qp_133_point = '".$point."',answer_qp_133_point_value = '".$total_point."' WHERE answer_qp_133_id = '".$answer_qp_133_id."'");
 					
 					}
@@ -179,8 +187,11 @@ switch ($page) {
 						}else{
 							$point = 5;
 						}
-						$total_point = ($point * 100) / $row['qp2_weight'];
-						
+						if($row['qp2_weight'] == '0'){
+							$total_point = '0';
+						}else{
+							$total_point = ($point * 100) / $row['qp2_weight'];
+						}
 						mysql_query("UPDATE answers_qp_211 SET answer_qp_211_answer = '".$get_answer_211."',answer_qp_211_point = '".$point."',answer_qp_211_point_value = '".$total_point."' WHERE answer_qp_211_id = '".$answer_qp_211_id."'");
 					
 						
@@ -207,8 +218,11 @@ switch ($page) {
 					}else{
 						$point = 5;
 					}
-					$total_point = ($point * 100) / $row['qp2_weight'];
-						
+					if($row['qp2_weight'] == '0'){
+						$total_point = '0';
+					}else{
+						$total_point = ($point * 100) / $row['qp2_weight'];
+					}	
 					mysql_query("UPDATE answers_qp_311 SET answer_qp_311_answer = '".$get_answer_311."',answer_qp_311_point = '".$point."',answer_qp_311_point_value = '".$total_point."' WHERE answer_qp_311_id = '".$answer_qp_311_id."'");
 				
 				$no++;

@@ -3,6 +3,7 @@
 
                 <!-- Main content -->
                <?php
+
                $q_cat = mysql_query("select * from categories order by cat_id");
 			   $no_cat  = 1;
 			   while($r_cat = mysql_fetch_array($q_cat)){
@@ -74,7 +75,7 @@
                                            <td>&nbsp;</td>
                                            <td valign="top" align="center" width="3%">
 										       <label>
-                                            <input required type="radio" name="i_answer2_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="<?= $no_q_q_d ?>_<?= $r_q_d['q2d_point'] ?>"/>
+                                            <input   type="radio" name="i_answer2_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="<?= $no_q_q_d ?>_<?= $r_q_d['q2d_point'] ?>"/>
                                         </label>
                                       
                                             
@@ -96,12 +97,14 @@
                                           </tr> 
                                           
                                           <?php
+										 
 										  // Jika pertanyaan no 3 a
                                           if($r_q_d['q2d_type'] == 1){
 											  include 'q_113.php';
 										  }else  if($r_q_d['q2d_type'] == 2){
 											  include 'q_122.php';
 										  }
+										 
 										  ?> 
                                          
 										 <?php
@@ -130,16 +133,18 @@
 											  include 'q_321.php';
 										  }else if($r_question['q2_type'] == 11){
 											  include 'q_36.php';
-										  }else if($r_question['q2_type'] == 12){
+											  
+										  }else   if($r_question['q2_type'] == 12){
 											  include 'q_43.php';
 										  }
-										  
+										
 										  
 										
 										 ?>
                                           
                                           
                                           <?php
+										
                                           if($r_question['q2_description']){
 										  ?>
                                            <tr>
@@ -157,11 +162,11 @@
                                            
                                             <td style="font-weight:bold;" valign="middle" colspan="2">Menggunakan Lampiran : 
                                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <label>
-                                            <input checked="checked" type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="1" required/>
+                                            <input checked="checked" type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="1"  />
                                         </label> Ya
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <label>
-                                            <input type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="0" required/>
+                                            <input type="radio" name="i_attachment_<?= $no_question ?>_<?= $r_sub_cat['sub_cat_id'] ?>" class="minimal" value="0"  />
                                         </label> Tidak
                                             </td>
                                             <td>

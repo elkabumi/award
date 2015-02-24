@@ -18,7 +18,84 @@ function read_id($id){
 	return $result;
 }
 
+function select_answer_detail($answer_id){
+	$query = mysql_query("select *
+		from  answers1
+		where answer_id = '$answer_id'
+		order by q1_id 	
+			");
+	return $query;
+}
 
+function select_answer_identitas($answer_id){
+	$query = mysql_query("SELECT * FROM answers3 WHERE answer_id = '".$answer_id."'
+			
+			");
+	return $query;
+}
+function select_participant($data_id){
+	$query = mysql_query("SELECT a.participant_id,a.participant_name,b.data_id
+							FROM participants a
+						JOIN (SELECT max(  	answer_id ) AS answer_id,data_id,participant_id
+							FROM answers h
+							group by participant_id) AS b
+						on b.participant_id = a.participant_id
+						WHERE b.data_id = '".$data_id."'");
+	return $query;
+}
+function get_phase(){
+	$query =mysql_query("SELECT *  FROM phase ");
+	
+	return $query;
+}
+function get_phase_id($answer_id){
+	$query = mysql_query("select  *
+	FROM answers  
+	where answer_id = '$answer_id'
+			
+			");
+	$row = mysql_fetch_object($query);
+	return $row->phase_id;
+}
+function get_child($q1_id){
+	$query = mysql_query("select  q1_get_child
+	FROM questions1  
+	where q1_id = '$q1_id'
+			
+			");
+	$row = mysql_fetch_object($query);
+	return $row->q1_get_child;
+}
+function get_total_answer($data_id,$phase_id){
+	$query = mysql_query("SELECT MAX(b.sama) AS ans_id, b.participant_id
+							FROM answers a
+						JOIN (
+						
+						SELECT COUNT( participant_id ) AS sama, participant_id
+						FROM answers h
+						WHERE h.participant_id = participant_id
+						GROUP BY participant_id
+						) AS b ON b.participant_id = a.participant_id
+				where a.data_id = '".$data_id."' AND phase_id ='".$phase_id."'
+			");
+	$row = mysql_fetch_object($query);
+	return $row->ans_id;
+}
+function get_answer_id($data_id,$phase_id,$participant_id){
+	$query = mysql_query("select  a.answer_id
+			FROM answers a
+			where a.data_id = '".$data_id."' AND phase_id ='".$phase_id."' AND participant_id ='".$participant_id."'
+			");
+	return $query;
+}
+function get_total_answer_participant($data_id,$phase_id,$participant_id){
+	$query = mysql_query("SELECT COUNT(answer_id) AS ans_id
+							FROM answers
+						where data_id = '".$data_id."' AND phase_id ='".$phase_id."' AND participant_id ='".$participant_id."'
+			");
+	$row = mysql_fetch_object($query);
+	return $row->ans_id;
+}
 function create($data){
 	// masukkan data kuisioner
 	mysql_query("insert into kuisioner values(".$data.")");
@@ -174,7 +251,7 @@ function create($data){
 	// load q43
 	$q_43 = mysql_query("select * from q_4_3 where data_id = 0");
 	while($r_43 = mysql_fetch_array($q_43)){
-		mysql_query("insert into q_4_3 values('', '".$r_43['q_name']."', '$new_id')");
+		mysql_query("insert into q_4_3 values('', '".$r_43['q_name']."', '".$r_43['q_type']."', '$new_id')");
 	}
 	
 	// load questions 3
@@ -203,5 +280,97 @@ function cek_name_login($name){
 	$row = $result['0'];
 	return $row;
 }
+function get_total_nilai($answer_id){
+	$row_1 = mysql_fetch_object(mysql_query("select SUM(b.answer2_point) AS total_point
+							FROM answers a
+							JOIN answers2  b ON  a.answer_id = b.answer_id
+							WHERE a.answer_id 	  = '".$answer_id."'   
+						"));
 
+	$nama_identitas= mysql_fetch_object(mysql_query("select  a.assessor_name 	
+							FROM answers a
+						
+							WHERE a.answer_id  = '".$answer_id."'     
+						"));
+					
+	$result= $row_1->total_point."(".$nama_identitas->assessor_name.")";
+	return $result;
+		
+}
+function get_rata_nilai($data_id,$phase_id,$participant_id,$total_answer){
+	$row_1 = mysql_fetch_object(mysql_query("select SUM(b.answer2_point) AS total_point
+							FROM answers a
+							JOIN answers2  b ON  a.answer_id = b.answer_id
+							WHERE a.data_id = '".$data_id."' AND  a.phase_id = '".$phase_id."'  AND  a.participant_id = '".$participant_id."'     
+						"));
+	
+					
+	$total_point = $row_1->total_point/$total_answer;
+	
+	return $total_point;
+		
+}
+function get_point_113($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_1_1_3 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_answer_point;
+}
+function get_a_id_142($answer_id){
+	$query = mysql_query("select *
+		from a_1_4_2 
+		WHERE answer_id =".$answer_id." AND q_type 	='1'
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_id;
+}
+
+function get_a_id_211($id,$answer_id){
+	$query = mysql_query("SELECT 	a_id 
+						FROM a_2_1_1 
+						WHERE q_id='".$id."' AND answer_id='".$answer_id."'
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_id;
+}
+function get_point_214($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_2_1_4 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->q_answer;
+}
+function get_point_215($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_2_1_5 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->	a_answer 	;
+}
+function get_point_22($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_2_2 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_answer 	;
+}
+function get_point_321($q_id,$answer_id){
+	$query = mysql_query("select *
+		from a_3_2_1 
+		WHERE answer_id =".$answer_id." AND q_id=".$q_id."
+		order by a_id
+			");
+	$row=mysql_fetch_object($query);
+	return $row->a_answer 	;
+}
 ?>

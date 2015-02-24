@@ -25,9 +25,9 @@
                                             <?php
                                             if($r_142['q_type'] == 0){
 											?>
-                                            <td> <input required="required" type="text" name="i_answer2_142_1_<?= $no_142 ?>" class="form-control" placeholder="" value=""/></td>
-                                            <td><input required="required" type="text" name="i_answer2_142_2_<?= $no_142 ?>" class="form-control" placeholder="" value=""/></td>
-                                            <td><input required="required" type="text" name="i_answer2_142_3_<?= $no_142 ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td> <input  type="text" name="i_answer2_142_1_<?= $no_142 ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td><input  type="text" name="i_answer2_142_2_<?= $no_142 ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td><input type="text" name="i_answer2_142_3_<?= $no_142 ?>" class="form-control" placeholder="" value=""/></td>
                                             <?php
 											}else{
 											?>
@@ -49,9 +49,9 @@
                                             
                                              <tr>
                                             <td><?= "&nbsp;&nbsp;&nbsp; - ".$r_142_detail['q_name'] ?></td>
-                                            <td><input required="required" type="text" name="i_answer2_142_1_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
-                                            <td><input required="required" type="text" name="i_answer2_142_2_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
-                                            <td><input required="required" type="text" name="i_answer2_142_3_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td><input type="text" name="i_answer2_142_1_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td><input type="text" name="i_answer2_142_2_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
+                                            <td><input  type="text" name="i_answer2_142_3_detail_<?= $no_142_detail ?>" class="form-control" placeholder="" value=""/></td>
                                              <td><?= $r_142_detail['q_kriteria_penilaian']?></td>
                                             </tr>
                                             
@@ -65,7 +65,7 @@
                                           <tr>
                                           <td><strong>POIN</strong></td>
                                           <td colspan="3">
-                                          <input required="required" type="text" name="i_answer2_142_point" class="form-control" placeholder="" value=""/>
+                                          <input  type="text" name="i_answer2_142_point" class="form-control" placeholder="" value=""/>
                                           </td>
                                       
                                           <td></td>

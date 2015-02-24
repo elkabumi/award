@@ -24,17 +24,17 @@
                                                 <td><?= $r_opsi['q_name']?></td>
                                                 <td style="text-align:center;">
                                                   <label>
-                                                    <input type="radio" name="i_answer2_113_<?= $no_113 ?>" class="minimal" value="1"/>
+                                                    <input type="radio" name="i_answer2_113_<?= $no_113 ?>" class="minimal" value="<?=$r_opsi['q_point1']?>"/>
                                                 </label>
                                                 </td>
                                                 <td style="text-align:center;">
                                                 <label>
-                                                    <input type="radio" name="i_answer2_113_<?= $no_113 ?>" class="minimal" value="2"/>
+                                                    <input type="radio" name="i_answer2_113_<?= $no_113 ?>" class="minimal" value="<?=$r_opsi['q_point2']?>"/>
                                                 </label>
                                                 </td>
                                                 <td style="text-align:center;">
                                                 <label>
-                                                    <input type="radio" name="i_answer2_113_<?= $no_113 ?>" class="minimal" value="3"/>
+                                                    <input type="radio" name="i_answer2_113_<?= $no_113 ?>" class="minimal" value="<?=$r_opsi['q_point3']?>"/>
                                                 </label>
                                                 </td>
                                               

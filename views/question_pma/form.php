@@ -28,7 +28,7 @@
                           
                           
 
-                             <form action="<?= $action?>" method="post" enctype="multipart/form-data" role="form">
+                            <form action="<?= $action?>" method="post" enctype="multipart/form-data" role="form">
 
                             <div class="box box-cokelat">
                                 
@@ -54,7 +54,7 @@
                                         <label>
                                             <input type="radio" name="i_get_child" class="minimal" value="0" <?php if($row->qp1_get_child == 0){ ?>checked <?php } ?> />                                                    
                                         </label>
-                                         <label>Tidak Menggunakan Opsi</label>      
+                                        <label>Tidak Menggunakan Opsi</label>      
                                        
                                     </div>
                                         

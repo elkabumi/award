@@ -1,41 +1,48 @@
  <tr>
- <td>&nbsp;</td>
-                                            <td colspan="2">
+                                            <td colspan="3">
                                              <table id="" class="table table-bordered table-striped" style="border-left:1px solid #e8e8e8">
                                         <thead>
                                             <tr>
-                                            <th width="40%">Keterangan</th>
+                                            <th>Keterangan</th>
                                                 <?php
-												 for($y=date("Y")-3; $y<=date("Y"); $y++){
+									 	$q_a_132 = mysql_query("select MAX(a_answer_year)AS tahun_max from a_1_3_2 where  answer_id  = '$answer_id '");
+										while($r_a_132 = mysql_fetch_array($q_a_132)){
+										 ?>
+                                           
+  s
+                                             <?php
+												 for($y=$r_a_132['tahun_max']-3; $y<=$r_a_132['tahun_max']; $y++){
 												 ?>
-														<th width="15%"><?= $y ?></th>
+                                                	<th><?=$y?></th>
                                                 <?php
 												 }
 												?>
+                                          
+                                        	   <?php
+											 }
+										   ?>
                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                          <?php
-                                        $q_132 = mysql_query("select * from q_1_3_2 where data_id = '$data_id' order by q_id");
-										$no_132 = 1;
+                                        $q_132 = mysql_query("select * from q_1_3_2 where data_id = '$data_id'");
 										while($r_132 = mysql_fetch_array($q_132)){
 										 ?>
                                             <tr>
                                             <td><?= $r_132['q_name'] ?></td>
                                             
                                              <?php
-												 for($y=date("Y")-3; $y<=date("Y"); $y++){
+												 $q_answer_132 = mysql_query("select * from a_1_3_2 where answer_id = '$answer_id' AND q_id = '".$r_132['q_id']."' 
+												 								ORDER BY a_answer_year DESC " );
+													while($r_answer_132 = mysql_fetch_array($q_answer_132)){
 												 ?>
-                                                	<th> 
-                                                    <input type="hidden" name="i_answer2_132_<?= $y?>_<?= $no_132?>_2" class="form-control" placeholder="" value="<?= $y?>"/>
-                                                    <input type="text" name="i_answer2_132_<?= $y?>_<?= $no_132?>_1" class="form-control" placeholder="" value=""/></th>
+                                                	<th><?=$r_answer_132['a_answer'] ?></th>
                                                 <?php
 												 }
 												?>
                                             </tr>
                                            <?php
-										   $no_132++;
 										 }
 										   ?>
                                            

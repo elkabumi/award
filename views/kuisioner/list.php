@@ -77,6 +77,7 @@
 
                                                    <!-- <a href="kuisioner.php?page=form&id=<?= $row['kuisioner_id']?>" class="btn btn-danger" ><i class="fa fa-pencil"></i></a>
                                                     <a href="javascript:void(0)" onclick="confirm_delete(<?= $row['kuisioner_id']; ?>,'kuisioner.php?page=delete&id=')" class="btn btn-danger" ><i class="fa fa-trash-o"></i></a>-->
+                                                     <a href="kuisioner.php?page=list_detail&data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >detail</i></a>
 													<a href="answer.php?data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >Input Kuisioner</a>
                                                 </td> 
                                             </tr>
