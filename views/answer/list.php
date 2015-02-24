@@ -154,7 +154,7 @@ function load_data_participant(str)
                                         <select required id="basic" name="i_participant_id" class="form-control" data-live-search="true" onChange="load_data_participant(this.value)" >
                                       <option value="">---</option>
                                            <?php
-                                        $query_owner = mysql_query("select * from participants");
+                                        $query_owner = mysql_query("select * from participants where participant_type = 1");
                                         while($row_owner = mysql_fetch_array($query_owner)){
                                         ?>
                                          <option value="<?= $row_owner['participant_id']?>"><?= $row_owner['participant_name'] ?></option>

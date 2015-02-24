@@ -117,7 +117,7 @@ function load_data_participant(str)
                        
                         <div class="col-xs-12">
                             
-                           <div class="title_page"> A. DATA UMUM KABUPATEN/ KOTA</div>
+                           <div class="title_page"> A. DATA UMUM PMA/PMDN</div>
                             
                             <div class="box">
                                <div class="box-header">
@@ -129,7 +129,7 @@ function load_data_participant(str)
                                     </div><!-- /. tools -->
                                   
 
-                                    <h3 class="box-title">Data Umum Kabupaten/Kota</h3>
+                                    <h3 class="box-title">Data Umum PMA/PMDN</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
                                        <table width="100%" class="table table-bordered table-striped" id="">
@@ -144,7 +144,7 @@ function load_data_participant(str)
                                         </thead>
                                         <tr>
                                             <td>1</td>
-                                            <td>Kabupaten / Kota</td>
+                                            <td>PMA/PMDN</td>
                                             <td>
                                        
                                           

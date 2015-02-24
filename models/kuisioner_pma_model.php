@@ -45,8 +45,8 @@ function select_answer_detail($answer_pma_id){
 }
 function get_answer_pma2($answer_id,$qp2_id){
 	$query =mysql_query("SELECT qp2d_id FROM answers_pma2 WHERE  answer_pma_id = '".$answer_id."' AND qp2_id='".$qp2_id."'");
-	$row = mysql_fetch_object($query);
-	return $row->qp2d_id;
+	$row = mysql_fetch_array($query);
+	return $row['qp2d_id'];
 }
 function get_item_pma_pma2($answer_id,$qp2_id){
 	$query =mysql_query("SELECT a.*, b.qp2_weight AS bobot
@@ -66,7 +66,8 @@ function get_item_pma_132($answer_id,$qp2_id){
 function get_item_pma_133($answer_id,$qp2_id){
 	$query =mysql_query("SELECT a.*, b.qp2_weight AS bobot  
 						FROM answers_qp_133 a
-						 JOIN questions_pma2 b ON a.qp2_id = b.qp2_id WHERE  	a.answer_pma_id = '".$answer_id."' AND a.qp2_id='".$qp2_id."'");
+						 JOIN questions_pma2 b ON a.qp2_id = b.qp2_id 
+						 WHERE  	a.answer_pma_id = '".$answer_id."' AND a.qp2_id='".$qp2_id."'");
 	$row = mysql_fetch_object($query);
 	return $row;
 }
@@ -136,28 +137,28 @@ function select_answer_identitas($answer_pma_id){
 	return $query;
 }
 function get_total_nilai($answer_id){
-	$row_1 = mysql_fetch_object(mysql_query("select SUM(b.answer_pma2_point_value) AS point_answer_2
+	$row_1 = mysql_fetch_object(mysql_query("select SUM((b.qp2_weight / 100) * answer_pma2_point)  AS point_answer_2
 							FROM answers_pma a
 							JOIN answers_pma2  b ON  a.answer_pma_id = b.answer_pma_id
 							WHERE a.answer_pma_id 	  = '".$answer_id."'   
 						"));
 						
-	$row_2 = mysql_fetch_object(mysql_query("select SUM(c.answer_qp_132_point_value) AS point_answer_132
+	$row_2 = mysql_fetch_object(mysql_query("select SUM((c.qp2_weight / 100) * c.answer_qp_132_point) AS point_answer_132
 							FROM answers_pma a
 							JOIN answers_qp_132 c ON  a.answer_pma_id = c.answer_pma_id
 							WHERE a.answer_pma_id  = '".$answer_id."' 
 						"));	
-	$row_3 = mysql_fetch_object(mysql_query("select SUM(d.answer_qp_133_point_value) AS point_answer_133
+	$row_3 = mysql_fetch_object(mysql_query("select SUM((d.qp2_weight / 100) * d.answer_qp_133_point) AS point_answer_133
 							FROM answers_pma a
 							JOIN answers_qp_133 d ON  a.answer_pma_id = d.answer_pma_id
 							WHERE  a.answer_pma_id  = '".$answer_id."'  
 						"));		
-	$row_4 =mysql_fetch_object( mysql_query("select SUM(e.answer_qp_211_point_value) AS point_answer_211
+	$row_4 =mysql_fetch_object( mysql_query("select SUM((e.qp2_weight / 100) * e.answer_qp_211_point) AS point_answer_211
 							FROM answers_pma a
 							JOIN answers_qp_211 e ON  a.answer_pma_id = e.answer_pma_id
 							WHERE  a.answer_pma_id  = '".$answer_id."'    
 						"));	
-	$row_5 = mysql_fetch_object(mysql_query("select SUM(f.answer_qp_311_point_value) AS point_answer_311
+	$row_5 = mysql_fetch_object(mysql_query("select SUM((f.qp2_weight / 100) * f.answer_qp_311_point) AS point_answer_311
 							FROM answers_pma a
 							JOIN answers_qp_311 f ON  a.answer_pma_id = f.answer_pma_id
 							WHERE a.answer_pma_id  = '".$answer_id."'     
@@ -169,33 +170,35 @@ function get_total_nilai($answer_id){
 						"));
 					
 	$total_point = $row_1->point_answer_2 + $row_2->point_answer_132 +$row_3->point_answer_133 +$row_4->point_answer_211 +$row_5->point_answer_311;
+	
+	$total_point =  number_format($total_point, 2);
 	$result= $total_point."(".$nama_identitas->assessor_name.")";
 	return $result;
 		
 }
 function get_rata_nilai($data_id,$phase_id,$participant_id,$total_answer){
-	$row_1 = mysql_fetch_object(mysql_query("select SUM(b.answer_pma2_point_value) AS point_answer_2
+	$row_1 = mysql_fetch_object(mysql_query("select SUM((b.qp2_weight / 100) * answer_pma2_point)  AS point_answer_2
 							FROM answers_pma a
 							JOIN answers_pma2  b ON  a.answer_pma_id = b.answer_pma_id
 							WHERE a.data_id = '".$data_id."' AND  a.phase_id = '".$phase_id."'  AND  a.participant_id = '".$participant_id."'   
 						"));
 						
-	$row_2 = mysql_fetch_object(mysql_query("select SUM(c.answer_qp_132_point_value) AS point_answer_132
+	$row_2 = mysql_fetch_object(mysql_query("select SUM((c.qp2_weight / 100) * c.answer_qp_132_point) AS point_answer_132
 							FROM answers_pma a
 							JOIN answers_qp_132 c ON  a.answer_pma_id = c.answer_pma_id
 							WHERE a.data_id = '".$data_id."' AND  a.phase_id = '".$phase_id."'  AND  a.participant_id = '".$participant_id."' 
 						"));	
-	$row_3 = mysql_fetch_object(mysql_query("select SUM(d.answer_qp_133_point_value) AS point_answer_133
+$row_3 = mysql_fetch_object(mysql_query("select SUM((d.qp2_weight / 100) * d.answer_qp_133_point) AS point_answer_133
 							FROM answers_pma a
 							JOIN answers_qp_133 d ON  a.answer_pma_id = d.answer_pma_id
 							WHERE a.data_id = '".$data_id."' AND  a.phase_id = '".$phase_id."'  AND  a.participant_id = '".$participant_id."'
 						"));		
-	$row_4 =mysql_fetch_object( mysql_query("select SUM(e.answer_qp_211_point_value) AS point_answer_211
+	$row_4 =mysql_fetch_object( mysql_query("select SUM((e.qp2_weight / 100) * e.answer_qp_211_point) AS point_answer_211
 							FROM answers_pma a
 							JOIN answers_qp_211 e ON  a.answer_pma_id = e.answer_pma_id
 							WHERE a.data_id = '".$data_id."' AND  a.phase_id = '".$phase_id."'  AND  a.participant_id = '".$participant_id."'
 						"));	
-	$row_5 = mysql_fetch_object(mysql_query("select SUM(f.answer_qp_311_point_value) AS point_answer_311
+	$row_5 = mysql_fetch_object(mysql_query("select SUM((f.qp2_weight / 100) * f.answer_qp_311_point) AS point_answer_311
 							FROM answers_pma a
 							JOIN answers_qp_311 f ON  a.answer_pma_id = f.answer_pma_id
 							WHERE a.data_id = '".$data_id."' AND  a.phase_id = '".$phase_id."'  AND  a.participant_id = '".$participant_id."'
