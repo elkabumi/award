@@ -53,7 +53,7 @@
                             </a>
                             
                   </li>
-                      <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
+                      <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
                             <a href="participant_pma.php">
                                 <i class="fa fa-briefcase"></i>
                                 <span>Peserta PMA dan PMDN</span>
@@ -63,7 +63,7 @@
                             
                   </li>
                 
-                        <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
+                        <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "class='active'"; } ?>>
                             <a href="kuisioner.php">
                                 <i class="fa fa-briefcase"></i>
                                 <span>Kuisioner Kab Kota</span>
@@ -73,7 +73,7 @@
                   </li>
                   
                   
-                        <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
+                        <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 5){ echo "class='active'"; } ?>>
                             <a href="kuisioner_pma.php">
                                 <i class="fa fa-briefcase"></i>
                                 <span>Kuisioner PMA/PMDN</span>
@@ -84,20 +84,7 @@
                  
                   
                         
-                     <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "active"; }?>">
-                            <a href="#">
-                                <i class="fa fa-book"></i>
-                                <span>Laporan</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                
-                                <li><a href="report_triwulan.php?page=list"><i class="fa fa-chevron-circle-right"></i>Kuisioner Kab Kota</a></li>
-                                <li><a href="report_semester.php?page=list"><i class="fa fa-chevron-circle-right"></i>Kuisioner PMA/PMDN</a></li>
-                               
-                             
-                            </ul>
-                  </li>
+                     
                   
                  
                   

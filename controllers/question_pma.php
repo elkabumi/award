@@ -6,7 +6,7 @@ $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
 $title = ucfirst("daftar isian pertanyaan");
 
-$_SESSION['menu_active'] = 6;
+$_SESSION['menu_active'] = 1;
 $data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : 0;
 
 switch ($page) {
@@ -30,8 +30,8 @@ switch ($page) {
 	
 	case 'form':
 		get_header();
-
-		$close_button = "question_pma.php?page=list";
+	
+		$close_button = "question_pma.php?page=list&data_id=$data_id";
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		if($id){
@@ -108,7 +108,7 @@ switch ($page) {
 	case 'form_question_pma':
 		get_header();
 
-		$close_button = "question_pma.php?page=list";
+		$close_button = "question_pma.php?page=list&data_id=$data_id";
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		
@@ -117,7 +117,7 @@ switch ($page) {
 
 			$row = read_question_pma_id($id);
 		
-			$action = "question_pma.php?page=edit_question_pma&id=$id";
+			$action = "question_pma.php?page=edit_question_pma&id=$id&data_id=$data_id";
 		} else{
 			
 			//inisialisasi
@@ -127,7 +127,7 @@ switch ($page) {
 			$row->qp2_weight = 0;
 			$row->qp2_description = false;
 			$cat_id = (isset($_GET['cat_id'])) ? $_GET['cat_id'] : null;
-			$action = "question_pma.php?page=save_question_pma&cat_id=$cat_id";
+			$action = "question_pma.php?page=save_question_pma&cat_id=$cat_id&data_id=$data_id";
 		}
 
 		include '../views/question_pma/form_question_pma.php';
@@ -337,7 +337,7 @@ switch ($page) {
 
 		update_data("questions_pma2", "qp2_id 	", $data, $id);
 			
-		header('Location: question_pma.php?page=list&did=2');
+		header("Location: question_pma.php?page=list&did=2&data_id=$data_id");
 
 	break;
 	
@@ -396,7 +396,8 @@ switch ($page) {
 
 		$id = get_isset($_GET['id']);	
 
-		delete_config("question_pmas2", $id);
+		delete_opsi("questions_pma2", $id);
+		delete_opsi("questions_pma2_details", $id);
 
 		header('Location: question_pma.php?page=list&did=3');
 

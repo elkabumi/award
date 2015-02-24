@@ -6,7 +6,7 @@ $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
 $title = ucfirst("kuisioner Pma");
 
-$_SESSION['menu_active'] = 6;
+$_SESSION['menu_active'] = 5;
 
 switch ($page) {
 	case 'list':
@@ -78,9 +78,9 @@ switch ($page) {
 			//inisialisasi
 			$row = new stdClass();
 
-			$row->kuisioner_pma_name = false;
-			$row->kuisioner_pma_date = false;
-			$row->kuisioner_pma_description = false;
+			$row->kuisioner_name = false;
+			$row->kuisioner_date = false;
+			$row->kuisioner_description = false;
 
 			$action = "kuisioner_pma.php?page=save";
 		}

@@ -6,7 +6,7 @@ $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
 $title = ucfirst("daftar isian pertanyaan");
 
-$_SESSION['menu_active'] = 6;
+$_SESSION['menu_active'] = 5;
 $data_id = (isset($_GET['data_id'])) ? $_GET['data_id'] : 0;
 
 switch ($page) {

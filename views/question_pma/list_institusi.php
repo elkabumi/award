@@ -36,9 +36,9 @@
                                         
                                         <table id="" width="100%"  cellpadding="5">
                                           <tr>
-                                          <td width="3%" valign="top" align="center"><strong><?= $no_question."."; ?></strong></td>
-                                            <td width="84%"><b> <?= $r_question['qp2_name'] ?></b></td>
-                                            <td width="10%">
+                                          <td width="5%" valign="top" align="center"><strong><?= $no_question."."; ?></strong></td>
+                                            <td width="75%"><b> <?= $r_question['qp2_name'] ?></b></td>
+                                            <td width="20%" align="center" style="text-align:center;">
                                             
                                               
                                             </td>
@@ -51,22 +51,14 @@
                                            <tr>
                                            <td valign="top" align="center"><?= "&nbsp;&nbsp;&nbsp;&nbsp;".get_abjad($no_q_q_d).")"; ?></td>
                                             <td valign="top"> <?= $r_q_d['qp2d_name'] ?></td>
-                                            <td  style="color:#F4543C; font-weight:bold;" valign="top">
+                                            <td  style="color:#F4543C; font-weight:bold;" valign="top" align="center" style="text-align:center;">
                                              
                                              Poin : <?= $r_q_d['qp2d_point']?>
                                             
                                             </td>
                                           </tr> 
                                           
-                                          <?php
-										  // Jika pertanyaan no 3 a
-                                          if($r_q_d['q2d_type'] == 1){
-											  include 'q_113.php';
-										  }else  if($r_q_d['q2d_type'] == 2){
-											  include 'q_122.php';
-										  }
-										  ?> 
-                                         
+                                        
 										 <?php
 										 $no_q_q_d++;
 										}
@@ -87,9 +79,11 @@
 										 ?>
                                            <tr height="50">
                                             <td style="color:#09F; font-weight:bold;" colspan="2"><?= "&nbsp;&nbsp;&nbsp;&nbsp;" ?> Bobot Soal : <?= $r_question['qp2_weight'] ?></td>
-                                            <td>
+                                            <td align="center" style="text-align:center;">
                                             
-                                                <a href="question_pma.php?page=form_question_pma&id=<?= $r_question['qp2_id']?>&cat_id=<?=$r_cat['cat_pma_id']?>" class="btn btn-danger" >Edit </a>
+                                                <a href="question_pma.php?page=form_question_pma&id=<?= $r_question['qp2_id']?>&cat_id=<?=$r_cat['cat_pma_id']?>&data_id=<?= $data_id ?>" class="btn btn-danger" >Edit </a>
+                                                 <a href="javascript:void(0)" onclick="confirm_delete(<?= $r_question['qp2_id']; ?>,'question_pma.php?page=delete_question_pma&id=')" class="btn btn-danger" >Hapus</a>
+                                          
                                             </td>
                                           </tr> 
                                           
@@ -118,7 +112,7 @@
 										}
 										?>
                                  <?php
-                                 if($r_sub_cat['sub_cat_id'] != 11){
+                               //  if($r_sub_cat['sub_cat_id'] != 11){
 								 ?>
                                  <div class="box-footer">
                                 
@@ -126,7 +120,7 @@
                                 
 </div>
 <?php
-								 }
+							//	 }
 ?>
                             </div><!-- /.box -->
                         

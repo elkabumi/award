@@ -120,7 +120,7 @@ function update_opsi($table, $data, $id){
 }
 
 function delete_opsi($table, $id){
-	mysql_query("delete from $table where qp2d_id = '$id'");
+	mysql_query("delete from $table where qp2_id = '$id'");
 }
 
 function update_data($table, $parameter, $data, $id){
