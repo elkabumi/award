@@ -57,7 +57,7 @@
                         <th width="5%">No</th>
                         <th>Peserta</th>
                     <?php
-					$query_phase = get_phase();
+							$query_phase = get_phase();
                               while($row_phase=mysql_fetch_object($query_phase)){
 								$max_colom = get_total_answer($data_id,$row_phase->phase_id);
 								if($max_colom == ''){
@@ -104,8 +104,16 @@
 								while($row_answer_pma_id=mysql_fetch_object($query_answer_pma_id)){
 								$total_nilai=get_total_nilai($row_answer_pma_id->answer_pma_id);
 						?>
-                        <th> <?=$total_nilai?><br /> <a href="kuisioner_pma.php?page=list_answer&answer_pma_id=<?=$row_answer_pma_id->answer_pma_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
-                        
+                        <th> <?=$total_nilai?><br />
+                        <?php
+                        if($row_answer_pma_id->answer_type == '0'){
+						?>
+                         <a href="kuisioner_pma.php?page=list_answer&answer_pma_id=<?=$row_answer_pma_id->answer_pma_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
+                        <?php 
+						}else if ($row_answer_pma_id->answer_type == '1'){
+						?>
+                         	<a href="kuisioner_pma.php?page=list_answer_manual&answer_pma_id=<?=$row_answer_pma_id->answer_pma_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
+                        <?php }?>
                         <?php
 								if($total_answer_participant != $max_colom){
 									$kolom_tambahan = $max_colom - $total_answer_participant;

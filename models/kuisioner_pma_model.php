@@ -94,12 +94,13 @@ function get_total_answer($data_id,$phase_id){
 							FROM answers_pma a
 						JOIN (
 						
-						SELECT COUNT( participant_id ) AS sama, participant_id
+						SELECT COUNT( participant_id ) AS sama, participant_id,data_id ,phase_id
 						FROM answers_pma h
 						WHERE h.participant_id = participant_id
+						AND h.data_id = '".$data_id."' AND phase_id ='".$phase_id."'
 						GROUP BY participant_id
 						) AS b ON b.participant_id = a.participant_id
-				where a.data_id = '".$data_id."' AND phase_id ='".$phase_id."'
+				
 			");
 	$row = mysql_fetch_object($query);
 	return $row->pma_id;
@@ -113,7 +114,7 @@ function get_total_answer_participant($data_id,$phase_id,$participant_id){
 	return $row->pma_id;
 }
 function get_answer_id($data_id,$phase_id,$participant_id){
-	$query = mysql_query("select  a.answer_pma_id
+	$query = mysql_query("select  *
 			FROM answers_pma a
 			where a.data_id = '".$data_id."' AND phase_id ='".$phase_id."' AND participant_id ='".$participant_id."'
 			");
@@ -304,7 +305,31 @@ function create($data){
 	
 	
 }
-
+function get_point_manual($id){
+	$q=mysql_query("SELECT answer_pma2_point_value FROM answers_pma2 where qp2_id = '$id'");
+	$point=mysql_fetch_object($q);
+	return $point->answer_pma2_point_value;
+}
+function get_point_manual_132($id){
+	$q=mysql_query("SELECT answer_qp_132_point_value FROM answers_qp_132 where qp2_id = '$id'");
+	$point=mysql_fetch_object($q);
+	return $point->answer_qp_132_point_value;
+}
+function get_point_manual_133($id){
+	$q=mysql_query("SELECT answer_qp_133_point_value FROM answers_qp_133 where qp2_id = '$id'");
+	$point=mysql_fetch_object($q);
+	return $point->answer_qp_133_point_value;
+}
+function get_point_manual_211($id){
+	$q=mysql_query("SELECT answer_qp_211_point_value FROM answers_qp_211 where qp2_id = '$id'");
+	$point=mysql_fetch_object($q);
+	return $point->answer_qp_211_point_value;
+}
+function get_point_manual_311($id){
+	$q=mysql_query("SELECT answer_qp_311_point_value FROM answers_qp_311 where qp2_id = '$id'");
+	$point=mysql_fetch_object($q);
+	return $point->answer_qp_311_point_value;
+}
 function update($data, $id){
 	mysql_query("update kuisioner set ".$data." where kuisioner_id = '$id'");
 }

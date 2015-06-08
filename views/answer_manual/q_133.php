@@ -1,11 +1,12 @@
  <tr>
-                                            <td colspan="3">
+ <td>&nbsp;</td>
+                                            <td colspan="2">
                                              <table id="" class="table table-bordered table-striped" style="border-left:1px solid #e8e8e8">
                                         <thead>
                                             <tr>
                                             <th width="5%">No</th>
                                                 <?php
-                                                 $q_133 = mysql_query("select * from q_1_3_3 where data_id = '$data_id'");
+                                                 $q_133 = mysql_query("select * from q_1_3_3 where data_id = '$data_id' order by q_id");
 												
 												while($r_133 = mysql_fetch_array($q_133)){
 												?>
@@ -22,14 +23,16 @@
                                             <tr>
                                             <td><?= $i_133?></td>
                                                  <?php
-                                                 $q_133 = mysql_query("select * from q_1_3_3 where data_id = '$data_id'");
-												 while($r_133 = mysql_fetch_array($q_133)){
-												
-													$q_answer_133 = mysql_query("select * from a_1_3_3 where q_id = '".$r_133['q_id']."' AND  a_answer_number='".$i_133."'");
-													$r_answer_133 = mysql_fetch_array($q_answer_133);
+                                                $q_133 = mysql_query("select * from q_1_3_3 where data_id = '$data_id' order by q_id");
+												$no_133 = 1;
+												while($r_133 = mysql_fetch_array($q_133)){
 												?>
-                                                <td><?= $r_answer_133['a_answer'] ?></td>
+                                                <td> 
+                                               
+                                                <input type="text" name="i_answer2_133_<?= $i_133?>_<?= $no_133?>" class="form-control" placeholder="" value=""/>
+                                                </td>
                                                 <?php
+												$no_133++;
 												}
 												?>
                                                 

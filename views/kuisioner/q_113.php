@@ -20,21 +20,7 @@
 												$point_113=get_point_113($r_opsi['q_id'],$answer_id);
                                             ?>
                                             <tr>
-                                            <td><?= $no_113; ?></td>
-                                                <td><?= $r_opsi['q_name']?></td>
-                                                <td style="color:#F4543C; font-weight:bold;">
-												<input type="radio" name="i_answer_113_<?=$r_opsi['q_id']?>" class="minimal" value="<?=$r_opsi['q_point1'] ?>"
-  												<?php if($r_opsi['q_point1'] == $point_113 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"/> 
-												</td>
-                                                <td style="color:#F4543C; font-weight:bold;">
-												<input type="radio" name="i_answer_113_<?=$r_opsi['q_id']?>" class="minimal" value="<?=$r_opsi['q_point2'] ?>"
-  												<?php if($r_opsi['q_point2'] == $point_113 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"/> 
-												</td>
-                                                <td style="color:#F4543C; font-weight:bold;">
-												
-												<input type="radio" name="i_answer_113_<?=$r_opsi['q_id']?>" class="minimal" value="<?=$r_opsi['q_point3'] ?>"
-  												<?php if($r_opsi['q_point3'] == $point_113 ){ ?>  checked  <?php }else{ ?> <?php } ?> disabled="disabled"/> 
-												</td>
+                                            
                                               
                                             </tr>
                                             <?php

@@ -1,7 +1,6 @@
 
               
-                <!-- Main content -->
-                <section class="content">
+          
                     <div class="row">
                         <div class="col-xs-12">
                             
@@ -20,7 +19,7 @@
                                     <h3 class="box-title">Data Pengisi Kuisioner</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
-                                       <table id="" class="table table-bordered table-striped">
+                                       <table width="100%" class="table table-bordered" id="">
                                        
                                         <tbody>
                                             <?php
@@ -28,14 +27,12 @@
                                             while($row_identitas = mysql_fetch_array($query_identitas)){
                                             ?>
                                             <tr>
-                                            <td><?= $no_identitas?></td>
-                                            <td><?= $row_identitas['answer3_question']?></td>
-                                            <td><?= $row_identitas['answer3_answer']?></td>
+                                            <td width="6%"><?= $no_identitas?></td>
+                                                <td width="27%"><?= $row_identitas['q3_name']?></td>
                                               
-                                               <td style="text-align:center;">
+                                               <td width="67%" style="text-align:center;">
 
-                                                    <a href="question.php?page=form_identitas&id=<?= $row_identitas['q3_id']?>" class="btn btn-danger" ><i class="fa fa-pencil"></i></a>
-                                                    <a href="javascript:void(0)" onclick="confirm_delete(<?= $row_identitas['q3_id']; ?>,'question.php?page=delete_identitas&id=')" class="btn btn-danger" ><i class="fa fa-trash-o"></i></a>
+                                               <input required="required" type="text" name="i_answer3_<?= $no_identitas ?>" class="form-control" placeholder="" value=""/>
 
                                                 </td> 
                                             </tr>
@@ -47,16 +44,22 @@
                                            
                                           
                                         </tbody>
-                                          <tfoot>
-                                            <tr>
-                                                <td colspan="10"><a href="<?= $add_button_identitas ?>" class="btn btn-info " >Add</a></td>
-                                               
-                                            </tr>
-                                        </tfoot>
+                                        
                                     </table>
                                 </div><!-- /.box-body -->
+                              
                             </div><!-- /.box -->
                         </div>
                     </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-12">
 
-               
+                             <input class="btn btn-info" type="submit" value="SIMPAN JAWABAN"/>
+                           
+                             </div>
+                             </div>
+                             
+                             </form>
+
+</section>

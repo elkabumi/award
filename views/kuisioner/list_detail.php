@@ -57,7 +57,7 @@
                         <th width="5%">No</th>
                         <th>Peserta</th>
                     <?php
-					$query_phase = get_phase();
+							$query_phase = get_phase();
                               while($row_phase=mysql_fetch_object($query_phase)){
 								$max_colom = get_total_answer($data_id,$row_phase->phase_id);
 								if($max_colom == ''){
@@ -90,6 +90,7 @@
 								$query_answer_id = get_answer_id($data_id,$row_phase->phase_id,$row->participant_id);	 
 							 	
 								$total_answer_participant=get_total_answer_participant($data_id,$row_phase->phase_id,$row->participant_id);
+					
 								if($total_answer_participant == '0'){
 									for($i=1;$i<=$max_colom; $i++){
 						?>
@@ -104,8 +105,17 @@
 								while($row_answer_id=mysql_fetch_object($query_answer_id)){
 								$total_nilai=get_total_nilai($row_answer_id->answer_id);
 						?>
-                        <th> <?=$total_nilai?> <a href="kuisioner.php?page=list_answer&answer_id=<?=$row_answer_id->answer_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
+                        <th> <?=$total_nilai?>
                         
+                        <?php
+                       	if($row_answer_id->answer_type == '0'){
+						?>
+                       		 <a href="kuisioner.php?page=list_answer&answer_id=<?=$row_answer_id->answer_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
+                         <?php 
+						}else if ($row_answer_id->answer_type == '1'){
+						?>
+                        	 <a href="kuisioner.php?page=list_answer_manual&answer_id=<?=$row_answer_id->answer_id?>&data_id=<?=$data_id?>" class="btn btn-danger" >detail</i></a></th>
+                        <?php }?>
                         <?php
 								if($total_answer_participant != $max_colom){
 									$kolom_tambahan = $max_colom - $total_answer_participant;

@@ -109,13 +109,14 @@
                                            		$answer_item_pma = get_item_pma_pma2($answer_pma_id,$r_question['qp2_id']);	
 												$bobot_soal = $answer_item_pma->bobot;
 												$point = $answer_item_pma->answer_pma2_point;
-												
 												$point_value =($answer_item_pma->answer_pma2_point /100) * $answer_item_pma->bobot ;
+										  
 										  	}else if($r_question['qp2_type'] == 1){
 											  	$answer_item_pma = get_item_pma_132($answer_pma_id,$r_question['qp2_id']);
 										  		$bobot_soal = $answer_item_pma->bobot;
 												$point = $answer_item_pma->answer_qp_132_point;
 												$point_value = ($answer_item_pma->answer_qp_132_point /100) * $answer_item_pma->bobot ;
+											
 											}else if($r_question['qp2_type'] == 2){
 											 	$answer_item_pma = get_item_pma_133($answer_pma_id,$r_question['qp2_id']);
 												$bobot_soal = $answer_item_pma->bobot;

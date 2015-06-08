@@ -40,7 +40,7 @@ function select_participant($data_id){
 							FROM answers h
 							group by participant_id) AS b
 						on b.participant_id = a.participant_id
-						WHERE b.data_id = '".$data_id."'");
+						WHERE b.data_id = '".$data_id."'");		
 	return $query;
 }
 function get_phase(){
@@ -71,18 +71,19 @@ function get_total_answer($data_id,$phase_id){
 							FROM answers a
 						JOIN (
 						
-						SELECT COUNT( participant_id ) AS sama, participant_id
+						SELECT COUNT( participant_id ) AS sama, participant_id,data_id ,phase_id
 						FROM answers h
 						WHERE h.participant_id = participant_id
+						AND h.data_id = '".$data_id."' AND phase_id ='".$phase_id."'
 						GROUP BY participant_id
 						) AS b ON b.participant_id = a.participant_id
-				where a.data_id = '".$data_id."' AND phase_id ='".$phase_id."'
 			");
+		
 	$row = mysql_fetch_object($query);
 	return $row->ans_id;
 }
 function get_answer_id($data_id,$phase_id,$participant_id){
-	$query = mysql_query("select  a.answer_id
+	$query = mysql_query("select  *
 			FROM answers a
 			where a.data_id = '".$data_id."' AND phase_id ='".$phase_id."' AND participant_id ='".$participant_id."'
 			");

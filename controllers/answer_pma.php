@@ -51,8 +51,8 @@ switch ($page) {
 				'$asesor_name',
 				'$date',
 				'$user_id',
-				'$i_phase_id'
-				
+				'$i_phase_id',
+				'0'
 			";
 		create($data);
 		$answer_pma_id = mysql_insert_id();

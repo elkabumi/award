@@ -195,7 +195,8 @@ switch ($page) {
 						'$assessor_name',
 						'".date("Y-m-d")."',
 						'".$_SESSION['user_id']."',
-						'$phase_id'
+						'$phase_id',
+						'0'
 		";
 	
 		create_config("answers", $data_answers);	
@@ -937,7 +938,7 @@ switch ($page) {
 						}else{
 							$point = 5;
 						}
-							$total_point = ($point / 100) * $row['qp2_weight'];
+							$total_point = ($point / 100) * $row_question2['q2_weight'];
 						
 						mysql_query("UPDATE answers2 SET answer2_point ='".$point."', answer2_answer ='".$answer."', answer2_point_value ='".$point_value."' where answer_id = '".$answer_id."' AND answer2_type = '12'");
 					
@@ -960,6 +961,12 @@ switch ($page) {
 		}
 		
 
+	
+		
+		}
+		
+	
+		
 		$select_question3 = select_identitas($data_id);
 		
 		$no_answer3 = 1;
@@ -973,13 +980,8 @@ switch ($page) {
 			create_config("answers3", $data_answer3);
 			$no_answer3++;
 		}
-	
-		
+		header('Location: answer.php?page=list&did=1');	
 		}
-		
-		}
-		
-			
 	break;
 
 	case 'save':

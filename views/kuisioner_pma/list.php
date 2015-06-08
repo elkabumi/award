@@ -76,8 +76,11 @@
                                                 <td style="text-align:center;">
 
                                                <a href="kuisioner_pma.php?page=list_detail&data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >detail</i></a>
-                                               <a href="answer_pma.php?data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >Input Kuisioner</a>
-                                                </td> 
+                                               <a href="answer_pma.php?data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >Input Kuisioner</a><br />
+                                               <a href="answer_pma_manual.php?data_id=<?= $row['kuisioner_id']?>" class="btn btn-danger" >Input Kuisioner Manual</a>
+                                                
+                                               </td> 
+                                                
                                             </tr>
                                             <?php
 											$no++;

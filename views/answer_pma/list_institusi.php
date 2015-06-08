@@ -54,7 +54,7 @@
                                              <tr>
                                            <td valign="top" align="center">
 										       <label>
-                                            <input required type="radio" name="i_answer_pma2_<?= $no_question ?>_<?=$r_question['qp2_cat_pma_id']?>_<?=$r_question['qp2_type']?>_<?=$r_question['qp2_id']?>" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"/>
+                                            <input  type="radio" name="i_answer_pma2_<?= $no_question ?>_<?=$r_question['qp2_cat_pma_id']?>_<?=$r_question['qp2_type']?>_<?=$r_question['qp2_id']?>" class="minimal" value="<?= $r_q_d['qp2d_id'] ?>"/>
                              
                                         </label>
                                            </td>
